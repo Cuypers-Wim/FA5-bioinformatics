@@ -8,3 +8,9 @@ Course notes are available at the following URL: [FA5 Bioinformatics](https://cu
 
 The course builds on the "Fighting Malaria Across Borders" (FiMAB) programme, developed by ITM and supported by VLIR-UOS. You can find more information about the FiMAB bioinformatics course here: [FiMAB Bioinformatics](https://pmoris.github.io/FiMAB-bioinformatics/). This repo is also a fork of the FiMAB repo.
 
+
+
+
+
+# Dataset generation
+
