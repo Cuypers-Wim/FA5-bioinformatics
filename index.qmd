@@ -1,17 +1,14 @@
 # About {.unnumbered}
 
-Welcome to the Bioinformatics Module of the Fighting Malaria Across Borders (FiMAB) international training programme, created by the [Institute of Tropical Medicine Antwerp](https://www.itg.be/en/) (ITM) in collaboration with the [University of Antwerp](https://www.uantwerpen.be/en/), and supported by [VLIR-UOS](https://www.vliruos.be/en). Its primary goal is to support the implementation of targeted sequencing assays (in particular, AmpliSeq) to strengthen malaria molecular surveillance and help guide national control programmes. In conjunction with laboratory training, this bioinformatics course is intended to allow young academics around the globe to become familiar with molecular surveillance as a key activity to monitor transmission, sources of epidemics and the emergence and spread of drug resistance mutations in the _Plasmodium_ parasite through sequencing approaches.
+Welcome to the Pathogen Genomics Module of the FA5 Bioinformatics course, created by the [Institute of Tropical Medicine Antwerp](https://www.itg.be/en/) (ITM) in collaboration with the [University of Antwerp](https://www.uantwerpen.be/en/). Its primary goal is to support the implementation of sequencing bioinformatics to strengthen molecular surveillance and pathogen research. 
 
 ## Scope of the course
 
-This course aims to provide an overview of the key bioinformatics concepts related to performing molecular surveillance in _Plasmodium_. It is divided into the following sections:
+This course aims to provide an overview of the key bioinformatics concepts related to performing pathogen genomics. It is divided into the following sections:
 
 1. Introduction to the Unix shell
-2. Introduction to R
-3. Overview of genomics pipeline
-4. Population genetics and molecular surveillance in _Plasmodium_ (separate materials on ITM course page)
+2. Processing genomics data
 
-Section 1-2 are online self-paced modules, whereas the others will include classroom lectures and practical sessions. Evaluation exercises will be conducted on [the ITM course page](https://campus.itg.be/course/view.php?id=217).
 
 ## Computational thinking
 
@@ -21,7 +18,11 @@ We hope that this course can teach you a few computational thinking and problem 
 
 <!-- This course was made possible thanks to the support of [VLIR-UOS](https://www.vliruos.be) and the [Institute of Tropical Medicine](https://www.itg.be/en). -->
 
-Development of this course was supported by [VLIR-UOS](https://www.vliruos.be), the [Institute of Tropical Medicine](https://www.itg.be/en) and the [University of Antwerp](https://www.uantwerpen.be/en/).
+Development of the original version of this course (see https://pmoris.github.io/FiMAB-bioinformatics/) was supported by [VLIR-UOS](https://www.vliruos.be), the [Institute of Tropical Medicine (ITM)](https://www.itg.be/en), and the [University of Antwerp](https://www.uantwerpen.be/en/). 
+
+This version of the course was developed within the FA5 program of ITM, and with support of the Adrem Data Lab at the University of Antwerp. 
+
+About FA5: The Alliance for Education in Tropical Medicine and International Public Health, part of the FA5 agreement between ITM and the DGD (Directorate-General for Development Cooperation and Humanitarian Aid of the Belgian government), focuses on building educational partnerships and fostering collaboration with international higher education institutions in FA5 countries and beyond. Its main goal is to enhance quality, innovation, internationalization, and peer learning in postgraduate education, with mutual learning at its core. More info via [this link](https://www.itg.be/en/study/collaboration).
 
 # License [![](https://mirrors.creativecommons.org/presskit/icons/cc.svg){fig-alt="CC" height=30px}](https://creativecommons.org/licenses/by/4.0/) [![](https://mirrors.creativecommons.org/presskit/icons/by.svg){fig-alt="BY" height=30px}](https://creativecommons.org/licenses/by/4.0/) {.unnumbered}
 
