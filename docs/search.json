@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Introduction to Bioinformatics for Malaria Molecular Surveillance",
     "section": "",
-    "text": "About\nWelcome to the Bioinformatics Module of the Fighting Malaria Across Borders (FiMAB) international training programme, created by the Institute of Tropical Medicine Antwerp (ITM) in collaboration with the University of Antwerp, and supported by VLIR-UOS. Its primary goal is to support the implementation of targeted sequencing assays (in particular, AmpliSeq) to strengthen malaria molecular surveillance and help guide national control programmes. In conjunction with laboratory training, this bioinformatics course is intended to allow young academics around the globe to become familiar with molecular surveillance as a key activity to monitor transmission, sources of epidemics and the emergence and spread of drug resistance mutations in the Plasmodium parasite through sequencing approaches.",
+    "text": "About\nWelcome to the Pathogen Genomics Module of the FA5 Bioinformatics course, created by the Institute of Tropical Medicine Antwerp (ITM) in collaboration with the University of Antwerp. Its primary goal is to support the implementation of sequencing bioinformatics to strengthen molecular surveillance and pathogen research.",
     "crumbs": [
       "About"
     ]
@@ -14,7 +14,7 @@
     "href": "index.html#scope-of-the-course",
     "title": "Introduction to Bioinformatics for Malaria Molecular Surveillance",
     "section": "Scope of the course",
-    "text": "Scope of the course\nThis course aims to provide an overview of the key bioinformatics concepts related to performing molecular surveillance in Plasmodium. It is divided into the following sections:\n\nIntroduction to the Unix shell\nIntroduction to R\nOverview of genomics pipeline\nPopulation genetics and molecular surveillance in Plasmodium (separate materials on ITM course page)\n\nSection 1-2 are online self-paced modules, whereas the others will include classroom lectures and practical sessions. Evaluation exercises will be conducted on the ITM course page.",
+    "text": "Scope of the course\nThis course aims to provide an overview of the key bioinformatics concepts related to performing pathogen genomics. It is divided into the following sections:\n\nIntroduction to the Unix shell\nProcessing genomics data",
     "crumbs": [
       "About"
     ]
