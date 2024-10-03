@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -383,7 +383,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Remember that we have provided a list of helpful tips and hints in the appendix: <a href="appendix-unix.html#sec-unix-tips" class="quarto-xref"><span>Section A.1</span></a>.</p>
+<p>Remember that we have provided a list of helpful tips and hints in the appendix: <span class="quarto-unresolved-ref">?sec-unix-tips</span>.</p>
 </div>
 </div>
 <section id="searching-in-files-grep" class="level2 page-columns page-full" data-number="6.1">
@@ -495,7 +495,7 @@ How would you search through <code>.txt</code> files only? (Click me to expand!)
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Instead of using the <code>-r</code> flag, we can also rely on globbing again (see <a href="5-unix-files-and-dirs.html#sec-globbing" class="quarto-xref"><span>Section 5.3.2</span></a>). To search for the string “needle” in all <code>.txt</code> files in a particular folder, we can do the following:</p>
+<p>Instead of using the <code>-r</code> flag, we can also rely on globbing again (see <span class="quarto-unresolved-ref">?sec-globbing</span>). To search for the string “needle” in all <code>.txt</code> files in a particular folder, we can do the following:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"needle"</span> path/to/directory_with_txt_files/<span class="pp">*</span>.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -514,7 +514,7 @@ The above command could still return matches that are not read headers. Why? (Cl
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>As we saw in <a href="5-unix-files-and-dirs.html#sec-fastq" class="quarto-xref"><span>Section 5.1.3.1</span></a>, every read in a FASTQ file is represented by four lines, the first of which is the header and which always starts with an <code>@</code> symbol. So far so good, but the fourth line, which contains the quality score of each base in the sequence, can also start with an <code>@</code> symbol, because <code>@</code> is just another score value that could happen to be occur for the first base in the sequence.</p>
+<p>As we saw in <span class="quarto-unresolved-ref">?sec-fastq</span>, every read in a FASTQ file is represented by four lines, the first of which is the header and which always starts with an <code>@</code> symbol. So far so good, but the fourth line, which contains the quality score of each base in the sequence, can also start with an <code>@</code> symbol, because <code>@</code> is just another score value that could happen to be occur for the first base in the sequence.</p>
 </div>
 </div>
 </div>
