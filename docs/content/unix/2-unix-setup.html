@@ -288,19 +288,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#online-unix-environment" id="toc-online-unix-environment" class="nav-link active" data-scroll-target="#online-unix-environment"><span class="header-section-number">2.1</span> Online Unix environment</a>
+  <li><a href="#local-unix-environment" id="toc-local-unix-environment" class="nav-link active" data-scroll-target="#local-unix-environment"><span class="header-section-number">2.1</span> Local Unix environment</a>
   <ul>
-  <li><a href="#github-codespaces" id="toc-github-codespaces" class="nav-link" data-scroll-target="#github-codespaces"><span class="header-section-number">2.1.1</span> GitHub Codespaces</a></li>
-  <li><a href="#binder" id="toc-binder" class="nav-link" data-scroll-target="#binder"><span class="header-section-number">2.1.2</span> Binder</a></li>
-  </ul></li>
-  <li><a href="#local-unix-environment" id="toc-local-unix-environment" class="nav-link" data-scroll-target="#local-unix-environment"><span class="header-section-number">2.2</span> Local Unix environment</a>
-  <ul>
-  <li><a href="#download-the-course-files" id="toc-download-the-course-files" class="nav-link" data-scroll-target="#download-the-course-files"><span class="header-section-number">2.2.1</span> Download the course files</a></li>
-  <li><a href="#wsl-installation" id="toc-wsl-installation" class="nav-link" data-scroll-target="#wsl-installation"><span class="header-section-number">2.2.2</span> WSL installation</a>
+  <li><a href="#download-the-course-files" id="toc-download-the-course-files" class="nav-link" data-scroll-target="#download-the-course-files"><span class="header-section-number">2.1.1</span> Download the course files</a></li>
+  <li><a href="#wsl-installation" id="toc-wsl-installation" class="nav-link" data-scroll-target="#wsl-installation"><span class="header-section-number">2.1.2</span> WSL installation</a>
   <ul class="collapse">
-  <li><a href="#configuring-wsl" id="toc-configuring-wsl" class="nav-link" data-scroll-target="#configuring-wsl"><span class="header-section-number">2.2.2.1</span> Configuring WSL</a></li>
-  <li><a href="#accessing-files-across-the-windows-and-wsl-file-systems" id="toc-accessing-files-across-the-windows-and-wsl-file-systems" class="nav-link" data-scroll-target="#accessing-files-across-the-windows-and-wsl-file-systems"><span class="header-section-number">2.2.2.2</span> Accessing files across the Windows and WSL file systems</a></li>
-  <li><a href="#windows-terminal" id="toc-windows-terminal" class="nav-link" data-scroll-target="#windows-terminal"><span class="header-section-number">2.2.2.3</span> Windows Terminal</a></li>
+  <li><a href="#configuring-wsl" id="toc-configuring-wsl" class="nav-link" data-scroll-target="#configuring-wsl"><span class="header-section-number">2.1.2.1</span> Configuring WSL</a></li>
+  <li><a href="#accessing-files-across-the-windows-and-wsl-file-systems" id="toc-accessing-files-across-the-windows-and-wsl-file-systems" class="nav-link" data-scroll-target="#accessing-files-across-the-windows-and-wsl-file-systems"><span class="header-section-number">2.1.2.2</span> Accessing files across the Windows and WSL file systems</a></li>
+  <li><a href="#windows-terminal" id="toc-windows-terminal" class="nav-link" data-scroll-target="#windows-terminal"><span class="header-section-number">2.1.2.3</span> Windows Terminal</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -328,8 +323,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In order to get started, you need to get access to a Unix environment of your own. You can either work <a href="#local-unix-environment">locally</a> on your own computer or you can use the <a href="#online-linux-environment">online environment</a> that we have created. The latter comes with a <code>bash</code> shell and will immediately give you access to a bunch of files that we will use throughout the course and exercises.</p>
-<p>There are also online playgrounds/simulations available to try out the Unix shell, for example <a href="https://sandbox.bio/playground">https://sandbox.bio/playground</a>. These are great to learn and we highly recommend checking out some of the tutorials on there, but the downside of course is that they are not true true environments and you cannot interact with your own files. You can use this site to follow along while learning some of the basic unix commands, but you will need to switch to a different option for the exercises eventually.</p>
+<p>In order to get started, you need to get access to a Unix environment of your own. For this course hosted at the AHRI Institute, you will work with <a href="#local-unix-environment">locally</a> with environment installed on the computers from AHRI.</p>
+<p>There are also online playgrounds/simulations available to try out the Unix shell, for example <a href="https://sandbox.bio/tutorials/playground">https://sandbox.bio/tutorials/playground</a>. These are great to learn and we highly recommend checking out some of the tutorials on there, but the downside of course is that they are not true true environments and you cannot interact with your own files. You can use this site to follow along while learning some of the basic unix commands, but you will need to switch to a different option for the exercises eventually.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -340,40 +335,9 @@ Shortcut to online environments
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li><a href="https://codespaces.new/pmoris/FiMAB-bioinformatics?template=false&amp;devcontainer_path=.devcontainer%2Fdevcontainer.json">Codespace</a></li>
-<li><a href="https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD">Binder</a></li>
-</ul>
+<p>Other options for getting access to an online unix environment include: - <a href="https://codespaces.new/pmoris/FiMAB-bioinformatics?template=false&amp;devcontainer_path=.devcontainer%2Fdevcontainer.json">Codespace</a> - <a href="https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD">Binder</a></p>
 </div>
 </div>
-<section id="online-unix-environment" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="online-unix-environment"><span class="header-section-number">2.1</span> Online Unix environment</h2>
-<p>We have provided two different options for getting access to an online unix environment: through <a href="https://mybinder.org/">Binder</a> (free, but less powerful) or through <a href="https://github.com/features/codespaces">GitHub Codespaces</a> (free for 60 hours per month).</p>
-<p>Both options will launch an environment containing all relevant training files, based on <a href="https://github.com/pmoris/FiMAB-bioinformatics">this GitHub repository</a>.</p>
-<section id="github-codespaces" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="github-codespaces"><span class="header-section-number">2.1.1</span> GitHub Codespaces</h3>
-<p>To access Codespaces, you will first need to create a GitHub account via <a href="https://github.com/signup">https://github.com/signup</a>. Just follow the instructions and be sure to enable one of the <a href="https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication">two-factor authentication options</a> (via a TOTP app like Authy, Google Authenticator or Microsoft Authenticator, or via text messages), otherwise you might not receive access to Codespaces.</p>
-<p>Afterwards, you can click <a href="https://github.com/codespaces/new?machine=basicLinux32gb&amp;repo=727651304&amp;ref=main&amp;devcontainer_path=.devcontainer%2Fdevcontainer.json&amp;geo=EuropeWest">this link</a>, optionally change the region to the one closest to you under <em>change options</em> (but leave the machine type on 2-core to remain eligble for 60 free hours!), and then press the <em>Create codespace</em> button.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../assets/codespaces-creation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Creating a new codespace"><img src="../assets/codespaces-creation.png" class="img-fluid figure-img" alt="Creating a new codespace"></a></p>
-<figcaption>Creating a new codespace</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../assets/codespaces.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Launching a new codespace"><img src="../assets/codespaces.png" class="img-fluid figure-img" alt="Launching a new codespace"></a></p>
-<figcaption>Launching a new codespace</figcaption>
-</figure>
-</div>
-<p>Setting up the codespace can take a while, but eventually you will be greeted by a VSCode environment. The terminal (a <code>bash</code> shell) is accessible at the bottom (or by pressing the hamburger icon in the top left and selecting “new terminal”). This is where you will be able to run the Unix commands introduced in the next chapters.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../assets/codespaces-terminal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Terminal inside VSCode editor in GitHub Codespace"><img src="../assets/codespaces-terminal.png" class="img-fluid figure-img" alt="Terminal inside VSCode editor in GitHub Codespace"></a></p>
-<figcaption>Terminal inside VSCode editor in GitHub Codespace</figcaption>
-</figure>
-</div>
-<p>You will only receive 60 hours of free usage of Codespaces per month. This means you should manually shutdown your codespace whenever you are done with it. Otherwise it will keep running for 30 more minutes (by default). Just closing your browser will not shut down the workspace. Instead, you need to manually shut it down from within the codespace (by clicking the <code>&gt;&lt;</code> button in the bottom left corner and selecting <em>stop current codespace</em>) or by browsing to <a href="https://github.com/codespaces">https://github.com/codespaces</a> and shutting it down from that page.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -407,10 +371,6 @@ What is GitHub CodeSpaces
 <p>You can find more info in the <a href="https://docs.github.com/en/codespaces/overview">GitHub Codespaces docs</a>.</p>
 </div>
 </div>
-</section>
-<section id="binder" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="binder"><span class="header-section-number">2.1.2</span> Binder</h3>
-<p>As an alternative to CodeSpaces, we have also created a Binder environment. It will operate similar to CodeSpaces and provide you with an online environment containing all of the required files as well as a Unix shell (<code>bash</code>).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -425,37 +385,23 @@ What is Binder?
 <p>You can find more info on the <a href="https://mybinder.readthedocs.io/en/latest/introduction.html">Binder website</a>.</p>
 </div>
 </div>
-<p>To access the remote <code>bash</code> shell on Binder, browse to <a href="https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD">https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD</a> and wait for the launcher to start. This process can take quite a while, so be patient.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../assets/binder-launching.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Launching the Binder environment"><img src="../assets/binder-launching.png" class="img-fluid figure-img" alt="Launching the Binder environment"></a></p>
-<figcaption>Launching the Binder environment</figcaption>
-</figure>
-</div>
-<p>Eventually, you should be greeted by a screen (Jupyter Lab) with a number of launchers. Simply select the one labelled “Terminal” (a black square with a white <code>$</code>) and you should be all set.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../assets/binder-terminal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Starting a new Bash shell"><img src="../assets/binder-terminal.png" class="img-fluid figure-img" alt="Starting a new Bash shell"></a></p>
-<figcaption>Starting a new Bash shell</figcaption>
-</figure>
-</div>
-</section>
-</section>
-<section id="local-unix-environment" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="local-unix-environment"><span class="header-section-number">2.2</span> Local Unix environment</h2>
+<section id="local-unix-environment" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="local-unix-environment"><span class="header-section-number">2.1</span> Local Unix environment</h2>
 <p>If you are using MacOS or Linux, then you will already have access to a Unix shell (either <code>bash</code> or <code>zsh</code>, which will mostly behave identical for our purposes). To access it, simply search for a program called <code>Terminal</code> (or search for anything resembling “command”, “prompt” or “shell”).</p>
 <p>In case you are using a Windows machine, things are slightly more complex and different methods exist, each with their own pros and cons. You could use a fully-fledged virtual machine like <a href="https://www.virtualbox.org/">VirtualBox</a> to emulate a Linux machine within Windows. Or you could rely on the minimal <code>bash</code> emulator that comes bundled with <a href="https://gitforwindows.org/">git for windows</a>. However, nowadays we recommend that you use the <a href="https://learn.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux (WSL)</a>, which was developed by Microsoft itself. In our opinion, it is one of the most polished methods to get access to a (nearly) full-featured Linux environment from within Windows, without the overhead of a full virtual machine or dual boot setup (dual boot means you install two different operating systems on your machine, and you switch between them when booting). For instructions on how to set it up, you can refer to <a href="#wsl-installation">this section</a>.</p>
-<section id="download-the-course-files" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="download-the-course-files"><span class="header-section-number">2.2.1</span> Download the course files</h3>
-<p>Regardless of what type of local Unix environment you use, you will need to download the files that we will be using in our examples and exercises. You can do this directly on the command line or by manually downloading the files in the correct location.</p>
+<section id="download-the-course-files" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="download-the-course-files"><span class="header-section-number">2.1.1</span> Download the course files</h3>
+<p>Regardless of what type of local Unix environment you use, you will need to download the files that we will be using in our examples and exercises.</p>
+<p>The files should be already on your computer under “coming/soon”</p>
+<p>You can also download this directly on the command line or by manually downloading the files in the correct location.</p>
 <ol type="1">
 <li>Open your terminal and <code>cd</code> to a location where you want to place the training files.</li>
-<li>Enter the command <code>git clone https://github.com/pmoris/FiMAB-bioinformatics.git</code>.</li>
-<li>Afterwards, a new directory named <code>FiMAB-bioinformatics</code> will have been created.</li>
+<li>Enter the command <code>git clone https://github.com/Cuypers-Wim/FA5-bioinformatics.git</code>.</li>
+<li>Afterwards, a new directory named <code>FA5-bioinformatics</code> will have been created.</li>
 </ol>
 <p>It should look similar to this:</p>
-<pre><code>$ git clone https://github.com/pmoris/FiMAB-bioinformatics.git
-Cloning into 'FiMAB-bioinformatics'...
+<pre><code>$ git clone git clone https://github.com/Cuypers-Wim/FA5-bioinformatics.git
+Cloning into 'FA5-bioinformatics'...
 remote: Enumerating objects: 7, done.
 remote: Counting objects: 100% (7/7), done.
 remote: Compressing objects: 100% (7/7), done.
@@ -463,19 +409,19 @@ remote: Total 7 (delta 0), reused 7 (delta 0), pack-reused 0
 Receiving objects: 100% (7/7), done.</code></pre>
 <p>Alternatively,</p>
 <ol type="1">
-<li>Browse to <a href="https://codeload.github.com/pmoris/FiMAB-bioinformatics/zip/refs/heads/main">https://codeload.github.com/pmoris/FiMAB-bioinformatics/zip/refs/heads/main</a></li>
-<li>Save the <code>.zip</code> file in a directory accessible by your Unix environment. For Windows/WSL, the easiest option is to choose the Linux file system (e.g., <code>\\wsl.localhost\Ubuntu\home\pmoris</code>), which is accessible by clicking the Linux/WSL entry in your explorer.</li>
+<li>Browse to <a href="https://github.com/Cuypers-Wim/FA5-bioinformatics/archive/refs/heads/main.zip">https://github.com/Cuypers-Wim/FA5-bioinformatics/archive/refs/heads/main.zip</a></li>
+<li>Save the <code>.zip</code> file in a directory accessible by your Unix environment. For Windows/WSL, the easiest option is to choose the Linux file system (e.g., <code>\\wsl.localhost\Ubuntu\home\&lt;yourName&gt;</code>), which is accessible by clicking the Linux/WSL entry in your explorer.</li>
 <li>Extract/unzip the file.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../assets/wsl-filesystem.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Linux file system inside Windows File Explorer"><img src="../assets/wsl-filesystem.png" class="img-fluid figure-img" alt="Linux file system inside Windows File Explorer"></a></p>
+<p><a href="../assets/wsl-filesystem.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Linux file system inside Windows File Explorer"><img src="../assets/wsl-filesystem.png" class="img-fluid figure-img" alt="Linux file system inside Windows File Explorer"></a></p>
 <figcaption>Linux file system inside Windows File Explorer</figcaption>
 </figure>
 </div>
 </section>
-<section id="wsl-installation" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="wsl-installation"><span class="header-section-number">2.2.2</span> WSL installation</h3>
+<section id="wsl-installation" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="wsl-installation"><span class="header-section-number">2.1.2</span> WSL installation</h3>
 <p>If you are using an updated version of Windows 10 (or 11), you should meet all the requirements and can simply follow the installation instructions listed here: <a href="https://learn.microsoft.com/en-us/windows/wsl/install">https://learn.microsoft.com/en-us/windows/wsl/install</a>. We recommend that you follow the instructions for WSL 2 (default), rather than the older WSL 1, and use the default Ubuntu 22.04 distribution (Linux comes in many different flavours, Ubuntu being one of the more popular ones).</p>
 <p>Briefly:</p>
 <ul>
@@ -501,8 +447,8 @@ WSL1 vs WSL2
 <p>For a full overview of the differences, check out: <a href="https://docs.microsoft.com/en-us/windows/wsl/compare-versions">https://docs.microsoft.com/en-us/windows/wsl/compare-versions</a>.</p>
 </div>
 </div>
-<section id="configuring-wsl" class="level4" data-number="2.2.2.1">
-<h4 data-number="2.2.2.1" class="anchored" data-anchor-id="configuring-wsl"><span class="header-section-number">2.2.2.1</span> Configuring WSL</h4>
+<section id="configuring-wsl" class="level4" data-number="2.1.2.1">
+<h4 data-number="2.1.2.1" class="anchored" data-anchor-id="configuring-wsl"><span class="header-section-number">2.1.2.1</span> Configuring WSL</h4>
 <p>Microsoft also provides an excellent tutorial on setting up your WLS environment, which you can find <a href="https://learn.microsoft.com/en-us/windows/wsl/setup/environment">here</a>.</p>
 <hr>
 <p>After installing WSL and a Linux distribution, you will have access to it via its own built-in terminal emulator. It should be located in your Windows Start Menu with a name corresponding to the distribution that you installed, e.g.&nbsp;<code>Ubuntu 20.04 LTS</code>, or simply <code>wsl</code>.</p>
@@ -510,8 +456,8 @@ WSL1 vs WSL2
 <p>You will also need to upgrade the packages by running the following command: <code>sudo apt update &amp;&amp; sudo apt upgrade</code>, followed by your password.</p>
 <p>For more information, check the <a href="https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-your-linux-username-and-password">docs</a>.</p>
 </section>
-<section id="accessing-files-across-the-windows-and-wsl-file-systems" class="level4" data-number="2.2.2.2">
-<h4 data-number="2.2.2.2" class="anchored" data-anchor-id="accessing-files-across-the-windows-and-wsl-file-systems"><span class="header-section-number">2.2.2.2</span> Accessing files across the Windows and WSL file systems</h4>
+<section id="accessing-files-across-the-windows-and-wsl-file-systems" class="level4" data-number="2.1.2.2">
+<h4 data-number="2.1.2.2" class="anchored" data-anchor-id="accessing-files-across-the-windows-and-wsl-file-systems"><span class="header-section-number">2.1.2.2</span> Accessing files across the Windows and WSL file systems</h4>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -529,8 +475,8 @@ Note
 <p>Vice versa, you can also access the Windows file system from within WSL because it is mounted under <code>/mnt/c</code>. So, you could for example do something like <code>cp /mnt/c/Users/&lt;user name&gt;/Downloads/file-downloaded-via-webbrowser ~/projects/filename</code>.</p>
 <p>More information can be found in the <a href="https://learn.microsoft.com/en-us/windows/wsl/filesystems">WSL documentation</a>.</p>
 </section>
-<section id="windows-terminal" class="level4" data-number="2.2.2.3">
-<h4 data-number="2.2.2.3" class="anchored" data-anchor-id="windows-terminal"><span class="header-section-number">2.2.2.3</span> Windows Terminal</h4>
+<section id="windows-terminal" class="level4" data-number="2.1.2.3">
+<h4 data-number="2.1.2.3" class="anchored" data-anchor-id="windows-terminal"><span class="header-section-number">2.1.2.3</span> Windows Terminal</h4>
 <p>Even though WSL comes with its own terminal application, it is rather bare-bones and can make some operations like copying and pasting via <code>CTRL+C</code>/<code>CTRL+V</code> a bit tricky (you will need to use <code>CTRL+SHIFT+C</code> to copy and right mouse click to paste). Fortunately, Microsoft has also been working on a new terminal emulator that is much nicer to work with. Meet the <a href="https://learn.microsoft.com/en-us/windows/terminal/install">Windows Terminal</a>.</p>
 
 
@@ -985,7 +931,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

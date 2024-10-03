@@ -1,38 +1,16 @@
 # Setting up your own Unix shell {#sec-unix-setup}
 
-In order to get started, you need to get access to a Unix environment of your own. You can either work [locally](#local-unix-environment) on your own computer or you can use the [online environment](#online-linux-environment) that we have created. The latter comes with a `bash` shell and will immediately give you access to a bunch of files that we will use throughout the course and exercises.
+In order to get started, you need to get access to a Unix environment of your own. For this course hosted at the AHRI Institute, you will work with [locally](#local-unix-environment) with environment installed on the computers from AHRI.
 
-There are also online playgrounds/simulations available to try out the Unix shell, for example [https://sandbox.bio/playground](https://sandbox.bio/playground). These are great to learn and we highly recommend checking out some of the tutorials on there, but the downside of course is that they are not true true environments and you cannot interact with your own files. You can use this site to follow along while learning some of the basic unix commands, but you will need to switch to a different option for the exercises eventually.
+There are also online playgrounds/simulations available to try out the Unix shell, for example [https://sandbox.bio/tutorials/playground](https://sandbox.bio/tutorials/playground). These are great to learn and we highly recommend checking out some of the tutorials on there, but the downside of course is that they are not true true environments and you cannot interact with your own files. You can use this site to follow along while learning some of the basic unix commands, but you will need to switch to a different option for the exercises eventually.
 
 ::: {.callout-note}
 ## Shortcut to online environments
-
+Other options for getting access to an online unix environment include: 
 - [Codespace](https://codespaces.new/pmoris/FiMAB-bioinformatics?template=false&devcontainer_path=.devcontainer%2Fdevcontainer.json)
 - [Binder](https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD)
 
 :::
-
-## Online Unix environment
-
-We have provided two different options for getting access to an online unix environment: through [Binder](https://mybinder.org/) (free, but less powerful) or through [GitHub Codespaces](https://github.com/features/codespaces) (free for 60 hours per month).
-
-Both options will launch an environment containing all relevant training files, based on [this GitHub repository](https://github.com/pmoris/FiMAB-bioinformatics).
-
-### GitHub Codespaces
-
-To access Codespaces, you will first need to create a GitHub account via [https://github.com/signup](https://github.com/signup). Just follow the instructions and be sure to enable one of the [two-factor authentication options](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication) (via a TOTP app like Authy, Google Authenticator or Microsoft Authenticator, or via text messages), otherwise you might not receive access to Codespaces.
-
-Afterwards, you can click [this link](https://github.com/codespaces/new?machine=basicLinux32gb&repo=727651304&ref=main&devcontainer_path=.devcontainer%2Fdevcontainer.json&geo=EuropeWest), optionally change the region to the one closest to you under _change options_ (but leave the machine type on 2-core to remain eligble for 60 free hours!), and then press the _Create codespace_ button.
-
-![Creating a new codespace](../assets/codespaces-creation.png)
-
-![Launching a new codespace](../assets/codespaces.png)
-
-Setting up the codespace can take a while, but eventually you will be greeted by a VSCode environment. The terminal (a `bash` shell) is accessible at the bottom (or by pressing the hamburger icon in the top left and selecting "new terminal"). This is where you will be able to run the Unix commands introduced in the next chapters.
-
-![Terminal inside VSCode editor in GitHub Codespace](../assets/codespaces-terminal.png)
-
-You will only receive 60 hours of free usage of Codespaces per month. This means you should manually shutdown your codespace whenever you are done with it. Otherwise it will keep running for 30 more minutes (by default). Just closing your browser will not shut down the workspace. Instead, you need to manually shut it down from within the codespace (by clicking the `><` button in the bottom left corner and selecting _stop current codespace_) or by browsing to [https://github.com/codespaces](https://github.com/codespaces) and shutting it down from that page.
 
 ::: {.callout-note}
 ## What are GitHub and `git`?
@@ -54,10 +32,6 @@ Similar to Binder, Codespaces are development environments that are hosted in th
 You can find more info in the [GitHub Codespaces docs](https://docs.github.com/en/codespaces/overview).
 :::
 
-### Binder
-
-As an alternative to CodeSpaces, we have also created a Binder environment. It will operate similar to CodeSpaces and provide you with an online environment containing all of the required files as well as a Unix shell (`bash`).
-
 ::: {.callout-note}
 ## What is Binder?
 
@@ -65,14 +39,6 @@ Binder is a service that allows people to share a customized compute environment
 
 You can find more info on the [Binder website](https://mybinder.readthedocs.io/en/latest/introduction.html).
 :::
-
-To access the remote `bash` shell on Binder, browse to [https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD](https://mybinder.org/v2/gh/pmoris/FiMAB-bioinformatics/HEAD) and wait for the launcher to start. This process can take quite a while, so be patient.
-
-![Launching the Binder environment](../assets/binder-launching.png)
-
-Eventually, you should be greeted by a screen (Jupyter Lab) with a number of launchers. Simply select the one labelled "Terminal" (a black square with a white `$`) and you should be all set.
-
-![Starting a new Bash shell](../assets/binder-terminal.png)
 
 ## Local Unix environment
 
@@ -82,17 +48,21 @@ In case you are using a Windows machine, things are slightly more complex and di
 
 ### Download the course files
 
-Regardless of what type of local Unix environment you use, you will need to download the files that we will be using in our examples and exercises. You can do this directly on the command line or by manually downloading the files in the correct location.
+Regardless of what type of local Unix environment you use, you will need to download the files that we will be using in our examples and exercises. 
+
+The files should be already on your computer under "coming/soon"
+
+You can also download this directly on the command line or by manually downloading the files in the correct location.
 
 1. Open your terminal and `cd` to a location where you want to place the training files.
-2. Enter the command `git clone https://github.com/pmoris/FiMAB-bioinformatics.git`.
-3. Afterwards, a new directory named `FiMAB-bioinformatics` will have been created.
+2. Enter the command `git clone https://github.com/Cuypers-Wim/FA5-bioinformatics.git`.
+3. Afterwards, a new directory named `FA5-bioinformatics` will have been created.
 
 It should look similar to this:
 
 ```
-$ git clone https://github.com/pmoris/FiMAB-bioinformatics.git
-Cloning into 'FiMAB-bioinformatics'...
+$ git clone git clone https://github.com/Cuypers-Wim/FA5-bioinformatics.git
+Cloning into 'FA5-bioinformatics'...
 remote: Enumerating objects: 7, done.
 remote: Counting objects: 100% (7/7), done.
 remote: Compressing objects: 100% (7/7), done.
@@ -102,8 +72,8 @@ Receiving objects: 100% (7/7), done.
 
 Alternatively,
 
-1. Browse to [https://codeload.github.com/pmoris/FiMAB-bioinformatics/zip/refs/heads/main](https://codeload.github.com/pmoris/FiMAB-bioinformatics/zip/refs/heads/main)
-2. Save the `.zip` file in a directory accessible by your Unix environment. For Windows/WSL, the easiest option is to choose the Linux file system (e.g., `\\wsl.localhost\Ubuntu\home\pmoris`), which is accessible by clicking the Linux/WSL entry in your explorer.
+1. Browse to [https://github.com/Cuypers-Wim/FA5-bioinformatics/archive/refs/heads/main.zip](https://github.com/Cuypers-Wim/FA5-bioinformatics/archive/refs/heads/main.zip)
+2. Save the `.zip` file in a directory accessible by your Unix environment. For Windows/WSL, the easiest option is to choose the Linux file system (e.g., `\\wsl.localhost\Ubuntu\home\<yourName>`), which is accessible by clicking the Linux/WSL entry in your explorer.
 3. Extract/unzip the file.
 
 ![Linux file system inside Windows File Explorer](../assets/wsl-filesystem.png)
