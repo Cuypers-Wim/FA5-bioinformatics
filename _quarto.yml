@@ -19,18 +19,20 @@ book:
       email: wim.cuypers@uantwerpen.be
       affiliations:
         - University of Antwerp
-    # - name: Mathijs Mutsaers
-    #   orcid: 0000-0002-7633-6438
-    #   email: mmutsaers@itg.be
-    #   affiliations:
-    #     - Institute of Tropical Medicine Antwerp
-    # - name: Pieter Monsieurs
-    #   orcid: 0000-0003-2214-6652
-    #   email: pmonsieurs@itg.be
-    #   affiliations:
-    #     - Institute of Tropical Medicine Antwerp
-  # date: "2023-08-02"
-  date: "2024-03-28"
+    - name: Pieter Monsieurs
+      orcid: 0000-0003-2214-6652
+      email: pmonsieurs@itg.be
+    - name: Oren Tzfadia
+      orcid: 0000-0002-7096-8063
+      email: otzfadia@itg.be
+    - name: Bethlehem Adnew
+      orcid: 0000-0002-6108-9534
+      email: bethlehem.adnew@ahri.gov.et
+      affiliations:
+        - Armauer Hansen Research Institute
+	
+
+  date: "2024-10-03"
   date-format: long
 
   # description: ...
@@ -152,7 +154,7 @@ book:
   favicon: content/assets/ITM-symbol_col_rgb.png
   # twitter-card: true
   # site-url: https://example.com
-  repo-url: https://github.com/pmoris/FiMAB-bioinformatics
+  repo-url: https://cuypers-wim.github.io/FA5-bioinformatics/
   # repo-actions: [source]
   # sharing: [twitter, facebook]
 

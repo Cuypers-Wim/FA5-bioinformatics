@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Introduction to Bioinformatics for Malaria Molecular Surveillance",
+    "title": "Pathogen Genomics Course",
     "section": "",
     "text": "About\nWelcome to the Pathogen Genomics Module of the FA5 Bioinformatics course, created by the Institute of Tropical Medicine Antwerp (ITM) in collaboration with the University of Antwerp. Its primary goal is to support the implementation of sequencing bioinformatics to strengthen molecular surveillance and pathogen research.",
     "crumbs": [
@@ -12,7 +12,7 @@
   {
     "objectID": "index.html#scope-of-the-course",
     "href": "index.html#scope-of-the-course",
-    "title": "Introduction to Bioinformatics for Malaria Molecular Surveillance",
+    "title": "Pathogen Genomics Course",
     "section": "Scope of the course",
     "text": "Scope of the course\nThis course aims to provide an overview of the key bioinformatics concepts related to performing pathogen genomics. It is divided into the following sections:\n\nIntroduction to the Unix shell\nProcessing genomics data",
     "crumbs": [
@@ -22,7 +22,7 @@
   {
     "objectID": "index.html#computational-thinking",
     "href": "index.html#computational-thinking",
-    "title": "Introduction to Bioinformatics for Malaria Molecular Surveillance",
+    "title": "Pathogen Genomics Course",
     "section": "Computational thinking",
     "text": "Computational thinking\nWe hope that this course can teach you a few computational thinking and problem solving skills that will help you along your bioinformatics journey. The learning curve in computational biology can be quite steep at times and the path is littered with arcane commands and obtuse syntax, but as you practice the concepts introduced in this course on your own, your command-line efficiency will improve and you will start to spot similarities across different types of environments and languages. Through this course, we hope to arm you with the necessary skills to make tasks like running custom analysis scripts or installing bioinformatics software seem a little less daunting, and enough knowledge and experience to be able to explore more advanced topics on your own.",
     "crumbs": [
