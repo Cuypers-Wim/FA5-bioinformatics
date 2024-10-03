@@ -4,8 +4,8 @@ project:
   execute-dir: project
 
 book:
-  title: "Introduction to Bioinformatics for Malaria Molecular Surveillance"
-  subtitle: "Fighting Malaria Across Borders"
+  title: "Pathogen Genomics Course"
+  subtitle: "FA5 - Bioinformatics"
 
   author:
     - name: Pieter Moris
@@ -14,11 +14,11 @@ book:
       email: pmoris@itg.be
       affiliations:
         - Institute of Tropical Medicine Antwerp
-    # - name: Eline Kattenberg
-    #   orcid: 0000-0002-2971-5136
-    #   email: ekattenberg@itg.be
-    #   affiliations:
-    #     - Institute of Tropical Medicine Antwerp
+    - name: Wim Cuypers
+      orcid: 0000-0002-1895-3526
+      email: wim.cuypers@uantwerpen.be
+      affiliations:
+        - University of Antwerp
     # - name: Mathijs Mutsaers
     #   orcid: 0000-0002-7633-6438
     #   email: mmutsaers@itg.be
