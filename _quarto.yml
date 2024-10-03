@@ -22,9 +22,13 @@ book:
     - name: Pieter Monsieurs
       orcid: 0000-0003-2214-6652
       email: pmonsieurs@itg.be
+      affiliations:
+        - Institute of Tropical Medicine Antwerp
     - name: Oren Tzfadia
       orcid: 0000-0002-7096-8063
       email: otzfadia@itg.be
+      affiliations:
+        - Institute of Tropical Medicine Antwerp
     - name: Bethlehem Adnew
       orcid: 0000-0002-6108-9534
       email: bethlehem.adnew@ahri.gov.et
