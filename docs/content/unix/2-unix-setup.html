@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Setting up your own Unix shell – Introduction to Bioinformatics for Malaria Molecular Surveillance</title>
+<title>2&nbsp; Setting up your own Unix shell – Pathogen Genomics Course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -102,9 +102,9 @@ ul.task-list li input[type="checkbox"] {
       <img src="../../content/assets/ITM-logo_col_rgb.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="../../">Introduction to Bioinformatics for Malaria Molecular Surveillance</a> 
+      <a href="../../">Pathogen Genomics Course</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/pmoris/FiMAB-bioinformatics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://cuypers-wim.github.io/FA5-bioinformatics/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -506,7 +506,7 @@ WSL1 vs WSL2
 <p>Microsoft also provides an excellent tutorial on setting up your WLS environment, which you can find <a href="https://learn.microsoft.com/en-us/windows/wsl/setup/environment">here</a>.</p>
 <hr>
 <p>After installing WSL and a Linux distribution, you will have access to it via its own built-in terminal emulator. It should be located in your Windows Start Menu with a name corresponding to the distribution that you installed, e.g.&nbsp;<code>Ubuntu 20.04 LTS</code>, or simply <code>wsl</code>.</p>
-<p>The first time you run WSL, you will need to setup a Linux username and password. Note that while you are entering a password, nothing will appear on the screen, but this is intended (blind typing). The username will determine, among other things, the name of your home folder, whereas the password will grant you administrator rights (referred to as super users or admins in Linux land; the <code>sudo</code> command is used to invoke these rights, see <span class="quarto-unresolved-ref">?sec-unix-sudo</span>).</p>
+<p>The first time you run WSL, you will need to setup a Linux username and password. Note that while you are entering a password, nothing will appear on the screen, but this is intended (blind typing). The username will determine, among other things, the name of your home folder, whereas the password will grant you administrator rights (referred to as super users or admins in Linux land; the <code>sudo</code> command is used to invoke these rights, see <a href="appendix-unix.html#sec-unix-sudo" class="quarto-xref"><span>Section A.3</span></a>).</p>
 <p>You will also need to upgrade the packages by running the following command: <code>sudo apt update &amp;&amp; sudo apt upgrade</code>, followed by your password.</p>
 <p>For more information, check the <a href="https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-your-linux-username-and-password">docs</a>.</p>
 </section>
@@ -985,7 +985,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
