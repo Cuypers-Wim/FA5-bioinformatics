@@ -679,6 +679,7 @@ do
 <li>Create a bash script with a for loop that prints the name of each read file in the <code>./training/data/fastq</code> directory.</li>
 <li>Modify the previous bash script so that it also 1) creates a single new directory named <code>fastq_meta</code> and 2) creates a new file in that directory, one for each FASTQ file, which contains two lines: the first with the number of lines in the FASTQ file and the second with its file size.</li>
 <li>Create a bash script with a for loop that prints the sample name for each pair of reads in the <code>./training/data/fastq</code> directory (i.e., half as many names as in the previous exercise).</li>
+<li>Make a script that prints the length of every read in the <code>./training/data/fastq</code> files, and stores this information in a file. The output should be sorted descending (largest reads first). Tip, there are multiple ways to count the number of reads in a fastq file, but you can check the <code>seqtk</code> tool, and more specifically the <code>seqtk comp</code> command.</li>
 <li>Create a bash script that:
 <ul>
 <li>Counts the number of header lines in <code>./training/unix-demo/ampliseq-variants.vcf</code> and store this number as a variable.</li>
@@ -1162,7 +1163,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

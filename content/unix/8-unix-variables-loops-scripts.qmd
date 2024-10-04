@@ -325,10 +325,12 @@ Bash contains all sorts of tricks to manipulate strings of text. These can be us
 4. Create a bash script with a for loop that prints the name of each read file in the `./training/data/fastq` directory.
 5. Modify the previous bash script so that it also 1) creates a single new directory named `fastq_meta` and 2) creates a new file in that directory, one for each FASTQ file, which contains two lines: the first with the number of lines in the FASTQ file and the second with its file size.
 6. Create a bash script with a for loop that prints the sample name for each pair of reads in the `./training/data/fastq` directory (i.e., half as many names as in the previous exercise).
-7. Create a bash script that:
+7. Make a script that prints the length of every read in the `./training/data/fastq` files, and stores this information in a file. The output should be sorted descending (largest reads first). Tip, there are multiple ways to count the number of reads in a fastq file, but you can check the `seqtk` tool, and more specifically the `seqtk comp` command.
+8. Create a bash script that:
     - Counts the number of header lines in `./training/unix-demo/ampliseq-variants.vcf` and store this number as a variable.
     - Extracts the contents of the VCF file after the header lines (i.e., the tabular section) and store it in a separate file.
     - Creates a for loop to extract the first eight columns and store them each in a separate file named `vcf_column_#.txt` (where `#` is the column number).
+
 
 ## Summary
 
