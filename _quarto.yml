@@ -65,10 +65,6 @@ book:
       - content/unix/6-unix-more-commands.qmd
       - content/unix/7-unix-redirection.qmd
       - content/unix/8-unix-variables-loops-scripts.qmd
-    - part: "Introduction to R"
-      chapters:
-        - content/r/r-intro.qmd
-        - content/r/r-resources.qmd
     - part: "Processing genomic data"
       chapters:
         - content/genomics/setup.qmd
