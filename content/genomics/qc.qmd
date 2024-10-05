@@ -663,7 +663,7 @@ Some of the other important options are `trimmomatic`:
 | `TRAILING`                         | Cut bases off at the end of a read, if the quality is below the threshold.                                                                                 |
 | MINLEN                             | remove reads that are too short                                                                                                                            |
 
-For the AmpliSeq pipelines, we generally stick to the following options:
+For the AmpliSeq pipelines that ITM's Malariology unit uses, we generally stick to the following options:
 
 - `ILLUMINACLIP:adapters.fa:2:30:10`: cut off Illumina specific adapters from the read (stored in `adapters.fa`).^[For AmpliSeq, an example can be found [here](https://github.com/Ekattenberg/Plasmodium-AmpliSeq-Pipeline/blob/main/Pf_AmpliSeq_Peru/adapters.fa). For generic WGS data, Trimmomatic comes with a [few example files](https://github.com/timflutre/trimmomatic/tree/master/adapters). On our workstations, they can be found in `${CONDA_PREFIX}/share/trimmomatic/adapters/NexteraPE-PE.fa`]
 - `LEADING:3`: trim bases from the start of the read if they drop below a Q score of 3 (or `N`).
@@ -691,7 +691,7 @@ trimmomatic PE \
 For more detailed info on all these commands, check out the [trimmomatic manuaul](http://www.usadellab.org/cms/?page=trimmomatic).
 
 ::: {.callout-tip}
-The `threads` option allows you to process multiple samples simultaneously to speed up the analysis. We will see more on parallelization and multi-threading later. In your CodeSpace environment, you can choose 2 or 4 threads, depending on the number of cores you selected.
+The `threads` option allows you to process multiple samples simultaneously to speed up the analysis. We will see more on parallelization and multi-threading later. In your environment, you can choose 2 or 4 threads, depending on the number of cores you have available.
 :::
 
 ::: {.callout-caution}

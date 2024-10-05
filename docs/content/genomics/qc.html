@@ -327,6 +327,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Variant calling</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/genomics/patient_mystery.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Patient mystery</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -1114,7 +1120,7 @@ or:
 </tr>
 </tbody>
 </table>
-<p>For the AmpliSeq pipelines, we generally stick to the following options:</p>
+<p>For the AmpliSeq pipelines that ITM’s Malariology unit uses, we generally stick to the following options:</p>
 <ul>
 <li><code>ILLUMINACLIP:adapters.fa:2:30:10</code>: cut off Illumina specific adapters from the read (stored in <code>adapters.fa</code>).<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></li>
 <li><code>LEADING:3</code>: trim bases from the start of the read if they drop below a Q score of 3 (or <code>N</code>).</li>
@@ -1147,7 +1153,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <code>threads</code> option allows you to process multiple samples simultaneously to speed up the analysis. We will see more on parallelization and multi-threading later. In your CodeSpace environment, you can choose 2 or 4 threads, depending on the number of cores you selected.</p>
+<p>The <code>threads</code> option allows you to process multiple samples simultaneously to speed up the analysis. We will see more on parallelization and multi-threading later. In your environment, you can choose 2 or 4 threads, depending on the number of cores you have available.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
@@ -1758,7 +1764,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

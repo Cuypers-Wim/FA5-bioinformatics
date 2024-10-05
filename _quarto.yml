@@ -73,6 +73,7 @@ book:
         - content/genomics/qc.qmd
         - content/genomics/mapping.qmd
         - content/genomics/variant-calling.qmd
+        - content/genomics/patient_mystery.qmd
     # # - part: "Bioinformatics file formats and tools"
     #   # chapters:
     #     # - content/bioinf/bioinf-file-formats.qmd
