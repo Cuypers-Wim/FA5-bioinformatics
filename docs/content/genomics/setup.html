@@ -328,30 +328,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>For this hands-on practical on processing genomics data (mapping &amp; search, variant calling, and phylogenetics) we will make use of the same environment as previously. If any additional software is required, the teaching team will help you.</p>
-<p>Due to the large file size of the training data, not all files were included directly in the repository.</p>
-<p>When you launch your codespace for the first time (or whenever you create a new one), you will need to run the download scripts that are stored in <code>./training/data/</code>, as described in the <a href="../../training/data/README.md">README.md</a>.</p>
-<p>If you want to follow along on your own machine instead, make sure to install all the required software tools. The easiest option is to use <code>conda</code>/<code>mamba</code> via the <a href="https://github.com/conda-forge/miniforge">miniforge installer</a>, and then installing all the packages described in the <a href="../../environment.yml">environment.yml file</a>. For R, simply install the list of packages described in the <a href="../../.devcontainer/rstudio/devcontainer.json">devcontainer.json file</a> (or <code>renv</code> file if it is available).</p>
-<p><strong>On Linux:</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download and install miniforge</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> Miniforge3-Linux-x86_64.sh</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install relevant packages into a new environment</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">-n</span> fimab <span class="at">-f</span> ./FiMAB-bioinformatics/environment.yml</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># activate environment</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate fimab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>On Windows:</strong></p>
-<ul>
-<li><p>Download and run the <a href="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe">latest Windows installer</a></p></li>
-<li><p>On your command line, run:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a># install relevant packages into a new environment</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mamba env create <span class="at">-n</span> fimab <span class="at">-f</span> .<span class="at">/FiMAB-bioinformatics/environment</span>.yml</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a># activate environment</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>mamba activate fimab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
+<p>For this hands-on session, we will use the same setup as before.</p>
+<p>The required software has been installed in two separate Conda environments which you will need to activate as follows:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate Fa5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After activating this environment, you’ll be able to use most tools.</p>
+<p>For one specific tool named ‘gatk’, you’ll need to use this environment:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate gatk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To check if these environments are installed and if you’ve remembered their names correctly, you can list all installed environments by running:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If any additional software is needed, the teaching team will assist you.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Expand To Learn About Conda Environments
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>What is a Conda environment?</p>
+<p>A Conda environment is an isolated workspace where you can install and manage specific software packages and their dependencies. This allows you to have different versions of software installed without causing conflicts between them.</p>
+<p>In bioinformatics, you often need different tools for various tasks (like genome assembly, variant calling, or phylogenetic analysis). Each tool may require different software libraries or specific versions of those libraries. Conda environments help you keep everything organized by creating separate environments for each set of tools.</p>
+<p>How does it work?</p>
+<p>Creating an environment: You can create a new environment to install the tools and software packages required for a specific project.</p>
+<p>Activating an environment: To work in a specific environment, you need to “activate” it. This makes the tools installed in that environment available to use. Typically you will run the command <code>conda activate env_name</code></p>
+<p>Deactivating and switching environments: When you’re done with an environment, you can deactivate it with the command <code>conda deactivate</code>. You can easily switch between environments depending on which task you’re working on.</p>
+<p>Why is it useful?</p>
+<p>Conda environments are useful because different bioinformatics tools may require specific software versions or dependencies to run properly. By using Conda, you can avoid compatibility issues. For example, one project may need Python 3.9, while another might require Python 3.8. Conda lets you handle such cases seamlessly by managing these dependencies within isolated environments.</p>
+<p>Some more info on conda and how to enable it on your own machine can be found here: <a href="https://cuypers-wim.github.io/FA5-bioinformatics/content/unix/appendix-unix.html#further-reading">https://cuypers-wim.github.io/FA5-bioinformatics/content/unix/appendix-unix.html#further-reading</a></p>
+</div>
+</div>
+</div>
 <section id="about-the-excercises-and-storyline" class="level2">
 <h2 class="anchored" data-anchor-id="about-the-excercises-and-storyline">about the excercises and storyline</h2>
 <p>In the following sections, we will work with Amplicon data from the Malariology Unit at ITM. Additionally, we have included exercises that follow a storyline relevant to a bioinformatician working in a hospital in Ethiopia. These exercises will be clearly marked in boxes titled “Storyline: Malaria in Ethiopia.” Below, you’ll find the beginning of the storyline, and by the end of these sessions, you’ll be able to solve the mystery!</p>

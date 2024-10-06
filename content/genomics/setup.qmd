@@ -1,43 +1,51 @@
 # Setup and preparations {.unnumbered}
 
-For this hands-on practical on processing genomics data (mapping & search, variant calling, and phylogenetics) we will make use of the same environment as previously. If any additional software is required, the teaching team will help you.
+For this hands-on session, we will use the same setup as before.
 
-
-Due to the large file size of the training data, not all files were included directly in the repository. 
-
-
-
-When you launch your codespace for the first time (or whenever you create a new one), you will need to run the download scripts that are stored in `./training/data/`, as described in the [README.md](../../training/data/README.md).
-
-If you want to follow along on your own machine instead, make sure to install all the required software tools. The easiest option is to use `conda`/`mamba` via the [miniforge installer](https://github.com/conda-forge/miniforge), and then installing all the packages described in the [environment.yml file](../../environment.yml). For R, simply install the list of packages described in the [devcontainer.json file](../../.devcontainer/rstudio/devcontainer.json) (or `renv` file if it is available).
-
-**On Linux:**
+The required software has been installed in two separate Conda environments which you will need to activate as follows:
 
 ```bash
-# download and install miniforge
-wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
-bash Miniforge3-Linux-x86_64.sh
+conda activate Fa5
+```
+After activating this environment, you'll be able to use most tools. 
 
-# install relevant packages into a new environment
-mamba env create -n fimab -f ./FiMAB-bioinformatics/environment.yml
+For one specific tool named 'gatk', you'll need to use this environment:
 
-# activate environment
-mamba activate fimab
+```bash
+conda activate gatk
 ```
 
-**On Windows:**
+To check if these environments are installed and if you’ve remembered their names correctly, you can list all installed environments by running:
 
-- Download and run the [latest Windows installer](https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe)
-- On your command line, run:
+```bash
+conda env list
+```
+If any additional software is needed, the teaching team will assist you.
 
-    ```cmd
-    # install relevant packages into a new environment
-    mamba env create -n fimab -f ./FiMAB-bioinformatics/environment.yml
+::: {.callout-caution collapse="true"}
+## Expand To Learn About Conda Environments
 
-    # activate environment
-    mamba activate fimab
-    ```
+What is a Conda environment?
 
+A Conda environment is an isolated workspace where you can install and manage specific software packages and their dependencies. This allows you to have different versions of software installed without causing conflicts between them.
+
+In bioinformatics, you often need different tools for various tasks (like genome assembly, variant calling, or phylogenetic analysis). Each tool may require different software libraries or specific versions of those libraries. Conda environments help you keep everything organized by creating separate environments for each set of tools.
+
+How does it work?
+
+Creating an environment: You can create a new environment to install the tools and software packages required for a specific project.
+
+Activating an environment: To work in a specific environment, you need to "activate" it. This makes the tools installed in that environment available to use. Typically you will run the command `conda activate env_name`
+
+Deactivating and switching environments: When you're done with an environment, you can deactivate it with the command `conda deactivate`. You can easily switch between environments depending on which task you're working on.
+
+Why is it useful?
+
+Conda environments are useful because different bioinformatics tools may require specific software versions or dependencies to run properly. By using Conda, you can avoid compatibility issues. For example, one project may need Python 3.9, while another might require Python 3.8. Conda lets you handle such cases seamlessly by managing these dependencies within isolated environments.
+
+Some more info on conda and how to enable it on your own machine can be found here: [https://cuypers-wim.github.io/FA5-bioinformatics/content/unix/appendix-unix.html#further-reading](https://cuypers-wim.github.io/FA5-bioinformatics/content/unix/appendix-unix.html#further-reading)
+
+:::
 
 ## about the excercises and storyline
 
