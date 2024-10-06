@@ -273,7 +273,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#local-unix-environment" id="toc-local-unix-environment" class="nav-link active" data-scroll-target="#local-unix-environment"><span class="header-section-number">2.1</span> Local Unix environment</a>
   <ul>
-  <li><a href="#download-the-course-files" id="toc-download-the-course-files" class="nav-link" data-scroll-target="#download-the-course-files"><span class="header-section-number">2.1.1</span> Download the course files</a></li>
+  <li><a href="#access-the-course-files" id="toc-access-the-course-files" class="nav-link" data-scroll-target="#access-the-course-files"><span class="header-section-number">2.1.1</span> Access the course files</a></li>
   <li><a href="#wsl-installation" id="toc-wsl-installation" class="nav-link" data-scroll-target="#wsl-installation"><span class="header-section-number">2.1.2</span> WSL installation</a>
   <ul class="collapse">
   <li><a href="#configuring-wsl" id="toc-configuring-wsl" class="nav-link" data-scroll-target="#configuring-wsl"><span class="header-section-number">2.1.2.1</span> Configuring WSL</a></li>
@@ -370,13 +370,19 @@ What is Binder?
 </div>
 <section id="local-unix-environment" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="local-unix-environment"><span class="header-section-number">2.1</span> Local Unix environment</h2>
-<p>If you are using MacOS or Linux, then you will already have access to a Unix shell (either <code>bash</code> or <code>zsh</code>, which will mostly behave identical for our purposes). To access it, simply search for a program called <code>Terminal</code> (or search for anything resembling “command”, “prompt” or “shell”).</p>
+<p>During this course, we will be using the Ubuntu operating system, which includes a Unix shell. By default, Ubuntu uses the bash shell, though you may also encounter zsh. For the tasks in this course, both will behave similarly. To open the terminal, click on the ‘Terminal’ icon as shown in the image below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/ubuntu_ahri.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Acces to the terminal in Ubuntu"><img src="../assets/ubuntu_ahri.png" class="img-fluid figure-img" alt="Acces to the terminal in Ubuntu"></a></p>
+<figcaption>Acces to the terminal in Ubuntu</figcaption>
+</figure>
+</div>
 <p>In case you are using a Windows machine, things are slightly more complex and different methods exist, each with their own pros and cons. You could use a fully-fledged virtual machine like <a href="https://www.virtualbox.org/">VirtualBox</a> to emulate a Linux machine within Windows. Or you could rely on the minimal <code>bash</code> emulator that comes bundled with <a href="https://gitforwindows.org/">git for windows</a>. However, nowadays we recommend that you use the <a href="https://learn.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux (WSL)</a>, which was developed by Microsoft itself. In our opinion, it is one of the most polished methods to get access to a (nearly) full-featured Linux environment from within Windows, without the overhead of a full virtual machine or dual boot setup (dual boot means you install two different operating systems on your machine, and you switch between them when booting). For instructions on how to set it up, you can refer to <a href="#wsl-installation">this section</a>.</p>
-<section id="download-the-course-files" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="download-the-course-files"><span class="header-section-number">2.1.1</span> Download the course files</h3>
+<section id="access-the-course-files" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="access-the-course-files"><span class="header-section-number">2.1.1</span> Access the course files</h3>
 <p>Regardless of what type of local Unix environment you use, you will need to download the files that we will be using in our examples and exercises.</p>
-<p>The files should be already on your computer under “coming/soon”</p>
-<p>You can also download this directly on the command line or by manually downloading the files in the correct location.</p>
+<p>For this course, we have already uploaded the files under <code>home/bioinfo-&lt;your-pc-number&gt;/FA5-bioinformatics</code>.</p>
+<p>When you want to copy the data to your own workstation, you can also download this directly on the command line or by manually downloading the files in the correct location.</p>
 <ol type="1">
 <li>Open your terminal and <code>cd</code> to a location where you want to place the training files.</li>
 <li>Enter the command <code>git clone https://github.com/Cuypers-Wim/FA5-bioinformatics.git</code>.</li>
@@ -398,7 +404,7 @@ Receiving objects: 100% (7/7), done.</code></pre>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../assets/wsl-filesystem.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Linux file system inside Windows File Explorer"><img src="../assets/wsl-filesystem.png" class="img-fluid figure-img" alt="Linux file system inside Windows File Explorer"></a></p>
+<p><a href="../assets/wsl-filesystem.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Linux file system inside Windows File Explorer"><img src="../assets/wsl-filesystem.png" class="img-fluid figure-img" alt="Linux file system inside Windows File Explorer"></a></p>
 <figcaption>Linux file system inside Windows File Explorer</figcaption>
 </figure>
 </div>
@@ -914,7 +920,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

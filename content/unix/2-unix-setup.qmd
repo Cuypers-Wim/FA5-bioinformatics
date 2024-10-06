@@ -42,17 +42,19 @@ You can find more info on the [Binder website](https://mybinder.readthedocs.io/e
 
 ## Local Unix environment
 
-If you are using MacOS or Linux, then you will already have access to a Unix shell (either `bash` or `zsh`, which will mostly behave identical for our purposes). To access it, simply search for a program called `Terminal` (or search for anything resembling "command", "prompt" or "shell").
+During this course, we will be using the Ubuntu operating system, which includes a Unix shell. By default, Ubuntu uses the bash shell, though you may also encounter zsh. For the tasks in this course, both will behave similarly. To open the terminal, click on the 'Terminal' icon as shown in the image below:
+
+![Acces to the terminal in Ubuntu](../assets/ubuntu_ahri.png)
 
 In case you are using a Windows machine, things are slightly more complex and different methods exist, each with their own pros and cons. You could use a fully-fledged virtual machine like [VirtualBox](https://www.virtualbox.org/) to emulate a Linux machine within Windows. Or you could rely on the minimal `bash` emulator that comes bundled with [git for windows](https://gitforwindows.org/). However, nowadays we recommend that you use the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/), which was developed by Microsoft itself. In our opinion, it is one of the most polished methods to get access to a (nearly) full-featured Linux environment from within Windows, without the overhead of a full virtual machine or dual boot setup (dual boot means you install two different operating systems on your machine, and you switch between them when booting). For instructions on how to set it up, you can refer to [this section](#wsl-installation).
 
-### Download the course files
+### Access the course files
 
 Regardless of what type of local Unix environment you use, you will need to download the files that we will be using in our examples and exercises. 
 
-The files should be already on your computer under "coming/soon"
+For this course, we have already uploaded the files under `home/bioinfo-<your-pc-number>/FA5-bioinformatics`.
 
-You can also download this directly on the command line or by manually downloading the files in the correct location.
+When you want to copy the data to your own workstation, you can also download this directly on the command line or by manually downloading the files in the correct location.
 
 1. Open your terminal and `cd` to a location where you want to place the training files.
 2. Enter the command `git clone https://github.com/Cuypers-Wim/FA5-bioinformatics.git`.
