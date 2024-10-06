@@ -21,21 +21,6 @@ Whichever type you use, we recommend to define all important files and folders a
 
 You can already compare the basic and extended versions of some of the example scripts stored in the `./training/scripts` directory to see how you can extend a simple script to make it more robust and reusable (and hopefully clear).
 
-:::
-
-## Where to find your reference genomes - `bwa mem`
-
-We already downloaded a reference genome from [PlasmoDB](https://plasmodb.org/plasmo/app/downloads) in @sec-plasmodb (where we introduced the `wget` command). These reference genomes allow us to compare the samples we have collected with a representative reference type_of the organism that we're studying[^reference-genome]. For some organisms, multiple reference genomes exist (e.g., because the organism exhibits a lot of genetic variability between different geographic locations), and these references also receive updates from time to time, as the assemblies of complex regions improves (e.g., gaps spanned, repetitive regions mapped, or in the case of _Plasmodium_, the polymorphic subtelomeric regions).
-
-[^reference-genome]: In practice, reference genomes rarely contain the genetic material of a single individual. Instead, they tend to be a mosaic of DNA sequences from different sources. See [https://en.wikipedia.org/wiki/Reference_genome](https://en.wikipedia.org/wiki/Reference_genome).
-
-::: {.callout-caution}
-## Exercise
-
-- Download the most recent releases of the  _P. falciparum_ 3D7 and the _P. vivax_ P01 reference genomes and store them in `./data/references` in clearly labelled subdirectories.
-- Try to inspect the file using `head` and `less`.
-
-:::
 
 ## Indexing a reference genome
 
@@ -50,7 +35,7 @@ The indexing step itself is usually performed by the same tool as the one that d
 ::: {.callout-caution}
 ## Exercise
 
-- Use the `bwa index <reference.fasta>` command to create an index for both reference genomes.
+- Use the `bwa index <reference.fasta>` command to create an index for both reference genomes, namely the _P. falciparum_ 3D7 and the _P. vivax_ P01 reference genomes which you can find under `./training/data/reference/`
 - Which files were created by the indexing step?
 
 :::
@@ -455,9 +440,10 @@ After creating and filtering our alignment files, we can visualise them in a too
 ::: {.callout-tip}
 ## Malaria in Ethiopia
 
-Also for the patient sample that we are analysing in this course, we will want to perform read mapping. Not only with the donstream analyses in mind (variant calling, phylogeny), but also to check the quality of the data.
+For the patient sample we are analyzing in this course, we will want to perform read mapping, keeping in mind both the downstream analyses (such as variant calling and phylogeny) and the quality of the data.
 
-In this excercise, the goal is to map the reads to the plasmodium falciparum reference genome and inspect the quality. In addition, map the data to the chromose 8 only (file: tba) and compare the alignment statistics and visulaisations.
+In this exercise, the goal is to map the reads to the Plasmodium falciparum 3D7 reference genome located at `./training/data/reference/plasmodium_falciparum_3D7.fasta` and inspect the quality of the mapping. Additionally, you will map the data to chromosome 8 using `plasmodium_falciparum_3D7_chrom8.fasta`, comparing the alignment statistics and visualizations between the two mappings.
 
+Using the mapping file, along with the annotation file provided at `./training/data/annotation/plasmodium_falciparum_3D7.gff`, and IGV, you can now check whether you can find the presumed deletion in the hrp2 and/or hrp3 genes. What observations do you make? Is this likely the reason the rapid diagnostic test failed?
 
 :::

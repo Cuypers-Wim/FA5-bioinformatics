@@ -320,25 +320,8 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#where-to-find-your-reference-genomes---bwa-mem" id="toc-where-to-find-your-reference-genomes---bwa-mem" class="nav-link active" data-scroll-target="#where-to-find-your-reference-genomes---bwa-mem"><span class="header-section-number">12.1</span> Where to find your reference genomes - <code>bwa mem</code></a></li>
-  <li><a href="#indexing-a-reference-genome" id="toc-indexing-a-reference-genome" class="nav-link" data-scroll-target="#indexing-a-reference-genome"><span class="header-section-number">12.2</span> Indexing a reference genome</a></li>
-  <li><a href="#sec-alignment" id="toc-sec-alignment" class="nav-link" data-scroll-target="#sec-alignment"><span class="header-section-number">12.3</span> Alignment to the reference genome</a></li>
-  <li><a href="#sec-samtools" id="toc-sec-samtools" class="nav-link" data-scroll-target="#sec-samtools"><span class="header-section-number">12.4</span> SAM and BAM files</a></li>
-  <li><a href="#coordinate-sorting-alignment-files" id="toc-coordinate-sorting-alignment-files" class="nav-link" data-scroll-target="#coordinate-sorting-alignment-files"><span class="header-section-number">12.5</span> Coordinate sorting alignment files</a></li>
-  <li><a href="#sec-samtools-flagstat" id="toc-sec-samtools-flagstat" class="nav-link" data-scroll-target="#sec-samtools-flagstat"><span class="header-section-number">12.6</span> Inspecting BAM files</a>
-  <ul>
-  <li><a href="#sec-samtools-index" id="toc-sec-samtools-index" class="nav-link" data-scroll-target="#sec-samtools-index"><span class="header-section-number">12.6.1</span> More indices</a></li>
-  </ul></li>
-  <li><a href="#sec-picard-duplicates" id="toc-sec-picard-duplicates" class="nav-link" data-scroll-target="#sec-picard-duplicates"><span class="header-section-number">12.7</span> Mark PCR duplicates - <code>picard MarkDuplicates</code></a></li>
-  <li><a href="#sec-picard-metrics" id="toc-sec-picard-metrics" class="nav-link" data-scroll-target="#sec-picard-metrics"><span class="header-section-number">12.8</span> Alignment statistics</a></li>
-  <li><a href="#sec-alignment-visualisation" id="toc-sec-alignment-visualisation" class="nav-link" data-scroll-target="#sec-alignment-visualisation"><span class="header-section-number">12.9</span> Alignment visualisation</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -364,48 +347,26 @@ div.csl-indent {
 
 <p>The next step of our pipeline tries to align the filtered and trimmed reads to the reference genome of the organism we’re studying. It starts from the processed <code>FASTQ</code> files and produces <code>SAM</code> and <code>BAM</code> files, which contain the mapped reads. We encountered these file formats before in <a href="../unix/6-unix-more-commands.html#sec-sam-format" class="quarto-xref"><span>Section 6.2.1</span></a> and <a href="../unix/6-unix-more-commands.html#sec-bam-format" class="quarto-xref"><span>Section 6.4.1</span></a>, but we will go a bit more in-depth now. Two other important aspects in this part of the pipeline are indexing the reference genome and filtering out PCR duplicates from our alignment.</p>
 <p><a href="../assets/pipeline-mapping.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="../assets/pipeline-mapping.svg" class="no-lightbox img-fluid"></a></p>
-<div id="tip-reproducibility" class="callout callout-style-default callout-tip callout-titled">
+<div id="tip-reproducibility" class="callout callout-style-default callout-tip callout-titled page-columns page-full">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip&nbsp;12.1: Reproducibility and organized projects
+Tip&nbsp;12.4: Reproducibility and organized projects
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>To make your analyses more reproducible, and to be able to figure out what you did in the (distant) future, it is important to use meaningful file names and to organise all of your data, scripts and accompanying files (like metadata and readme files, see <a href="#tip-reproducibility-2" class="quarto-xref">Tip&nbsp;<span>12.2</span></a>). During these hands-on sessions, try to already think about naming conventions and a clear hierarchy of your files and directories.</p>
+<div class="callout-body-container callout-body page-columns page-full">
+<p>To make your analyses more reproducible, and to be able to figure out what you did in the (distant) future, it is important to use meaningful file names and to organise all of your data, scripts and accompanying files (like metadata and readme files, see <a href="#tip-reproducibility-2" class="quarto-xref">Tip&nbsp;<span>12.1</span></a>). During these hands-on sessions, try to already think about naming conventions and a clear hierarchy of your files and directories.</p>
 <p>We will write separate scripts for each of the different parts of the pipeline, but at the very end, we can try to merge them into just a handful scripts for each of the major conceptual steps, optionally accompanied by a master script to govern them all.</p>
 <p>As a last tip, try to be aware of the types of paths that you use when writing your scripts: absolute or relative ones (<a href="../unix/4-unix-navigation.html#sec-linux-paths" class="quarto-xref"><span>Section 4.1</span></a>).</p>
 <p>Relative paths are more portable than absolute ones (which will not work on a different workstation with different file paths), but they can be more prone to errors. Indeed, the relative path is defined based on where call the script from, rather than the location of the script itself, so be mindful of this.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>Whichever type you use, we recommend to define all important files and folders at the top of your scripts as variables. This makes it easier to change them at a later time.</p>
 <p>You can already compare the basic and extended versions of some of the example scripts stored in the <code>./training/scripts</code> directory to see how you can extend a simple script to make it more robust and reusable (and hopefully clear).</p>
-</div>
-</div>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;An alternative is to make use of relative paths, but in that case the script still needs to be called from a fixed location in your project folders (or you need to make use of <a href="https://stackoverflow.com/a/246128">this strategy</a>). For even more complex scripts, you might want to look into providing paths as an argument, or to make use of configuration or samplesheets (as is done by more complex workflow manager tools).</p></div></div><section id="where-to-find-your-reference-genomes---bwa-mem" class="level2 page-columns page-full" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="where-to-find-your-reference-genomes---bwa-mem"><span class="header-section-number">12.1</span> Where to find your reference genomes - <code>bwa mem</code></h2>
-<p>We already downloaded a reference genome from <a href="https://plasmodb.org/plasmo/app/downloads">PlasmoDB</a> in <a href="../unix/6-unix-more-commands.html#sec-plasmodb" class="quarto-xref"><span>Section 6.5</span></a> (where we introduced the <code>wget</code> command). These reference genomes allow us to compare the samples we have collected with a representative reference type_of the organism that we’re studying<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. For some organisms, multiple reference genomes exist (e.g., because the organism exhibits a lot of genetic variability between different geographic locations), and these references also receive updates from time to time, as the assemblies of complex regions improves (e.g., gaps spanned, repetitive regions mapped, or in the case of <em>Plasmodium</em>, the polymorphic subtelomeric regions).</p>
-<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;In practice, reference genomes rarely contain the genetic material of a single individual. Instead, they tend to be a mosaic of DNA sequences from different sources. See <a href="https://en.wikipedia.org/wiki/Reference_genome">https://en.wikipedia.org/wiki/Reference_genome</a>.</p></div></div><div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Exercise
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Download the most recent releases of the <em>P. falciparum</em> 3D7 and the <em>P. vivax</em> P01 reference genomes and store them in <code>./data/references</code> in clearly labelled subdirectories.</li>
-<li>Try to inspect the file using <code>head</code> and <code>less</code>.</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="indexing-a-reference-genome" class="level2 page-columns page-full" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="indexing-a-reference-genome"><span class="header-section-number">12.2</span> Indexing a reference genome</h2>
-<p>Before we can map our reads to a reference genome, we need to create an index to allow our mapper to more efficiently search through the (usually rather large) FASTA file<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. You can think of it like the index or table of contents of a book (if that particular book contained about <em>23 million characters</em> in the case of <em>Plasmodium falciparum</em>, or <em>3.1 billion characters</em> for the human reference genome).</p>
-<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;For a refresher on the FASTA file format, check out <a href="../unix/5-unix-files-and-dirs.html#sec-fasta" class="quarto-xref"><span>Section 5.1.2.1</span></a>.</p></div></div><p>The indexing step itself is usually performed by the same tool as the one that does the actual alignment. The index <strong>only needs to be created once</strong>, and then it can be re-used when mapping each of our FASTQ files. In this course, we will be using <code>bwa</code> - the <a href="https://github.com/lh3/bwa">Burrows-Wheeler Aligner</a>.</p>
+<section id="indexing-a-reference-genome" class="level2 page-columns page-full" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="indexing-a-reference-genome"><span class="header-section-number">12.1</span> Indexing a reference genome</h2>
+<p>Before we can map our reads to a reference genome, we need to create an index to allow our mapper to more efficiently search through the (usually rather large) FASTA file<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. You can think of it like the index or table of contents of a book (if that particular book contained about <em>23 million characters</em> in the case of <em>Plasmodium falciparum</em>, or <em>3.1 billion characters</em> for the human reference genome).</p>
+<p>The indexing step itself is usually performed by the same tool as the one that does the actual alignment. The index <strong>only needs to be created once</strong>, and then it can be re-used when mapping each of our FASTQ files. In this course, we will be using <code>bwa</code> - the <a href="https://github.com/lh3/bwa">Burrows-Wheeler Aligner</a>.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -417,7 +378,7 @@ Exercise
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Use the <code>bwa index &lt;reference.fasta&gt;</code> command to create an index for both reference genomes.</li>
+<li>Use the <code>bwa index &lt;reference.fasta&gt;</code> command to create an index for both reference genomes, namely the <em>P. falciparum</em> 3D7 and the <em>P. vivax</em> P01 reference genomes which you can find under <code>./training/data/reference/</code></li>
 <li>Which files were created by the indexing step?</li>
 </ul>
 </div>
@@ -428,26 +389,26 @@ Exercise
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip&nbsp;12.2: Collaboration and reproducibility
+Tip&nbsp;12.1: Collaboration and reproducibility
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>We’d like to mention two important related aspects of (computational) scientific workflows here: collaboration and reproducibility.</p>
 <ol type="1">
 <li><p>Reference genomes and their indices take up a lot of space. In the case of larger genomes, like the human one, it also takes considerable time to produce the index. Fortunately, these files can be re-used for any future analysis - not just by you, but by others as well. That is why we recommend to store these references and their indices in a shared location on your lab’s workstation, so that they become accessible to others who might benefit from them.</p></li>
-<li><p>To ease collaboration with others, but also with your future self, it is a good idea to keep track of the various steps you’ve performed in your analysis, just like you would do in a lab notebook. Of course the code and scripts that you write should be clearly named (and ideally, elaborated with clear comments), but it also fruitful to note down more nitty-gritty details on how you managed to fix a particular issue or why a specific option was chosen. In the case of reference genomes, we recommend to create a <code>README.md</code> file<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> to store alongside your reference genomes, which clearly describes where you obtained them, the version/build/release, and perhaps even a code snippet to re-download and <a href="https://genomicsaotearoa.github.io/shell-for-bioinformatics/2_download_data/">checksum</a> them.</p></li>
+<li><p>To ease collaboration with others, but also with your future self, it is a good idea to keep track of the various steps you’ve performed in your analysis, just like you would do in a lab notebook. Of course the code and scripts that you write should be clearly named (and ideally, elaborated with clear comments), but it also fruitful to note down more nitty-gritty details on how you managed to fix a particular issue or why a specific option was chosen. In the case of reference genomes, we recommend to create a <code>README.md</code> file<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> to store alongside your reference genomes, which clearly describes where you obtained them, the version/build/release, and perhaps even a code snippet to re-download and <a href="https://genomicsaotearoa.github.io/shell-for-bioinformatics/2_download_data/">checksum</a> them.</p></li>
 </ol>
 <p>As a <strong>bonus exercise</strong>, try to create such a readme file.</p>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;<code>.md</code> stands for markdown, which is a popular <a href="https://www.markdownguide.org/getting-started/">plain-text markup language</a> used for these kinds of tasks. You will often see people used markdown or <code>.txt</code> files to add metadata to collections of files in databases and analysis scripts or workflows on places like <a href="https://www.github.com">GitHub</a>.</p></div></div></section>
-<section id="sec-alignment" class="level2 page-columns page-full" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="sec-alignment"><span class="header-section-number">12.3</span> Alignment to the reference genome</h2>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;<code>.md</code> stands for markdown, which is a popular <a href="https://www.markdownguide.org/getting-started/">plain-text markup language</a> used for these kinds of tasks. You will often see people used markdown or <code>.txt</code> files to add metadata to collections of files in databases and analysis scripts or workflows on places like <a href="https://www.github.com">GitHub</a>.</p></div></div></section>
+<section id="sec-alignment" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="sec-alignment"><span class="header-section-number">12.2</span> Alignment to the reference genome</h2>
 <p>During mapping, the aligner tries to find a potential alignment site for each individual read (or query) in the reference genome. After aligning all the reads, we can start looking for variation in our samples compared to the reference genome and each other.</p>
-<p>There exist many different tools and algorithms for sequence alignment, each with their own strengths and weaknesses. A few examples of popular ones for DNA sequencing are <a href="https://bio-bwa.sourceforge.net/">BWA</a>, <a href="https://bowtie-bio.sourceforge.net/bowtie2/index.shtml">bowtie2</a> and <a href="https://github.com/lh3/minimap2">minimap2</a>. The differences between these tools mostly lies in speed vs sensitivity, but also preferred application; i.e.&nbsp;long versus short reads<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
-<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;You can read the author of BWA and minimap2 thoughts: <a href="https://lh3.github.io/2018/04/02/minimap2-and-the-future-of-bwa">https://lh3.github.io/2018/04/02/minimap2-and-the-future-of-bwa</a></p></div></div><p>Note that there is also an entirely different class of aligners that were developed for RNA-sequencing; these need to be <em>“splice-aware”</em> to handle RNA reads without introns (e.g., STAR), and some of them also make use of some clever tricks for faster quantifications - so-called <em>pseudo-aligners</em> (e.g, Kallisto and Salmon).</p>
-<p>We will use BWA as our mapping tool of choice, <a href="https://www.malariagen.net/wp-content/uploads/2023/11/Pf7-Details-of-bioinformatics-methods.pdf">as is customary</a> in the field of malaria genomics <span class="citation" data-cites="malariagen_pf7_2023">(<a href="../references.html#ref-malariagen_pf7_2023" role="doc-biblioref">MalariaGEN et al. 2023</a>)</span>. BWA actually comes with three different flavours of aligners, but the most recent and popular one is <code>bwa mem</code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p>
-<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;A <a href="https://github.com/bwa-mem2/bwa-mem2">second version of <code>bwa mem</code></a> has also been released, but while it is faster, it is more suited for running on high-performance compute clusters or in the cloud, due to the higher memory requirements.</p></div></div><hr>
+<p>There exist many different tools and algorithms for sequence alignment, each with their own strengths and weaknesses. A few examples of popular ones for DNA sequencing are <a href="https://bio-bwa.sourceforge.net/">BWA</a>, <a href="https://bowtie-bio.sourceforge.net/bowtie2/index.shtml">bowtie2</a> and <a href="https://github.com/lh3/minimap2">minimap2</a>. The differences between these tools mostly lies in speed vs sensitivity, but also preferred application; i.e.&nbsp;long versus short reads<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<p>Note that there is also an entirely different class of aligners that were developed for RNA-sequencing; these need to be <em>“splice-aware”</em> to handle RNA reads without introns (e.g., STAR), and some of them also make use of some clever tricks for faster quantifications - so-called <em>pseudo-aligners</em> (e.g, Kallisto and Salmon).</p>
+<p>We will use BWA as our mapping tool of choice, <a href="https://www.malariagen.net/wp-content/uploads/2023/11/Pf7-Details-of-bioinformatics-methods.pdf">as is customary</a> in the field of malaria genomics <span class="citation" data-cites="malariagen_pf7_2023">(<a href="../references.html#ref-malariagen_pf7_2023" role="doc-biblioref">MalariaGEN et al. 2023</a>)</span>. BWA actually comes with three different flavours of aligners, but the most recent and popular one is <code>bwa mem</code><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
+<hr>
 <p><a href="#fig-mapping" class="quarto-xref">Figure&nbsp;<span>12.1</span></a> illustrates the mapping process <span class="citation" data-cites="Hiltemann_2023 sequence-analysis-mapping">(<a href="../references.html#ref-Hiltemann_2023" role="doc-biblioref">Hiltemann et al. 2023</a>; <a href="../references.html#ref-sequence-analysis-mapping" role="doc-biblioref">Wolff, Batut, and Rasche</a>)</span>. Each individual read is matched against the reference. You can see that read 1 has a few mismatches in its alignment, which eventually might turn out to be single nucleotide polymorphisms (<em>SNP</em>). Similarly, for read 2 only the middle part aligns well; <code>bwa mem</code> performs a local alignment and can clip the ends of the read. The third read shows an example of an insertion and a deletion (<em>indel</em>); the read is longer in one area (<code>GCCA</code>), but shorter in another (<code>AC(A)TA</code>).</p>
 <div id="fig-mapping" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -459,14 +420,14 @@ Figure&nbsp;12.1: Mapping reads to a reference. <span class="citation" data-cite
 </figcaption>
 </figure>
 </div>
-<p>As we discussed in <a href="qc.html#tip-paired-end" class="quarto-xref">Tip&nbsp;<span>11.1</span></a>, when we are working with <em>paired-end sequencing data</em>, there is additional information available for the aligner to work with. The expected distance between forward and reverse reads that can help to span repetitive regions. For this to work, paired reads are always mapped together, which is why they also need to be provided to the mapping tool as a pair; that is why we tend to give them similar file names (<code>*R1.fastq</code>/<code>*_R2.fastq</code>), and the paired reads appear in the same order in each file. The final alignment report usually provides dedicated output on paired reads, letting us know of cases where one of the reads fails to map (<em>unmapped mate</em>) or the pair is not in the expected orientation (i.e., not pointing towards each other, see <a href="#tip-read-orientation" class="quarto-xref">Tip&nbsp;<span>12.3</span></a>) / too far apart (not <em>properly paired</em>) , because this is not something that you’d expect in normal circumstances, since they <em>should</em> be derived from the same fragment of DNA.</p>
+<p>As we discussed in <a href="qc.html#tip-paired-end" class="quarto-xref">Tip&nbsp;<span>11.1</span></a>, when we are working with <em>paired-end sequencing data</em>, there is additional information available for the aligner to work with. The expected distance between forward and reverse reads that can help to span repetitive regions. For this to work, paired reads are always mapped together, which is why they also need to be provided to the mapping tool as a pair; that is why we tend to give them similar file names (<code>*R1.fastq</code>/<code>*_R2.fastq</code>), and the paired reads appear in the same order in each file. The final alignment report usually provides dedicated output on paired reads, letting us know of cases where one of the reads fails to map (<em>unmapped mate</em>) or the pair is not in the expected orientation (i.e., not pointing towards each other, see <a href="#tip-read-orientation" class="quarto-xref">Tip&nbsp;<span>12.2</span></a>) / too far apart (not <em>properly paired</em>) , because this is not something that you’d expect in normal circumstances, since they <em>should</em> be derived from the same fragment of DNA.</p>
 <div id="tip-read-orientation" class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip&nbsp;12.3: Orientation of forward and reverse reads during mapping
+Tip&nbsp;12.2: Orientation of forward and reverse reads during mapping
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -486,12 +447,12 @@ Tip&nbsp;12.3: Orientation of forward and reverse reads during mapping
 <p>By default, <code>bwa</code> will output its results straight into the terminal’s standard out (see <a href="../unix/7-unix-redirection.html#sec-unix-streams" class="quarto-xref"><span>Section 7.1</span></a>). This is very useful once we start chaining different tools together, but for your first attempts you should provide the <code>-o &lt;output_file&gt;</code> flag to write everything to a file instead.</p>
 <p><code>bwa mem</code> provides <em>many</em> different options, but we recommend the following ones:</p>
 <ul>
-<li><code>-t &lt;int&gt;</code>: the number of threads to use. See <a href="#tip-parallel" class="quarto-xref">Tip&nbsp;<span>12.4</span></a>.</li>
-<li><code>-R "@RG\tID:L001\tPL:ILLUMINA\tSM:${sample}"</code>: defines <em>read groups</em>, which are tags to identify which reads belong together across flowcells/lanes/library preparations<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. <code>${sample}</code> is a variable containing the sample name of the current read (pair) in a for loop.</li>
+<li><code>-t &lt;int&gt;</code>: the number of threads to use. See <a href="#tip-parallel" class="quarto-xref">Tip&nbsp;<span>12.3</span></a>.</li>
+<li><code>-R "@RG\tID:L001\tPL:ILLUMINA\tSM:${sample}"</code>: defines <em>read groups</em>, which are tags to identify which reads belong together across flowcells/lanes/library preparations<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. <code>${sample}</code> is a variable containing the sample name of the current read (pair) in a for loop.</li>
 <li><code>-Y</code>: use <a href="https://medium.com/@lwy730050619/soft-clipping-vs-hard-clipping-in-read-alignment-bd0c96f47426">soft clipping</a> for <a href="https://www.biostars.org/p/308853/">supplementary alignments</a>.</li>
 <li><code>K 100000000</code>: makes results more <a href="https://github.com/CCDG/Pipeline-Standardization/issues/2">deterministic</a>. </li>
 </ul>
-<div class="no-row-height column-margin column-container"><div id="fn7"><p><sup>7</sup>&nbsp;Reads groups are a <a href="https://www.biostars.org/p/43897/">confusing subject</a>, and <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035890671-Read-groups">a very deep</a> one as well. In a nutshell, read groups are used to inform downstream tools about which reads were sequenced together in the same flowcell/lane (to differentiate between and account for technical variability between runs, and not just samples) and which reads need to be grouped because they are derived from the same sample (but stored in separate files). Fortunately, they are only required by a few downstream GATK tools, but leaving them out <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035532352-Errors-about-read-group-RG-information">can result in errors</a>. For a nice overview of how to define them, <a href="https://eriqande.github.io/eca-bioinf-handbook/alignment-of-sequence-data-to-a-reference-genome-and-associated-steps.html#read-groups">see this example</a>.</p></div></div><p>Taken together, an example would be:</p>
+<p>Taken together, an example would be:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> mem <span class="dt">\</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-t</span> 2 <span class="dt">\</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-Y</span> <span class="at">-K</span> 100000000 <span class="dt">\</span></span>
@@ -523,7 +484,7 @@ Exercise: mapping with <code>bwa mem</code>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip&nbsp;12.4: Speeding up code through multi-threading or parallelization
+Tip&nbsp;12.3: Speeding up code through multi-threading or parallelization
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -547,8 +508,8 @@ Host DNA contamination removal
 </div>
 </div>
 </section>
-<section id="sec-samtools" class="level2 page-columns page-full" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="sec-samtools"><span class="header-section-number">12.4</span> SAM and BAM files</h2>
+<section id="sec-samtools" class="level2 page-columns page-full" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="sec-samtools"><span class="header-section-number">12.3</span> SAM and BAM files</h2>
 <p>The output of the alignment step (using <code>bwa mem</code>) is a SAM file (see <a href="../unix/6-unix-more-commands.html#sec-sam-format" class="quarto-xref"><span>Section 6.2.1</span></a>). This stands for <em>Sequence Alignment Map</em>. These are plain text files delimited with tabs, so you can view them using a text editor or a command like <code>less</code>.</p>
 <p>To save space and make the alignment quicker to index, SAM files are often converted to BAM files (<a href="../unix/6-unix-more-commands.html#sec-bam-format" class="quarto-xref"><span>Section 6.4.1</span></a>), which are compressed binary versions of the alignment. These can be used by downstream tools directly, so we tend to only store the alignment in this format, even though you can no longer inspect the alignment yourself.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>0080_S44_L001.bam | head -n30</span>
@@ -582,8 +543,8 @@ Host DNA contamination removal
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>M05795:43:000000000-CFLMP:1:1113:17834:11827    2161    Pf3D7_01_v3     137459  4       56H74M171H      =       196019  58732       TTATTGTTTTTTTTTTTATCGTTATTGTTTTTGTTATTATTATTATTGTTTTTGTTATTATTATTATTGTTTTT      9),&lt;:2&gt;EEB@&lt;?;+2(0))*;+*;A987GA=;7;+++31++*7F&lt;;**GGF?*:=,++,,+1=,&gt;5F?8EE@;  NM:i:4  MD:Z:11A2A4T0A53        MC:Z:56H245M    AS:i:54 XS:i:50 RG:Z:001        SA:Z:Pf3D7_08_v3,1374826,+,41M9D29M231S,6,9;        XA:Z:Pf3D7_01_v3,-137459,77S80M144S,6;Pf3D7_01_v3,+196068,123S99M79S,10;</span>
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>M05795:43:000000000-CFLMP:1:1111:24375:10578    99      Pf3D7_01_v3     139572  0       84S32M185S      =       139572  32 CTTGAACCCAGGAGGTAGAGGTTGCAGTGAGCCGAGATCGCACCCCTGCACTCCAGCCTGGGGGACAGAGTGAGACTCTGTCTCAAAATAAATAAATAAATAAATAAACAAATAAAAGATAACTGTTTAATTAACAACAACGTAATAGATAGTGTGTGGCACTGATACCACCTGTAAAAATAAAATGAACAACGGTGTAAAGACCAAGAGGAGAGAAATGGAAGTGTCCTATTGTAAGCTTCTCTTACTCTACGAAAAATGGTATATTACTTAAGAATAAACTATGATAATTAAGACGGCA    CCCCCFGGGGGGGGGGGFGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGCEGGGGGGGGGGGGGGGGGGGGCGGEGGGGGGGGGGDC3;DGGGGGGGGGGGG7FD9BFGGGFFFAA;&gt;FB@FEFFBBCFCEFF&gt;0&gt;B&gt;AEFEEF:5=B59FDAEFFFECEFFFCFF7&lt;64CC4=.75)7797&lt;)9CE))(-4-   NM:i:0  MD:Z:32     MC:Z:80S32M188S AS:i:32 XS:i:32 RG:Z:001        XA:Z:Pf3D7_06_v3,+225165,84S32M185S,0;</span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>M05795:43:000000000-CFLMP:1:1111:24375:10578    147     Pf3D7_01_v3     139572  0       80S32M188S      =       139572  -32AACCCAGGAGGTAGGGGTTGCAGTGAGCCGAGATCGCACCCCTGCAGTCCAGCCGGGGGGACAGAGTGAGACTCTGTCTCAAAATAAATAAATAAATAAATAAACAAATAAAAGATAACTGTTTAATTAACAACAACGTAATAGATAGTGTGTGGCACTGATACCACCTGTAAAAATAAAATGAACAACGGTGTAAAGACCAAGAGGAGAGAAATGGAAGTGTCCTATTGTAAGCTTCTCTTACTCTAAGAAAAATGGTATATTACTTAAGAATAAACTATGATAATTAAGGCTGCATTT     4,(563?;3@2;:6(:4)E7.);)5(96-0(FD&gt;2==@:252&gt;7)85DA8=1):):DBEED&gt;8:*&gt;;;::D:53:5:)@7FEDEDDEFCDE9&gt;EEEC;7ED:099;9;+&gt;D=C?C?96B?D7D9EBGGGD8GGFFGGCGGGGGEF8@@,GGGGGGGGGDGFFC6GGGGGGGGFGGGEGGGGGGGGCEGGGGGGCGGGGGGGGGF:GGGGGGFCGGGDGFFDGFGFGGGGGGGGGFGGGFGGGFGGGGGGEGFE9GFGGGGGGGGFFFFGGGGGGGGGFFGGFE&lt;GFAGGGGGGGGCCCCC    NM:i:0  MD:Z:32     MC:Z:84S32M185S AS:i:32 XS:i:32 RG:Z:001        XA:Z:Pf3D7_06_v3,-225165,80S32M188S,0;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Aside from the header info, every other line in the SAM file corresponds to a particular read and provides information on where in the reference genome it was mapped and the quality of this mapping<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>, alongside various other metadata (including the original Phred quality scores). This information is stored in tab-delimited fields (11 mandatory ones, followed by optional ones).</p>
-<div class="no-row-height column-margin column-container"><div id="fn8"><p><sup>8</sup>&nbsp;Mapping quality is similar to the per-base quality scores we introduced in the previous chapter, but here they represent the probability of a wrong alignment of the entire read. More info <a href="http://www.acgt.me/blog/2014/12/16/understanding-mapq-scores-in-sam-files-does-37-42">here</a> and <a href="https://davetang.org/muse/2011/09/14/mapping-qualities/">here</a>.</p></div></div><table class="caption-top table">
+<p>Aside from the header info, every other line in the SAM file corresponds to a particular read and provides information on where in the reference genome it was mapped and the quality of this mapping<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, alongside various other metadata (including the original Phred quality scores). This information is stored in tab-delimited fields (11 mandatory ones, followed by optional ones).</p>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Col</th>
@@ -671,7 +632,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>All details on the SAM format can be found in the format specification: <a href="https://samtools.github.io/hts-specs/SAMv1.pdf">https://samtools.github.io/hts-specs/SAMv1.pdf</a>.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<p>All details on the SAM format can be found in the format specification: <a href="https://samtools.github.io/hts-specs/SAMv1.pdf">https://samtools.github.io/hts-specs/SAMv1.pdf</a>.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
 <p>One important column is the bitwise FLAG: it is a lookup code that can tell you (or more commonly, a software tool) whether a read was aligned, how it is oriented, if its pair was aligned, etc.</p>
 <table class="caption-top table">
 <colgroup>
@@ -752,10 +713,10 @@ Note
 <p>Lastly, we want to share this <a href="https://broadinstitute.github.io/picard/explain-flags.html">convenient tool</a> to explain the different bitwise FLAGs. It is invaluable whenever you need to perform (or interpret) a <code>samtools</code> filtering operation.</p>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><div id="fn9"><p><sup>9</sup>&nbsp;A more in-depth exploration of the different type of alignments that can occur (e.g., supplementary, secondary, etc.) is given in <a href="https://cmdcolin.github.io/posts/2022-02-06-sv-sam">this blogpost</a>.</p></div><div id="fn10"><p><sup>10</sup>&nbsp;An amazing guide to several <code>samtools</code> tasks can be found on the <a href="https://davetang.github.io/learning_bam_file/">Learning the BAM format page by Dave Tang</a>.</p></div></div><p>To convert a SAM to a BAM file, you can use the <a href="http://www.htslib.org/doc/samtools.html">samtools software</a>. <code>samtools</code> is used to convert between SAM and BAM files, but it can perform many other tasks too, like coordinate sorting, which we will talk about first.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn8"><p><sup>8</sup>&nbsp;A more in-depth exploration of the different type of alignments that can occur (e.g., supplementary, secondary, etc.) is given in <a href="https://cmdcolin.github.io/posts/2022-02-06-sv-sam">this blogpost</a>.</p></div><div id="fn9"><p><sup>9</sup>&nbsp;An amazing guide to several <code>samtools</code> tasks can be found on the <a href="https://davetang.github.io/learning_bam_file/">Learning the BAM format page by Dave Tang</a>.</p></div></div><p>To convert a SAM to a BAM file, you can use the <a href="http://www.htslib.org/doc/samtools.html">samtools software</a>. <code>samtools</code> is used to convert between SAM and BAM files, but it can perform many other tasks too, like coordinate sorting, which we will talk about first.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
 </section>
-<section id="coordinate-sorting-alignment-files" class="level2 page-columns page-full" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="coordinate-sorting-alignment-files"><span class="header-section-number">12.5</span> Coordinate sorting alignment files</h2>
+<section id="coordinate-sorting-alignment-files" class="level2 page-columns page-full" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="coordinate-sorting-alignment-files"><span class="header-section-number">12.4</span> Coordinate sorting alignment files</h2>
 <p>The reads in a SAM/BAM file can be sorted in different ways. For our needs (variant calling using GATK), we will need to sort them according to their location on the reference genome: a <em>coordinate-ordered</em> format.</p>
 <p>The neat thing is that <code>samtools sort</code> will automatically do the conversion from SAM to BAM for us, so we can perform both steps in one go.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> sort <span class="at">-@</span> <span class="op">&lt;</span>number_of_threads<span class="op">&gt;</span> -o <span class="op">&lt;</span>output.bam<span class="op">&gt;</span> <span class="op">&lt;</span>input.sam<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -770,13 +731,13 @@ Chaining commands via pipes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Recall what you learned in <a href="../unix/7-unix-redirection.html#sec-unix-streams" class="quarto-xref"><span>Section 7.1</span></a> about piping the output of one command into the input of another using the <code>|</code> operator. We can make use of this to feed the output of <code>bwa mem</code> directly into <code>samtools</code>. This allows us to forego the need to write the output to any intermediate files.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
-<p>The only difference compared to before is that we now remove the <code>-o output.sam</code> option from the <code>bwa mem</code> command and that we do not provide an explicit input file to <code>samtools</code> (it is read from <code>stdout</code> directly instead).<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
+<p>Recall what you learned in <a href="../unix/7-unix-redirection.html#sec-unix-streams" class="quarto-xref"><span>Section 7.1</span></a> about piping the output of one command into the input of another using the <code>|</code> operator. We can make use of this to feed the output of <code>bwa mem</code> directly into <code>samtools</code>. This allows us to forego the need to write the output to any intermediate files.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<p>The only difference compared to before is that we now remove the <code>-o output.sam</code> option from the <code>bwa mem</code> command and that we do not provide an explicit input file to <code>samtools</code> (it is read from <code>stdout</code> directly instead).<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> mem <span class="op">&lt;</span>arguments<span class="op">&gt;</span> <span class="kw">|</span> <span class="ex">samtools</span> sort <span class="at">-o</span> alignment.sort.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For clarity we use the <code>sorted.bam</code> file suffix for any sorted BAM files.</p>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><div id="fn12"><p><sup>12</sup>&nbsp;One final thing we could do is use <code>&gt;</code> to write the output of <code>samtools</code> to a file directly, instead of using the <code>-o</code> flag.</p></div></div><div class="no-row-height column-margin column-container"><div id="fn11"><p><sup>11</sup>&nbsp;This works out of the box, but you might encounter the syntax <code>command_1 | command_2 -</code>, where the hyphen <code>-</code> is a way of explicitly telling the second command to look at <code>stdin</code> for its input. For many tools, including <code>samtools</code>, <a href="https://bioinformatics.stackexchange.com/questions/20773/problem-with-samtools-command-with-a-final-hyphen">this is not necessary however</a>.</p></div></div><div class="callout callout-style-default callout-caution callout-titled">
+<div class="no-row-height column-margin column-container"><div id="fn11"><p><sup>11</sup>&nbsp;One final thing we could do is use <code>&gt;</code> to write the output of <code>samtools</code> to a file directly, instead of using the <code>-o</code> flag.</p></div></div><div class="no-row-height column-margin column-container"><div id="fn10"><p><sup>10</sup>&nbsp;This works out of the box, but you might encounter the syntax <code>command_1 | command_2 -</code>, where the hyphen <code>-</code> is a way of explicitly telling the second command to look at <code>stdin</code> for its input. For many tools, including <code>samtools</code>, <a href="https://bioinformatics.stackexchange.com/questions/20773/problem-with-samtools-command-with-a-final-hyphen">this is not necessary however</a>.</p></div></div><div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -794,8 +755,8 @@ Exercise
 </div>
 </div>
 </section>
-<section id="sec-samtools-flagstat" class="level2" data-number="12.6">
-<h2 data-number="12.6" class="anchored" data-anchor-id="sec-samtools-flagstat"><span class="header-section-number">12.6</span> Inspecting BAM files</h2>
+<section id="sec-samtools-flagstat" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="sec-samtools-flagstat"><span class="header-section-number">12.5</span> Inspecting BAM files</h2>
 <p>You can read BAM files by using the <code>samtools view</code> command. By default it only outputs the tab-delimited parts of the file, but you can provide the flags <code>-H or</code>-h` to optionally show only the header or everything.</p>
 <p>Another useful command is <code>samtools flagstat</code>, which reports various mapping statistics on how well the reads aligned to your reference genome:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>samtools flagstat training/results/bwa/PF0097_S43_L001.bam</span>
@@ -847,9 +808,9 @@ Upping your scripting game
 <p>For now, knowing enough to get by, and <strong>being careful</strong> when trying things out, is most important. Howvever, if you decide in the future that really want to master bash, there are also several <a href="https://bertvv.github.io/cheat-sheets/Bash.html">resources</a> availabe that <a href="https://mywiki.wooledge.org/BashPitfalls">explain</a> some of the more common <a href="https://flokoe.github.io/bash-hackers-wiki/scripting/newbie_traps/">beginner mistakes</a>. Alternatively, you can look into <a href="https://ricomnl.com/blog/bottom-up-bioinformatics-pipeline/">workflow tools</a> like <a href="https://www.nextflow.io/">Nextflow</a> (and the <a href="https://nf-co.re/">nf-core community pipelines</a>), <a href="https://snakemake.github.io/">Snakemake</a> or <a href="http://byronjsmith.com/make-bml/">Makefiles</a>.</p>
 </div>
 </div>
-<section id="sec-samtools-index" class="level3" data-number="12.6.1">
-<h3 data-number="12.6.1" class="anchored" data-anchor-id="sec-samtools-index"><span class="header-section-number">12.6.1</span> More indices</h3>
-<p>Like our reference FASTA files, BAM files can also be indexed to improve the performance of downstream tools that need to search for particular reads in this large file. For example, it is required for visualisation with IGV (<a href="#sec-alignment-visualisation" class="quarto-xref"><span>Section 12.9</span></a>) and variant calling with GATK (<a href="variant-calling.html" class="quarto-xref"><span>Chapter 13</span></a>).</p>
+<section id="sec-samtools-index" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="sec-samtools-index"><span class="header-section-number">12.5.1</span> More indices</h3>
+<p>Like our reference FASTA files, BAM files can also be indexed to improve the performance of downstream tools that need to search for particular reads in this large file. For example, it is required for visualisation with IGV (<a href="#sec-alignment-visualisation" class="quarto-xref"><span>Section 12.8</span></a>) and variant calling with GATK (<a href="variant-calling.html" class="quarto-xref"><span>Chapter 13</span></a>).</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index alignment.sort.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -866,8 +827,8 @@ Exercise
 </div>
 </section>
 </section>
-<section id="sec-picard-duplicates" class="level2 page-columns page-full" data-number="12.7">
-<h2 data-number="12.7" class="anchored" data-anchor-id="sec-picard-duplicates"><span class="header-section-number">12.7</span> Mark PCR duplicates - <code>picard MarkDuplicates</code></h2>
+<section id="sec-picard-duplicates" class="level2 page-columns page-full" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="sec-picard-duplicates"><span class="header-section-number">12.6</span> Mark PCR duplicates - <code>picard MarkDuplicates</code></h2>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -878,13 +839,13 @@ PCR duplicates tagging/removal should <strong>NOT</strong> be performed for Ampl
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The library construction process for AmpliSeq results in identical fragments or duplicates for each of the targeted amplicons, hence we should not attempt to remove them.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p>
+<p>The library construction process for AmpliSeq results in identical fragments or duplicates for each of the targeted amplicons, hence we should not attempt to remove them.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><div id="fn13"><p><sup>13</sup>&nbsp;As a side note, in RNA-seq this duplicate removal step is also not recommended (unless unique molecular identifiers (UMIs) are used), although the number of duplicates can be used for quality control.</p></div><div id="fn14"><p><sup>14</sup>&nbsp;You can read more about how PCR duplicates arise in this excellent <a href="https://www.cureffi.org/2012/12/11/how-pcr-duplicates-arise-in-next-generation-sequencing/">blog post</a> by Eric Minikel.</p></div></div><p>A final step in the mapping pipeline is the tagging (or removal) of PCR duplicates. These are identical sequences that can arise because of PCR steps during library preparation or because a cluster on the flow cell was erroneously detected as two separate ones<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>. The overall goal of PCR duplicate removal is to reduce bias during downstream analyses (like variant detection) due to their presence.</p>
+<div class="no-row-height column-margin column-container"><div id="fn12"><p><sup>12</sup>&nbsp;As a side note, in RNA-seq this duplicate removal step is also not recommended (unless unique molecular identifiers (UMIs) are used), although the number of duplicates can be used for quality control.</p></div><div id="fn13"><p><sup>13</sup>&nbsp;You can read more about how PCR duplicates arise in this excellent <a href="https://www.cureffi.org/2012/12/11/how-pcr-duplicates-arise-in-next-generation-sequencing/">blog post</a> by Eric Minikel.</p></div></div><p>A final step in the mapping pipeline is the tagging (or removal) of PCR duplicates. These are identical sequences that can arise because of PCR steps during library preparation or because a cluster on the flow cell was erroneously detected as two separate ones<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>. The overall goal of PCR duplicate removal is to reduce bias during downstream analyses (like variant detection) due to their presence.</p>
 <p>PCR duplicates are polyclonal molecules that do not represent any true biological variation, nor are they independent observations of the DNA that was present in a sample. Thus, the observed abundance of these identical reads does not accurately reflect the true abundance of the different molecules in the sample<span class="citation" data-cites="rochette_causes_2023">(<a href="../references.html#ref-rochette_causes_2023" role="doc-biblioref">Rochette et al. 2023</a>)</span>. If a particular PCR duplicate happens to be over-represented compared to other reads covering the same region of the genome, this could cause a bias in our analyses. <a href="https://bioinformatics.stackexchange.com/a/2868">Just imagine what would happen</a> if during PCR amplification an error was introduced into one of the fragments. If we ended up with many PCR duplicates of this fragment, we might erroneously conclude that there is a SNP at this position because we see it occur in multiple reads. However, if we remove PCR duplicates, we will only observe the SNP in a single read, and variant detection will not mark this as a SNP due to lack of confidence (~agreement between different reads covering the same position, more on that in <a href="variant-calling.html" class="quarto-xref"><span>Chapter 13</span></a>).</p>
-<p>One of the tools that we use for marking PCR duplicates is <a href="https://broadinstitute.github.io/picard/">Picard</a>. Picard actually provides many different functionalities, but the one that we’re interested for now is <code>MarkDuplicates</code>. An in-depth explanation of how it works can be found <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360057439771-MarkDuplicates-Picard">here</a>. After running the tool, we end up with a BAM file again, but this time with all suspected PCR duplicates marked as such. Our downstream analysis tools will take this information into account whenever relevant (e.g., when detecting variants).<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></p>
-<div class="no-row-height column-margin column-container"><div id="fn15"><p><sup>15</sup>&nbsp;Note that removal generally is not necessary, but it can be done by passing the <code>-REMOVE_DUPLICATES true</code> flag.</p></div></div><div class="callout callout-style-default callout-caution callout-titled">
+<p>One of the tools that we use for marking PCR duplicates is <a href="https://broadinstitute.github.io/picard/">Picard</a>. Picard actually provides many different functionalities, but the one that we’re interested for now is <code>MarkDuplicates</code>. An in-depth explanation of how it works can be found <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360057439771-MarkDuplicates-Picard">here</a>. After running the tool, we end up with a BAM file again, but this time with all suspected PCR duplicates marked as such. Our downstream analysis tools will take this information into account whenever relevant (e.g., when detecting variants).<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></p>
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -937,14 +898,14 @@ Warning
 </div>
 </div>
 </section>
-<section id="sec-picard-metrics" class="level2" data-number="12.8">
-<h2 data-number="12.8" class="anchored" data-anchor-id="sec-picard-metrics"><span class="header-section-number">12.8</span> Alignment statistics</h2>
+<section id="sec-picard-metrics" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="sec-picard-metrics"><span class="header-section-number">12.7</span> Alignment statistics</h2>
 <p>We already introduced the <code>samtools flagstat</code> command to report on basic alignment statistics, but a more in-depth method of inspecting your alignment is provided by <a href="https://gatk.broadinstitute.org/hc/en-us/articles/21904987074587-CollectAlignmentSummaryMetrics-Picard">Picard’s <code>CollectAlignmentSummaryMetrics</code></a>, or <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037594031-CollectMultipleMetrics-Picard">the more extensive <code>CollectMultipleMetrics</code></a> (we will see Picard again in the next section on PCR duplicate removal):</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">picard</span> CollectAlignmentSummaryMetrics R=<span class="op">&lt;</span>reference.fasta<span class="op">&gt;</span> I=<span class="op">&lt;</span>input.sort.bam<span class="op">&gt;</span> O=<span class="op">&lt;</span>output.bam<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The output of these tools can again be aggregated using a tool like MulitQC. See <a href="https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/files/multiqc_report.html">here</a> for an example.</p>
 </section>
-<section id="sec-alignment-visualisation" class="level2" data-number="12.9">
-<h2 data-number="12.9" class="anchored" data-anchor-id="sec-alignment-visualisation"><span class="header-section-number">12.9</span> Alignment visualisation</h2>
+<section id="sec-alignment-visualisation" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="sec-alignment-visualisation"><span class="header-section-number">12.8</span> Alignment visualisation</h2>
 <p>After creating and filtering our alignment files, we can visualise them in a tool like <a href="https://igv.org/">IGV (Integrative Genomics Viewer)</a>. We refer to <a href="https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html#visualization-using-a-genome-browser-igv">this section</a> of the Galaxy training materials <span class="citation" data-cites="Hiltemann_2023 sequence-analysis-mapping">(<a href="../references.html#ref-Hiltemann_2023" role="doc-biblioref">Hiltemann et al. 2023</a>; <a href="../references.html#ref-sequence-analysis-mapping" role="doc-biblioref">Wolff, Batut, and Rasche</a>)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -956,13 +917,17 @@ Malaria in Ethiopia
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Also for the patient sample that we are analysing in this course, we will want to perform read mapping. Not only with the donstream analyses in mind (variant calling, phylogeny), but also to check the quality of the data.</p>
-<p>In this excercise, the goal is to map the reads to the plasmodium falciparum reference genome and inspect the quality. In addition, map the data to the chromose 8 only (file: tba) and compare the alignment statistics and visulaisations.</p>
+<p>For the patient sample we are analyzing in this course, we will want to perform read mapping, keeping in mind both the downstream analyses (such as variant calling and phylogeny) and the quality of the data.</p>
+<p>In this exercise, the goal is to map the reads to the Plasmodium falciparum 3D7 reference genome located at <code>./training/data/reference/plasmodium_falciparum_3D7.fasta</code> and inspect the quality of the mapping. Additionally, you will map the data to chromosome 8 using <code>plasmodium_falciparum_3D7_chrom8.fasta</code>, comparing the alignment statistics and visualizations between the two mappings.</p>
+<p>Using the mapping file, along with the annotation file provided at <code>./training/data/annotation/plasmodium_falciparum_3D7.gff</code>, and IGV, you can now check whether you can find the presumed deletion in the hrp2 and/or hrp3 genes. What observations do you make? Is this likely the reason the rapid diagnostic test failed?</p>
 </div>
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+</section>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fn14"><p><sup>14</sup>&nbsp;Note that removal generally is not necessary, but it can be done by passing the <code>-REMOVE_DUPLICATES true</code> flag.</p></div></div><div class="no-row-height column-margin column-container"><div id="fn7"><p><sup>7</sup>&nbsp;Mapping quality is similar to the per-base quality scores we introduced in the previous chapter, but here they represent the probability of a wrong alignment of the entire read. More info <a href="http://www.acgt.me/blog/2014/12/16/understanding-mapq-scores-in-sam-files-does-37-42">here</a> and <a href="https://davetang.org/muse/2011/09/14/mapping-qualities/">here</a>.</p></div></div><div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;Reads groups are a <a href="https://www.biostars.org/p/43897/">confusing subject</a>, and <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035890671-Read-groups">a very deep</a> one as well. In a nutshell, read groups are used to inform downstream tools about which reads were sequenced together in the same flowcell/lane (to differentiate between and account for technical variability between runs, and not just samples) and which reads need to be grouped because they are derived from the same sample (but stored in separate files). Fortunately, they are only required by a few downstream GATK tools, but leaving them out <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035532352-Errors-about-read-group-RG-information">can result in errors</a>. For a nice overview of how to define them, <a href="https://eriqande.github.io/eca-bioinf-handbook/alignment-of-sequence-data-to-a-reference-genome-and-associated-steps.html#read-groups">see this example</a>.</p></div></div><div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;A <a href="https://github.com/bwa-mem2/bwa-mem2">second version of <code>bwa mem</code></a> has also been released, but while it is faster, it is more suited for running on high-performance compute clusters or in the cloud, due to the higher memory requirements.</p></div></div><div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;You can read the author of BWA and minimap2 thoughts: <a href="https://lh3.github.io/2018/04/02/minimap2-and-the-future-of-bwa">https://lh3.github.io/2018/04/02/minimap2-and-the-future-of-bwa</a></p></div></div><div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;For a refresher on the FASTA file format, check out <a href="../unix/5-unix-files-and-dirs.html#sec-fasta" class="quarto-xref"><span>Section 5.1.2.1</span></a>.</p></div></div><div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;An alternative is to make use of relative paths, but in that case the script still needs to be called from a fixed location in your project folders (or you need to make use of <a href="https://stackoverflow.com/a/246128">this strategy</a>). For even more complex scripts, you might want to look into providing paths as an argument, or to make use of configuration or samplesheets (as is done by more complex workflow manager tools).</p></div></div><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-ClevaLab_2022_blog" class="csl-entry" role="listitem">
 ClevaLab. 2022. <span>“A Step-by-Step Guide to NGS.”</span> <a href="https://www.clevalab.com/post/a-step-by-step-guide-to-ngs">https://www.clevalab.com/post/a-step-by-step-guide-to-ngs</a>.
 </div>
@@ -979,7 +944,6 @@ Rochette, Nicolas C., Angel G. Rivera‐Colón, Jessica Walsh, Thomas J. Sanger,
 Wolff, Joachim, Bérénice Batut, and Helena Rasche. <span>“Mapping (Galaxy Training Materials).”</span> <a href="https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html">https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html</a>.
 </div>
 </div>
-</section>
 
 
 </main> <!-- /main -->
@@ -1429,7 +1393,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","loop":false,"selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

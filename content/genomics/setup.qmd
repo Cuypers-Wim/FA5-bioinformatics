@@ -25,13 +25,13 @@ If any additional software is needed, the teaching team will assist you.
 ::: {.callout-caution collapse="true"}
 ## Expand To Learn About Conda Environments
 
-What is a Conda environment?
+**What is a Conda environment?**
 
 A Conda environment is an isolated workspace where you can install and manage specific software packages and their dependencies. This allows you to have different versions of software installed without causing conflicts between them.
 
 In bioinformatics, you often need different tools for various tasks (like genome assembly, variant calling, or phylogenetic analysis). Each tool may require different software libraries or specific versions of those libraries. Conda environments help you keep everything organized by creating separate environments for each set of tools.
 
-How does it work?
+**How does it work?**
 
 Creating an environment: You can create a new environment to install the tools and software packages required for a specific project.
 
@@ -39,17 +39,21 @@ Activating an environment: To work in a specific environment, you need to "activ
 
 Deactivating and switching environments: When you're done with an environment, you can deactivate it with the command `conda deactivate`. You can easily switch between environments depending on which task you're working on.
 
-Why is it useful?
+**Why is it useful?**
 
 Conda environments are useful because different bioinformatics tools may require specific software versions or dependencies to run properly. By using Conda, you can avoid compatibility issues. For example, one project may need Python 3.9, while another might require Python 3.8. Conda lets you handle such cases seamlessly by managing these dependencies within isolated environments.
+
+**More info**
 
 Some more info on conda and how to enable it on your own machine can be found here: [https://cuypers-wim.github.io/FA5-bioinformatics/content/unix/appendix-unix.html#further-reading](https://cuypers-wim.github.io/FA5-bioinformatics/content/unix/appendix-unix.html#further-reading)
 
 :::
 
-## about the excercises and storyline
+## About the excercises and storyline
 
-In the following sections, we will work with Amplicon data from the Malariology Unit at ITM. Additionally, we have included exercises that follow a storyline relevant to a bioinformatician working in a hospital in Ethiopia. These exercises will be clearly marked in boxes titled "Storyline: Malaria in Ethiopia." Below, you'll find the beginning of the storyline, and by the end of these sessions, you’ll be able to solve the mystery!
+In the upcoming sections, we will be working with Amplicon data provided by the Malariology Unit at ITM. This data is not derived from the entire chromosome of *Plasmodium*; instead, it focuses on specific regions that have been amplified using PCR. This targeted approach is often more cost-effective compared to whole-genome sequencing.
+
+Additionally, we have included exercises that follow a storyline relevant to a bioinformatician working in a hospital in Ethiopia. These exercises will be clearly marked in boxes titled "Storyline: Malaria in Ethiopia." Below, you'll find the beginning of the storyline, and by the end of these sessions, you’ll be able to solve the mystery!
 
 ::: {.callout-tip}
 ## Malaria in Ethiopia
