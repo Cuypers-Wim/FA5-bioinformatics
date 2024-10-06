@@ -369,6 +369,23 @@ Further reading:
 
 The final step in our pipeline is to annotate variants. For this, a tool like [snpEff](http://pcingola.github.io/SnpEff/) can be used. You can see it being used in the AmpliSeq pipeline [here](https://github.com/Ekattenberg/Plasmodium-AmpliSeq-Pipeline/blob/2d7779e8463bbe97523f96c9dccd70ebf91161c9/Pf_AmpliSeq_Peru/5.PERU_Ampliseq_filter_annotation_PF_281122.bash#L160).
 
+
+<!-- TODO: correct the text below which was written quickly on the ^lane. maps also to te genome of chromosome 8? -->
+
+::: {.callout-tip}
+## Malaria in Ethiopia
+
+Take the mapping data generated previously, and look for the xx mutation associated with xx resistance, and the xx mutations associated with RDT failure.
+
+What would be the best approach to find these mutations? Work relative to the Plasmodium falciparum 3D7 reference genome. 
+
+
+:::
+
+
+
+
+
 <!-- TODO variants to table
 https://www.melbournebioinformatics.org.au/tutorials/tutorials/variant_calling_gatk1/variant_calling_gatk1/#1-variantstotable
 https://gatk.broadinstitute.org/hc/en-us/articles/21904953853595-VariantsToTable

@@ -1,8 +1,13 @@
 # Setup and preparations {.unnumbered}
 
-For this hands-on practical on processing genomics data for variant calling, we will make use of the same GitHub Codespaces that were introduced in @sec-unix-setup.
+For this hands-on practical on processing genomics data (mapping & search, variant calling, and phylogenetics) we will make use of the same environment as previously. If any additional software is required, the teaching team will help you.
 
-Due to the large file size of the training data, not all files were included directly in the repository. When you launch your codespace for the first time (or whenever you create a new one), you will need to run the download scripts that are stored in `./training/data/`, as described in the [README.md](../../training/data/README.md).
+
+Due to the large file size of the training data, not all files were included directly in the repository. 
+
+
+
+When you launch your codespace for the first time (or whenever you create a new one), you will need to run the download scripts that are stored in `./training/data/`, as described in the [README.md](../../training/data/README.md).
 
 If you want to follow along on your own machine instead, make sure to install all the required software tools. The easiest option is to use `conda`/`mamba` via the [miniforge installer](https://github.com/conda-forge/miniforge), and then installing all the packages described in the [environment.yml file](../../environment.yml). For R, simply install the list of packages described in the [devcontainer.json file](../../.devcontainer/rstudio/devcontainer.json) (or `renv` file if it is available).
 
@@ -32,3 +37,19 @@ mamba activate fimab
     # activate environment
     mamba activate fimab
     ```
+
+
+## about the excercises and storyline
+
+In the following sections, we will work with Amplicon data from the Malariology Unit at ITM. Additionally, we have included exercises that follow a storyline relevant to a bioinformatician working in a hospital in Ethiopia. These exercises will be clearly marked in boxes titled "Storyline: Malaria in Ethiopia." Below, you'll find the beginning of the storyline, and by the end of these sessions, you’ll be able to solve the mystery!
+
+::: {.callout-tip}
+## Malaria in Ethiopia
+A patient arrives at your research clinic with a high fever. Despite initially suspecting malaria, a rapid diagnostic test (RDT) is negative. However, a microscopic examination of the blood sample reveals *Plasmodium* parasites, confirming malaria. Microscopy allows you to determine that the parasite is *Plasmodium* *falciparum*, a species known to cause severe malaria. This situation raises several questions: How was the infection acquired? Is it a local strain or one from recent travel? Why did the rapid test fail?
+
+The patient, originally from Ethiopia—where both *P. falciparum* and *P. vivax* are prevalent—has recently traveled to Southeast Asia, where both species also circulate. The failure of the rapid test could be linked to deletions in the *hrp2* and *hrp3* genes, which are common in *P. falciparum* and cause some RDTs to miss infections. 
+
+Your task is to analyze the parasite’s genetic material to confirm which strain it is, determine its likely geographic origin, and assess potential antimicrobial treatments. This analysis will also help clarify why the rapid test failed and whether the strain carries any mutations affecting test performance or drug resistance.
+
+Succes!!
+:::

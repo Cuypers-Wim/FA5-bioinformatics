@@ -1,0 +1,14 @@
+# Phylogenetics {#sec-phylogenetics}
+
+
+::: {.callout-tip}
+## Storyline: Malaria in Ethiopia
+
+Now, it's time to apply your phylogenetics skills to determine where the patient in our storyline contracted their malaria infection.
+
+You will be working with a dataset called 'contextual data.' Although the data is simulated for this exercise, in real scenarios, we often rely on public datasets with robust metadata to make such inferences.
+
+Start your analysis and explore what insights you can draw from the phylogeny. Don’t forget to create a visualization of the phylogenetic tree!
+
+:::
+

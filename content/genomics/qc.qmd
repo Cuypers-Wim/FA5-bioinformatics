@@ -746,6 +746,22 @@ You can install it on your own environment using the following command: `conda i
 
 ---
 
+
+<!-- TODO: correct the text below which was written quickly on the ^lane.  -->
+
+::: {.callout-tip}
+## Malaria in Ethiopia
+
+Also for the patient sample that we are analysing in this course, we will want to perform QC. 
+
+What do you see after performing QC. Is trimming nessecary?
+
+
+:::
+
+
+
+
 ::: {.callout-note}
 ## Additional resources
 

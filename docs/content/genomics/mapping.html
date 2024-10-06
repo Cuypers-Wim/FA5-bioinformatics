@@ -286,8 +286,8 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/genomics/patient_mystery.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Patient mystery</span></span></a>
+  <a href="../../content/genomics/phylogenetics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetics</span></span></a>
   </div>
 </li>
       </ul>
@@ -946,6 +946,20 @@ Warning
 <section id="sec-alignment-visualisation" class="level2" data-number="12.9">
 <h2 data-number="12.9" class="anchored" data-anchor-id="sec-alignment-visualisation"><span class="header-section-number">12.9</span> Alignment visualisation</h2>
 <p>After creating and filtering our alignment files, we can visualise them in a tool like <a href="https://igv.org/">IGV (Integrative Genomics Viewer)</a>. We refer to <a href="https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html#visualization-using-a-genome-browser-igv">this section</a> of the Galaxy training materials <span class="citation" data-cites="Hiltemann_2023 sequence-analysis-mapping">(<a href="../references.html#ref-Hiltemann_2023" role="doc-biblioref">Hiltemann et al. 2023</a>; <a href="../references.html#ref-sequence-analysis-mapping" role="doc-biblioref">Wolff, Batut, and Rasche</a>)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Malaria in Ethiopia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Also for the patient sample that we are analysing in this course, we will want to perform read mapping. Not only with the donstream analyses in mind (variant calling, phylogeny), but also to check the quality of the data.</p>
+<p>In this excercise, the goal is to map the reads to the plasmodium falciparum reference genome and inspect the quality. In addition, map the data to the chromose 8 only (file: tba) and compare the alignment statistics and visulaisations.</p>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -1415,7 +1429,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

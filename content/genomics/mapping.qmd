@@ -449,3 +449,15 @@ After creating and filtering our alignment files, we can visualise them in a too
 
 
 <!-- TODO: add info on coverage and read depth -->
+
+<!-- TODO: correct the text below which was written quickly on the ^lane. maps also to te genome of chromosome 8? -->
+
+::: {.callout-tip}
+## Malaria in Ethiopia
+
+Also for the patient sample that we are analysing in this course, we will want to perform read mapping. Not only with the donstream analyses in mind (variant calling, phylogeny), but also to check the quality of the data.
+
+In this excercise, the goal is to map the reads to the plasmodium falciparum reference genome and inspect the quality. In addition, map the data to the chromose 8 only (file: tba) and compare the alignment statistics and visulaisations.
+
+
+:::

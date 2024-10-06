@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>14&nbsp; Patient mystery – Pathogen Genomics Course</title>
+<title>14&nbsp; Phylogenetics – Pathogen Genomics Course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/patient_mystery.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Patient mystery</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/phylogenetics.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -229,8 +229,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/genomics/patient_mystery.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Patient mystery</span></span></a>
+  <a href="../../content/genomics/phylogenetics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetics</span></span></a>
   </div>
 </li>
       </ul>
@@ -263,22 +263,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started"><span class="header-section-number">14.1</span> Getting started</a></li>
-  <li><a href="#getting-started-1" id="toc-getting-started-1" class="nav-link" data-scroll-target="#getting-started-1"><span class="header-section-number">14.2</span> Getting started</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/patient_mystery.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Patient mystery</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/phylogenetics.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetics</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-patient-mystery" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Patient mystery</span></span></h1>
+<h1 class="title"><span id="sec-phylogenetics" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetics</span></span></h1>
 </div>
 
 
@@ -295,30 +288,23 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Now it is time for an excercise where you will employ all the techniques from the previous sessions. You can read the storyline for this excercise below.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Malaria in Ethiopia
+Storyline: Malaria in Ethiopia
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A patient arrives at your research clinic with a high fever. Despite initially suspecting malaria, a rapid diagnostic test (RDT) is negative. However, a microscopic examination of the blood sample reveals <em>Plasmodium</em> parasites, confirming malaria. Microscopy allows you to determine that the parasite is <em>Plasmodium</em> <em>falciparum</em>, a species known to cause severe malaria. This situation raises several questions: How was the infection acquired? Is it a local strain or one from recent travel? Why did the rapid test fail?</p>
-<p>The patient, originally from Ethiopia—where both <em>P. falciparum</em> and <em>P. vivax</em> are prevalent—has recently traveled to Southeast Asia, where both species also circulate. The failure of the rapid test could be linked to deletions in the <em>hrp2</em> and <em>hrp3</em> genes, which are common in <em>P. falciparum</em> and cause some RDTs to miss infections.</p>
-<p>Your task is to analyze the parasite’s genetic material to confirm which strain it is, determine its likely geographic origin, and assess potential antimicrobial treatments. This analysis will also help clarify why the rapid test failed and whether the strain carries any mutations affecting test performance or drug resistance.</p>
+<p>Now, it’s time to apply your phylogenetics skills to determine where the patient in our storyline contracted their malaria infection.</p>
+<p>You will be working with a dataset called ‘contextual data.’ Although the data is simulated for this exercise, in real scenarios, we often rely on public datasets with robust metadata to make such inferences.</p>
+<p>Start your analysis and explore what insights you can draw from the phylogeny. Don’t forget to create a visualization of the phylogenetic tree!</p>
 </div>
 </div>
-<section id="getting-started" class="level2" data-number="14.1">
-<h2 data-number="14.1" class="anchored" data-anchor-id="getting-started"><span class="header-section-number">14.1</span> Getting started</h2>
-</section>
-<section id="getting-started-1" class="level2" data-number="14.2">
-<h2 data-number="14.2" class="anchored" data-anchor-id="getting-started-1"><span class="header-section-number">14.2</span> Getting started</h2>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
