@@ -140,11 +140,11 @@ The first column represents the permissions of the files/folders. In a nutshell,
 
 1. Navigate to your home directory and list all the files and folders there. Try typing the path with and without using the `~`. Rely on tab-completion to assist you and avoid typos (@sec-unix-tips).
 2. Print the name of the current working directory to your screen.
-3. List the contents of the `./training/data/fastq/` directory of the course files, without first moving there. Experiment with absolute and relative paths.
+3. List the contents of the `~Desktop/Fa/FA5-bioinformatics/training/data/fastq/` directory of the course files, without first moving there. Experiment with absolute and relative paths.
 4. What is the most recent modification date of the file `Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa` found in the `./training/unix-demo/` directory?
 5. Try to search for the file `penguins.csv`: what is the absolute path to it on your machine?
-6. Navigate to `./training/data/fastq/` to make it your working directory (double check using `pwd`!). What is the relative path to the `penguins.csv` file from here?
-7. Suppose your working directory is still `./training/data/fastq/`. What will the result of `pwd` be after running each of the following commands in succession?
+6. Navigate to `~Desktop/Fa/FA5-bioinformatics/training/data/fastq/` to make it your working directory (double check using `pwd`!). What is the relative path to the `penguins.csv` file from here?
+7. Suppose your working directory is still `~Desktop/Fa/FA5-bioinformatics/training/data/fastq/`. What will the result of `pwd` be after running each of the following commands in succession?
   - `cd ../`
   - `cd ../unix-demo/`
   - `cd files_to_loop_through/../../data/..`
