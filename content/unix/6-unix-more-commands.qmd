@@ -354,18 +354,17 @@ Of course, there exist many more Unix commands than the ones we introduced here.
 
 ## Exercises
 
-1. Visit PlasmoDB again and find the download URL for the _Plasmodium vivax_ P01 reference genome sequence in FASTA format. Download it via the command line and store it in `./training/data/reference`.
-2. Report the file size of this reference genome in MBs.
-3. Find out how many lines of text the file contains.
-4. Search through the file for the `>` character, which is used to denote every chromosome/contig. Use a single command to count them.
-5. Compress the FASTQ file `PF0512_S47_L001_R1_001.fastq` in the `unix-demo` directory using `gzip`.
-6. Navigate to the directory `./training/data/fastq` and in a single command, extract the forward (`PF0097_S43_L001_R1_001.fastq.gz`) and reverse (`PF0097_S43_L001_R2_001.fastq.gz`) of the `PF0097_S43` sample, without removing the compressed files. Hint: use globbing!
-7. Search both FASTQ files for the read fragment with identifier `@M05795:43:000000000-CFLMP:1:1101:21518:5740 2:N:0:43` using a single command.
-8. Compare the file sizes of the two compressed and uncompressed FASTQ files.
-9. Extract the columns containing the _island_ and _flipper length_ of each penguin from the `./training/unix-demo/penguins.csv` file.
-10. Count how often the sequence `CATCATCATCATCAT` occurs in the FASTA file `./training/unix-demo/Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa`.
-11. Which command can be used to extract the name of the SAM file `./training/unix-demo/PF0302_S20.sort.sam` without the `.sam` suffix?
-12. Which reference genome was used to create the SAM file?
+1. Report the file size of the _Plasmodium vivax_ P01 reference genome sequence in FASTA format. It can be found under `./training/data/reference/PvivaxP01.genome.fasta`.
+2. Find out how many lines of text the file contains.
+3. Search through the file for the `>` character, which is used to denote every chromosome/contig. Use a single command to count them.
+4. Compress the FASTQ file `PF0512_S47_L001_R1_001.fastq` in the `unix-demo` directory using `gzip`.
+5. Navigate to the directory `./training/data/fastq` and in a single command, extract the forward (`PF0097_S43_L001_R1_001.fastq.gz`) and reverse (`PF0097_S43_L001_R2_001.fastq.gz`) of the `PF0097_S43` sample, without removing the compressed files. Hint: use globbing!
+6. Search both FASTQ files for the read fragment with identifier `@M05795:43:000000000-CFLMP:1:1101:21518:5740 2:N:0:43` using a single command.
+7. Compare the file sizes of the two compressed and uncompressed FASTQ files.
+8. Extract the columns containing the _island_ and _flipper length_ of each penguin from the `./training/unix-demo/penguins.csv` file.
+9.  Count how often the sequence `CATCATCATCATCAT` occurs in the FASTA file `./training/unix-demo/Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa`.
+10. Which command can be used to extract the name of the SAM file `./training/unix-demo/PF0302_S20.sort.sam` without the `.sam` suffix?
+11. Which reference genome was used to create the SAM file?
 
 ---
 

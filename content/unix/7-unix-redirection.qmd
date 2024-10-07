@@ -279,12 +279,12 @@ You do not need to concern yourself with learning these more advanced concepts f
 ## Exercises
 
 1. Search for the DNA sequence _"aacct"_ in the truncated human Y chromosome FASTA file and store the output in a file called `aacct-hits.txt`.
-2. Count the number of chromosomes in the _P. falciparum_ reference genome fasta file.
+2. Count the number of chromosomes in the _P. falciparum_ reference genome fasta file (`plasmodium_falciparum_3D7.fasta`).
 3. Store the chromosome identifiers of the _P. falciparum_ reference genome fasta file in a file.
 4. Store the last 40 lines of `PF0512_S47_L001_R1_001.fastq` in a file named `PF0512_S47_L001_R1_001.subset.fastq`.
 5. How many penguin records are there for each island in `penguins.csv`? Hint: Try to do it in one go, without `grep`, by combining multiple pipes (`cut`, `sort` and `uniq`).
 6. How can you count the number of unique commands in your command history?
-7. Extract the header information from `ampliseq-variants.vcf`, sort it alphabetically, and store it in a file named `vcf-header.txt`.
+7. Extract the header information from `ampliseq-variants.vcf` (you can find this file in the `unix-demo` directory), sort it alphabetically, and store it in a file named `vcf-header.txt`.
 
 ---
 

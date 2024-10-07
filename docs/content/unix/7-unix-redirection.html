@@ -693,12 +693,12 @@ How can we use a pipe to only apply the <code>cut -f10</code> command to only th
 <h2 data-number="7.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.4</span> Exercises</h2>
 <ol type="1">
 <li>Search for the DNA sequence <em>“aacct”</em> in the truncated human Y chromosome FASTA file and store the output in a file called <code>aacct-hits.txt</code>.</li>
-<li>Count the number of chromosomes in the <em>P. falciparum</em> reference genome fasta file.</li>
+<li>Count the number of chromosomes in the <em>P. falciparum</em> reference genome fasta file (<code>plasmodium_falciparum_3D7.fasta</code>).</li>
 <li>Store the chromosome identifiers of the <em>P. falciparum</em> reference genome fasta file in a file.</li>
 <li>Store the last 40 lines of <code>PF0512_S47_L001_R1_001.fastq</code> in a file named <code>PF0512_S47_L001_R1_001.subset.fastq</code>.</li>
 <li>How many penguin records are there for each island in <code>penguins.csv</code>? Hint: Try to do it in one go, without <code>grep</code>, by combining multiple pipes (<code>cut</code>, <code>sort</code> and <code>uniq</code>).</li>
 <li>How can you count the number of unique commands in your command history?</li>
-<li>Extract the header information from <code>ampliseq-variants.vcf</code>, sort it alphabetically, and store it in a file named <code>vcf-header.txt</code>.</li>
+<li>Extract the header information from <code>ampliseq-variants.vcf</code> (you can find this file in the <code>unix-demo</code> directory), sort it alphabetically, and store it in a file named <code>vcf-header.txt</code>.</li>
 </ol>
 <hr>
 </section>
@@ -1178,7 +1178,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
