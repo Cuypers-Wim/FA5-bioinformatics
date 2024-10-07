@@ -52,7 +52,7 @@ In case you are using a Windows machine, things are slightly more complex and di
 
 Regardless of what type of local Unix environment you use, you will need to download the files that we will be using in our examples and exercises. 
 
-For this course, we have already uploaded the files under `home/bioinfo-<your-pc-number>/FA5-bioinformatics`.
+For this course, we have already uploaded the files under `~/Desktop/Fa/FA5-bioinformatics/`. When we use relative paths (we'll explain what this means later), we will work relative to this `FA5-bioinformatics` directory.
 
 When you want to copy the data to your own workstation, you can also download this directly on the command line or by manually downloading the files in the correct location.
 

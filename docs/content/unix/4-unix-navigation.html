@@ -555,14 +555,15 @@ What do the different columns in the output of <code>ls -l</code> represent?
 </section>
 <section id="exercises" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.3</span> Exercises</h2>
+<p>Note: In the exercises below, we use relative paths. These paths are all relative to the <code>FA5-bioinformatics</code> directory. For example, during the FA5 course hosted at AHRI, the relative path <code>./training/data/reference</code> corresponds to the absolute path <code>~/Desktop/Fa/FA5-bioinformatics/training/data/reference</code>.</p>
 <ol type="1">
 <li>Navigate to your home directory and list all the files and folders there. Try typing the path with and without using the <code>~</code>. Rely on tab-completion to assist you and avoid typos (<a href="appendix-unix.html#sec-unix-tips" class="quarto-xref"><span>Section A.1</span></a>).</li>
 <li>Print the name of the current working directory to your screen.</li>
-<li>List the contents of the <code>~/Desktop/Fa/FA5-bioinformatics/training/data/fastq/</code> directory of the course files, without first moving there. Experiment with absolute and relative paths.</li>
-<li>What is the most recent modification date of the file <code>Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</code> found in the <code>~/Desktop/Fa/FA5-bioinformatics/training/unix-demo/</code> directory?</li>
+<li>List the contents of the <code>./training/data/fastq/</code> directory of the course files, without first moving there. Experiment with absolute and relative paths.</li>
+<li>What is the most recent modification date of the file <code>Homo_sapiens.GRCh38.dna.chromosome.Y.truncated.fa</code> found in the <code>./training/unix-demo/</code> directory?</li>
 <li>Try to search for the file <code>penguins.csv</code>: what is the absolute path to it on your machine?</li>
-<li>Navigate to <code>~/Desktop/Fa/FA5-bioinformatics/training/data/fastq/</code> to make it your working directory (double check using <code>pwd</code>!). What is the relative path to the <code>penguins.csv</code> file from here?</li>
-<li>Suppose your working directory is still <code>~/Desktop/Fa/FA5-bioinformatics/training/data/fastq/</code>. What will the result of <code>pwd</code> be after running each of the following commands in succession?</li>
+<li>Navigate to <code>./training/data/fastq/</code> to make it your working directory (double check using <code>pwd</code>!). What is the relative path to the <code>penguins.csv</code> file from here?</li>
+<li>Suppose your working directory is still <code>./training/data/fastq/</code>. What will the result of <code>pwd</code> be after running each of the following commands in succession?</li>
 </ol>
 <ul>
 <li><code>cd ../</code></li>
@@ -1051,7 +1052,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","openEffect":"zoom","loop":false});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","loop":false});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

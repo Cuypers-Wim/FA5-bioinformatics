@@ -299,7 +299,7 @@ Lastly, an alternative to `wget` that you might encounter at some point is `curl
 ```bash
 # starting in the `training` directory
 $ pwd
-/home/pmoris/itg/FiMAB-bioinformatics/training
+/home/bioinfo50/Desktop/Fa/FA5-bioinformatics/training
 
 # get the file name for the reference genome we just downloaded
 $ basename data/reference/PlasmoDB-65_Pfalciparum3D7_Genome.fasta
