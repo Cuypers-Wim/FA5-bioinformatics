@@ -918,8 +918,9 @@ Malaria in Ethiopia
 </div>
 <div class="callout-body-container callout-body">
 <p>For the patient sample we are analyzing in this course, we will want to perform read mapping, keeping in mind both the downstream analyses (such as variant calling and phylogeny) and the quality of the data.</p>
-<p>In this exercise, the goal is to map the reads to the Plasmodium falciparum 3D7 reference genome located at <code>./training/data/reference/plasmodium_falciparum_3D7.fasta</code> and inspect the quality of the mapping. Additionally, you will map the data to chromosome 8 using <code>plasmodium_falciparum_3D7_chrom8.fasta</code>, comparing the alignment statistics and visualizations between the two mappings.</p>
-<p>Using the mapping file, along with the annotation file provided at <code>./training/data/annotation/plasmodium_falciparum_3D7.gff</code>, and IGV, you can now check whether you can find the presumed deletion in the hrp2 and/or hrp3 genes. What observations do you make? Is this likely the reason the rapid diagnostic test failed?</p>
+<p>In this exercise, the goal is to map the reads from the folder <code>./training/data/storyline</code> to the <em>Plasmodium falciparum</em> 3D7 reference genome located at <code>./training/data/reference/plasmodium_falciparum_3D7.fasta</code> and inspect the quality of the mapping. Additionally, you will map the data to chromosome 8 using <code>plasmodium_falciparum_3D7_chrom8.fasta</code>, comparing the alignment statistics and visualizations between the two mappings.</p>
+<p>Using the mapping file, along with the annotation file provided at <code>./training/data/annotation/plasmodium_falciparum_3D7.gff</code>, and IGV, you can now check whether you can find the presumed deletion in the <em>hrp2</em> and/or <em>hrp3</em> genes. This gene can be found around positions <code>1374230-1375445</code> in chromosome 8 (named <code>AL844507.3</code>) of <em>Plasmodium falciparum</em> 3D7.</p>
+<p>To guide your research, consider the following questions: - Can you find reads mapped to the region with coordinates <code>1374230-1375445</code>? - Do you see reads before- and after this region? Is the depth of coverage enough for the regions where you see reads mapped? - Do your observations confirm your suspicion that the lack of the <em>hrp2</em> gene resulted in the RDT failure?</p>
 </div>
 </div>
 
@@ -1393,7 +1394,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

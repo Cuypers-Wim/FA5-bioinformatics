@@ -442,8 +442,13 @@ After creating and filtering our alignment files, we can visualise them in a too
 
 For the patient sample we are analyzing in this course, we will want to perform read mapping, keeping in mind both the downstream analyses (such as variant calling and phylogeny) and the quality of the data.
 
-In this exercise, the goal is to map the reads to the Plasmodium falciparum 3D7 reference genome located at `./training/data/reference/plasmodium_falciparum_3D7.fasta` and inspect the quality of the mapping. Additionally, you will map the data to chromosome 8 using `plasmodium_falciparum_3D7_chrom8.fasta`, comparing the alignment statistics and visualizations between the two mappings.
+In this exercise, the goal is to map the reads from the folder `./training/data/storyline` to the _Plasmodium falciparum_ 3D7 reference genome located at `./training/data/reference/plasmodium_falciparum_3D7.fasta` and inspect the quality of the mapping. Additionally, you will map the data to chromosome 8 using `plasmodium_falciparum_3D7_chrom8.fasta`, comparing the alignment statistics and visualizations between the two mappings.
 
-Using the mapping file, along with the annotation file provided at `./training/data/annotation/plasmodium_falciparum_3D7.gff`, and IGV, you can now check whether you can find the presumed deletion in the hrp2 and/or hrp3 genes. What observations do you make? Is this likely the reason the rapid diagnostic test failed?
+Using the mapping file, along with the annotation file provided at `./training/data/annotation/plasmodium_falciparum_3D7.gff`, and IGV, you can now check whether you can find the presumed deletion in the _hrp2_ and/or _hrp3_ genes. This gene can be found around positions `1374230-1375445` in chromosome 8 (named `AL844507.3`) of _Plasmodium falciparum_ 3D7.
+
+To guide your research, consider the following questions:
+- Can you find reads mapped to the region with coordinates `1374230-1375445`?
+- Do you see reads before- and after this region? Is the depth of coverage enough for the regions where you see reads mapped?
+- Do your observations confirm your suspicion that the lack of the _hrp2_ gene resulted in the RDT failure?
 
 :::
