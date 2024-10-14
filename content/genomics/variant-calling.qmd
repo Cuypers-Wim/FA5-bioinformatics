@@ -77,7 +77,7 @@ The tool requires two
 ```bash
 gatk HaplotypeCaller \
     -R reference.fasta \
-    -I alignment.sort.dup.bam \
+    -I alignment.sorted.dup.bam \
     -O output.g.vcf.gz" \
     -ERC GVCF
 

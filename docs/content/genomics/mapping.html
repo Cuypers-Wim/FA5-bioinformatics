@@ -719,7 +719,7 @@ Note
 <h2 data-number="12.4" class="anchored" data-anchor-id="coordinate-sorting-alignment-files"><span class="header-section-number">12.4</span> Coordinate sorting alignment files</h2>
 <p>The reads in a SAM/BAM file can be sorted in different ways. For our needs (variant calling using GATK), we will need to sort them according to their location on the reference genome: a <em>coordinate-ordered</em> format.</p>
 <p>The neat thing is that <code>samtools sort</code> will automatically do the conversion from SAM to BAM for us, so we can perform both steps in one go.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> sort <span class="at">-@</span> <span class="op">&lt;</span>number_of_threads<span class="op">&gt;</span> -o <span class="op">&lt;</span>output.bam<span class="op">&gt;</span> <span class="op">&lt;</span>input.sam<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> sort <span class="at">-@</span> <span class="op">&lt;</span>number_of_threads<span class="op">&gt;</span> -o <span class="op">&lt;</span>output.sorted.bam<span class="op">&gt;</span> <span class="op">&lt;</span>input.sam<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Can we make things even more streamlined and combine the <code>bwa</code> mapping and <code>samtools</code> sorting steps? Turns out we can!</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -811,7 +811,7 @@ Upping your scripting game
 <section id="sec-samtools-index" class="level3" data-number="12.5.1">
 <h3 data-number="12.5.1" class="anchored" data-anchor-id="sec-samtools-index"><span class="header-section-number">12.5.1</span> More indices</h3>
 <p>Like our reference FASTA files, BAM files can also be indexed to improve the performance of downstream tools that need to search for particular reads in this large file. For example, it is required for visualisation with IGV (<a href="#sec-alignment-visualisation" class="quarto-xref"><span>Section 12.8</span></a>) and variant calling with GATK (<a href="variant-calling.html" class="quarto-xref"><span>Chapter 13</span></a>).</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index alignment.sort.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index alignment.sorted.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -859,8 +859,8 @@ Exercises
 <li>Try to mark all PCR duplicates for a single BAM file using the following command:</li>
 </ol>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">picard</span> MarkDuplicates</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-I</span> alignment.sort.bam</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-O</span> alignment.sort.dups.bam</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-I</span> alignment.sorted.bam</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-O</span> alignment.sorted.dups.bam</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-M</span> alignment.markeddups_metrics.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li><p>Run <code>samtools flagstat</code> again. What changed compared to the previous report?</p></li>
@@ -1394,7 +1394,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":false});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":false,"openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

@@ -255,7 +255,7 @@ The reads in a SAM/BAM file can be sorted in different ways. For our needs (vari
 The neat thing is that `samtools sort` will automatically do the conversion from SAM to BAM for us, so we can perform both steps in one go.
 
 ```bash
-samtools sort -@ <number_of_threads> -o <output.bam> <input.sam>
+samtools sort -@ <number_of_threads> -o <output.sorted.bam> <input.sam>
 ```
 
 Can we make things even more streamlined and combine the `bwa` mapping and `samtools` sorting steps? Turns out we can!
@@ -348,7 +348,7 @@ For now, knowing enough to get by, and **being careful** when trying things out,
 Like our reference FASTA files, BAM files can also be indexed to improve the performance of downstream tools that need to search for particular reads in this large file. For example, it is required for visualisation with IGV (@sec-alignment-visualisation) and variant calling with GATK (@sec-variant-calling).
 
 ```bash
-samtools index alignment.sort.bam
+samtools index alignment.sorted.bam
 ```
 
 ::: {.callout-caution}
@@ -387,8 +387,8 @@ One of the tools that we use for marking PCR duplicates is [Picard](https://broa
 
 ```bash
 picard MarkDuplicates
-    -I alignment.sort.bam
-    -O alignment.sort.dups.bam
+    -I alignment.sorted.bam
+    -O alignment.sorted.dups.bam
     -M alignment.markeddups_metrics.txt
 ```
 
