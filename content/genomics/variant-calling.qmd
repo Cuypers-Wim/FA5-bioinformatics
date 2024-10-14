@@ -370,15 +370,18 @@ Further reading:
 The final step in our pipeline is to annotate variants. For this, a tool like [snpEff](http://pcingola.github.io/SnpEff/) can be used. You can see it being used in the AmpliSeq pipeline [here](https://github.com/Ekattenberg/Plasmodium-AmpliSeq-Pipeline/blob/2d7779e8463bbe97523f96c9dccd70ebf91161c9/Pf_AmpliSeq_Peru/5.PERU_Ampliseq_filter_annotation_PF_281122.bash#L160).
 
 
-<!-- TODO: correct the text below which was written quickly on the ^lane. maps also to te genome of chromosome 8? -->
 
 ::: {.callout-tip}
 ## Malaria in Ethiopia
 
-Take the mapping data generated previously, and look for the xx mutation associated with xx resistance, and the xx mutations associated with RDT failure.
+Take the mapping data generated previously and search for mutations in the _Plasmodium falciparum_ dhps gene that are associated with sulfadoxine resistance. Focus on amino acid positions 436, 437, 540, 581, and 613.
 
-What would be the best approach to find these mutations? Work relative to the Plasmodium falciparum 3D7 reference genome. 
+Compare your findings to the following haplotypes:
 
+- Sulfadoxine-resistant (Dd2): F436, G437, K540, A581, S613
+- Wildtype (sulfadoxine-sensitive): S436, A437, K540, A581, A613
+
+Work relative to the _Plasmodium falciparum_ 3D7 reference genome and identify whether the sample contains the resistant or sensitive variant.
 
 :::
 

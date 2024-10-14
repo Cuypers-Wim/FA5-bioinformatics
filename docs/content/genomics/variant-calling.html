@@ -755,8 +755,13 @@ Malaria in Ethiopia
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Take the mapping data generated previously, and look for the xx mutation associated with xx resistance, and the xx mutations associated with RDT failure.</p>
-<p>What would be the best approach to find these mutations? Work relative to the Plasmodium falciparum 3D7 reference genome.</p>
+<p>Take the mapping data generated previously and search for mutations in the <em>Plasmodium falciparum</em> dhps gene that are associated with sulfadoxine resistance. Focus on amino acid positions 436, 437, 540, 581, and 613.</p>
+<p>Compare your findings to the following haplotypes:</p>
+<ul>
+<li>Sulfadoxine-resistant (Dd2): F436, G437, K540, A581, S613</li>
+<li>Wildtype (sulfadoxine-sensitive): S436, A437, K540, A581, A613</li>
+</ul>
+<p>Work relative to the <em>Plasmodium falciparum</em> 3D7 reference genome and identify whether the sample contains the resistant or sensitive variant.</p>
 </div>
 </div>
 
@@ -1211,7 +1216,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

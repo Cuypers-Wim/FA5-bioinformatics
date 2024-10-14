@@ -903,7 +903,7 @@
     "href": "content/genomics/variant-calling.html#annotation-of-variants",
     "title": "13  Variant calling",
     "section": "13.8 Annotation of variants",
-    "text": "13.8 Annotation of variants\nThe final step in our pipeline is to annotate variants. For this, a tool like snpEff can be used. You can see it being used in the AmpliSeq pipeline here.\n\n\n\n\n\n\nMalaria in Ethiopia\n\n\n\nTake the mapping data generated previously, and look for the xx mutation associated with xx resistance, and the xx mutations associated with RDT failure.\nWhat would be the best approach to find these mutations? Work relative to the Plasmodium falciparum 3D7 reference genome.",
+    "text": "13.8 Annotation of variants\nThe final step in our pipeline is to annotate variants. For this, a tool like snpEff can be used. You can see it being used in the AmpliSeq pipeline here.\n\n\n\n\n\n\nMalaria in Ethiopia\n\n\n\nTake the mapping data generated previously and search for mutations in the Plasmodium falciparum dhps gene that are associated with sulfadoxine resistance. Focus on amino acid positions 436, 437, 540, 581, and 613.\nCompare your findings to the following haplotypes:\n\nSulfadoxine-resistant (Dd2): F436, G437, K540, A581, S613\nWildtype (sulfadoxine-sensitive): S436, A437, K540, A581, A613\n\nWork relative to the Plasmodium falciparum 3D7 reference genome and identify whether the sample contains the resistant or sensitive variant.",
     "crumbs": [
       "Processing genomic data",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Variant calling</span>"
