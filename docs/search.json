@@ -921,6 +921,116 @@
     ]
   },
   {
+    "objectID": "content/genomics/results.html",
+    "href": "content/genomics/results.html",
+    "title": "15  Results",
+    "section": "",
+    "text": "15.1 Example results on one sample (without for loops)",
+    "crumbs": [
+      "Processing genomic data",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "content/genomics/results.html#example-results-on-one-sample-without-for-loops",
+    "href": "content/genomics/results.html#example-results-on-one-sample-without-for-loops",
+    "title": "15  Results",
+    "section": "",
+    "text": "15.1.1 Settings on the AHRI computers\nTo get started, you’ll first run\nconda activate Fa5\ncd ~/Desktop/Fa/FA5-bioinformatics/training/data/reference\n\n\n15.1.2 index the reference genome for BWA\nBefore you start the read mapping step, you will need to index the reference genome to which you will map reads. You are already in the reference folder, so you can just run the command:\nbwa index plasmodium_falciparum_3D7.fasta\n\n\n15.1.3 map the reads using BWA\nNow we can move to our results directory for this mapping analysis by running cd ~/Desktop/Fa/FA5-bioinformatics/training/results, and make a new directory for the output of the analysis by running the command mkdir bwa. Enter the directory by running cd bwa\nNow, you just need to adapt the bwa mem command from the course notes so that you refer to the correct files using relative paths. The final command could be as follows:\n\nbwa mem \\\n    ../../data/reference/plasmodium_falciparum_3D7.fasta \\\n    ../../data/fastq/PF0080_S44_L001_R1_001.fastq.gz \\\n    ../../data/fastq/PF0080_S44_L001_R2_001.fastq.gz \\\n    -t 4 \\\n    -Y -K 100000000 \\\n    -R \"@RG\\tID:L001\\tPL:ILLUMINA\\tSM:PF0080_S44\" \\\n    -o PF0080_S44.sam",
+    "crumbs": [
+      "Processing genomic data",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "content/genomics/results.html#do-sorting",
+    "href": "content/genomics/results.html#do-sorting",
+    "title": "15  Results",
+    "section": "15.2 do sorting",
+    "text": "15.2 do sorting\ncd ../../results/bwa/ samtools sort -o PF0080_S44.sorted.bam PF0080_S44.sam",
+    "crumbs": [
+      "Processing genomic data",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "content/genomics/results.html#gatk-create-dictionary",
+    "href": "content/genomics/results.html#gatk-create-dictionary",
+    "title": "15  Results",
+    "section": "15.3 GATK create dictionary",
+    "text": "15.3 GATK create dictionary\ncd ../data/reference/\nsamtools faidx plasmodium_falciparum_3D7.fasta\ngatk CreateSequenceDictionary -R plasmodium_falciparum_3D7.fasta",
+    "crumbs": [
+      "Processing genomic data",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "content/genomics/results.html#index-bam-files",
+    "href": "content/genomics/results.html#index-bam-files",
+    "title": "15  Results",
+    "section": "15.4 index bam files",
+    "text": "15.4 index bam files\nsamtools index PF0080_S44.sorted.bam",
+    "crumbs": [
+      "Processing genomic data",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "content/genomics/results.html#make-output-directory",
+    "href": "content/genomics/results.html#make-output-directory",
+    "title": "15  Results",
+    "section": "15.5 make output directory",
+    "text": "15.5 make output directory\nmkdir ../vcf/",
+    "crumbs": [
+      "Processing genomic data",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "content/genomics/results.html#run-haplotypecaller",
+    "href": "content/genomics/results.html#run-haplotypecaller",
+    "title": "15  Results",
+    "section": "15.6 run HaplotypeCaller",
+    "text": "15.6 run HaplotypeCaller\ngatk HaplotypeCaller\n-R ../../data/reference/plasmodium_falciparum_3D7.fasta\n-I PF0080_S44.sorted.bam\n-O ../vcf/PF0080_S44.g.vcf.gz\n-ERC GVCF",
+    "crumbs": [
+      "Processing genomic data",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "content/genomics/results.html#combine-the-gvcf-files",
+    "href": "content/genomics/results.html#combine-the-gvcf-files",
+    "title": "15  Results",
+    "section": "15.7 combine the GVCF files",
+    "text": "15.7 combine the GVCF files\ncd ../vcf/ gatk CombineGVCFs\n-R ../../data/reference/plasmodium_falciparum_3D7.fasta\n–variant PF0080_S44.g.vcf.gz\n–variant PF0097_S43.g.vcf.gz\n–variant PF0157_S55.g.vcf.gz\n–variant PF0275_S68.g.vcf.gz\n–variant PF0302_S20.g.vcf.gz\n-O samples_combined.g.vcf.gz",
+    "crumbs": [
+      "Processing genomic data",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "content/genomics/results.html#genotype-the-gvcf-files",
+    "href": "content/genomics/results.html#genotype-the-gvcf-files",
+    "title": "15  Results",
+    "section": "15.8 genotype the GVCF files",
+    "text": "15.8 genotype the GVCF files\ngatk GenotypeGVCFs\n-R ../../data/reference/plasmodium_falciparum_3D7.fasta\n-V samples_combined.g.vcf.gz\n-O samples_combined.vcf.gz",
+    "crumbs": [
+      "Processing genomic data",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "content/genomics/results.html#example-results-with-for-loops",
+    "href": "content/genomics/results.html#example-results-with-for-loops",
+    "title": "15  Results",
+    "section": "15.9 Example results with for loops",
+    "text": "15.9 Example results with for loops\nNote that you can also find example scripts for each of the excercises under ./training/scripts",
+    "crumbs": [
+      "Processing genomic data",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
     "objectID": "content/references.html",
     "href": "content/references.html",
     "title": "References",

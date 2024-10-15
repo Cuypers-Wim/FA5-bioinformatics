@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Using the shell – Pathogen Genomics Course</title>
+<title>15&nbsp; Results – Pathogen Genomics Course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/unix/4-unix-navigation.html" rel="next">
-<link href="../../content/unix/2-unix-setup.html" rel="prev">
+<link href="../../content/references.html" rel="next">
+<link href="../../content/genomics/phylogenetics.html" rel="prev">
 <link href="../../content/assets/ITM-symbol_col_rgb.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -76,9 +76,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -118,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/unix/1-unix-intro.html">Introduction to the Unix shell</a></li><li class="breadcrumb-item"><a href="../../content/unix/3-unix-enter-the-shell.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Using the shell</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/results.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Results</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -183,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/unix/3-unix-enter-the-shell.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../content/unix/3-unix-enter-the-shell.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Using the shell</span></span></a>
   </div>
 </li>
@@ -272,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/genomics/results.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/genomics/results.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Results</span></span></a>
   </div>
 </li>
@@ -311,18 +308,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#interacting-with-the-shell" id="toc-interacting-with-the-shell" class="nav-link active" data-scroll-target="#interacting-with-the-shell"><span class="header-section-number">3.1</span> Interacting with the shell</a></li>
-  <li><a href="#command-syntax" id="toc-command-syntax" class="nav-link" data-scroll-target="#command-syntax"><span class="header-section-number">3.2</span> Command syntax</a></li>
-  <li><a href="#tips-and-hints" id="toc-tips-and-hints" class="nav-link" data-scroll-target="#tips-and-hints"><span class="header-section-number">3.3</span> Tips and hints</a></li>
+  <li><a href="#example-results-on-one-sample-without-for-loops" id="toc-example-results-on-one-sample-without-for-loops" class="nav-link active" data-scroll-target="#example-results-on-one-sample-without-for-loops"><span class="header-section-number">15.1</span> Example results on one sample (without for loops)</a>
+  <ul>
+  <li><a href="#settings-on-the-ahri-computers" id="toc-settings-on-the-ahri-computers" class="nav-link" data-scroll-target="#settings-on-the-ahri-computers"><span class="header-section-number">15.1.1</span> Settings on the AHRI computers</a></li>
+  <li><a href="#index-the-reference-genome-for-bwa" id="toc-index-the-reference-genome-for-bwa" class="nav-link" data-scroll-target="#index-the-reference-genome-for-bwa"><span class="header-section-number">15.1.2</span> index the reference genome for BWA</a></li>
+  <li><a href="#map-the-reads-using-bwa" id="toc-map-the-reads-using-bwa" class="nav-link" data-scroll-target="#map-the-reads-using-bwa"><span class="header-section-number">15.1.3</span> map the reads using BWA</a></li>
+  </ul></li>
+  <li><a href="#do-sorting" id="toc-do-sorting" class="nav-link" data-scroll-target="#do-sorting"><span class="header-section-number">15.2</span> do sorting</a></li>
+  <li><a href="#gatk-create-dictionary" id="toc-gatk-create-dictionary" class="nav-link" data-scroll-target="#gatk-create-dictionary"><span class="header-section-number">15.3</span> GATK create dictionary</a></li>
+  <li><a href="#index-bam-files" id="toc-index-bam-files" class="nav-link" data-scroll-target="#index-bam-files"><span class="header-section-number">15.4</span> index bam files</a></li>
+  <li><a href="#make-output-directory" id="toc-make-output-directory" class="nav-link" data-scroll-target="#make-output-directory"><span class="header-section-number">15.5</span> make output directory</a></li>
+  <li><a href="#run-haplotypecaller" id="toc-run-haplotypecaller" class="nav-link" data-scroll-target="#run-haplotypecaller"><span class="header-section-number">15.6</span> run HaplotypeCaller</a></li>
+  <li><a href="#combine-the-gvcf-files" id="toc-combine-the-gvcf-files" class="nav-link" data-scroll-target="#combine-the-gvcf-files"><span class="header-section-number">15.7</span> combine the GVCF files</a></li>
+  <li><a href="#genotype-the-gvcf-files" id="toc-genotype-the-gvcf-files" class="nav-link" data-scroll-target="#genotype-the-gvcf-files"><span class="header-section-number">15.8</span> genotype the GVCF files</a></li>
+  <li><a href="#example-results-with-for-loops" id="toc-example-results-with-for-loops" class="nav-link" data-scroll-target="#example-results-with-for-loops"><span class="header-section-number">15.9</span> Example results with for loops</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/unix/1-unix-intro.html">Introduction to the Unix shell</a></li><li class="breadcrumb-item"><a href="../../content/unix/3-unix-enter-the-shell.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Using the shell</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/results.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Results</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Using the shell</span></h1>
+<h1 class="title"><span id="sec-results" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Results</span></span></h1>
 </div>
 
 
@@ -339,66 +347,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Prior experience
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can skip this section and proceed directly to the exercises if you are already familiar with the basic syntax of Unix commands. We still recommend checking out the tips and hints in <a href="appendix-unix.html#sec-unix-tips" class="quarto-xref"><span>Section A.1</span></a> and the special syntax overview in <a href="appendix-unix.html#sec-table-special-syntax" class="quarto-xref"><span>Section A.2</span></a> though.</p>
-</div>
-</div>
-<section id="interacting-with-the-shell" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="interacting-with-the-shell"><span class="header-section-number">3.1</span> Interacting with the shell</h2>
-<p>When you launch your (Bash) shell, you will be greeted by what is called a shell prompt: a short snippet of text followed by a cursor, which indicates that the shell is waiting for input. The prompt can look different on different systems, but it often consists of your linux username followed by the name of your machine (like in the picture below) or sometimes just a single <code>$</code> symbol. When you see the prompt, you can enter commands interactively and execute them by pressing enter.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../assets/prompt.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="A bash shell prompt waiting for user input"><img src="../assets/prompt.png" class="img-fluid figure-img" alt="A bash shell prompt waiting for user input"></a></p>
-<figcaption>A bash shell prompt waiting for user input</figcaption>
-</figure>
-</div>
-<p>Already note that you cannot use your mouse cursor to move around your terminal. You will need to use your arrow keys (or <a href="https://kapeli.com/cheat_sheets/Bash_Shortcuts.docset/Contents/Resources/Documents/index">shortcuts</a>) to move around while typing commands.</p>
+<section id="example-results-on-one-sample-without-for-loops" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="example-results-on-one-sample-without-for-loops"><span class="header-section-number">15.1</span> Example results on one sample (without for loops)</h2>
+<section id="settings-on-the-ahri-computers" class="level3" data-number="15.1.1">
+<h3 data-number="15.1.1" class="anchored" data-anchor-id="settings-on-the-ahri-computers"><span class="header-section-number">15.1.1</span> Settings on the AHRI computers</h3>
+<p>To get started, you’ll first run</p>
+<p><code>conda activate Fa5</code></p>
+<p><code>cd ~/Desktop/Fa/FA5-bioinformatics/training/data/reference</code></p>
 </section>
-<section id="command-syntax" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="command-syntax"><span class="header-section-number">3.2</span> Command syntax</h2>
-<p>Unix commands generally follow the format:</p>
-<pre><code>command [OPTIONS] argument</code></pre>
-<p>where,</p>
-<ul>
-<li><code>command</code> is the name of the (usually built-in) command that you want to execute.</li>
-<li><code>[OPTIONS]</code> is a list of optional flags to modify the behaviour of the command. They are often preceded by a single (<code>-</code>) or double (<code>--</code>) dash.</li>
-<li><code>argument</code> is a thing that your command can use. E.g., it can be a file name, a short piece of text (or <em>string</em>)</li>
-</ul>
-<p>Try it yourself with the following command:</p>
-<pre><code>echo “Hello world!”</code></pre>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-What did that do? (Click me to expand!)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><code>echo</code> is a command that simply prints a message to your screen (technically, to the <em>standard output stream</em> (stdout) of the terminal). <code>echo</code> is the command, teling the shell what we want to do. <code>"Hello world!"</code> is the target, in this case the message we want to print.</p>
-<p>We place the message between quotes (<code>"</code>) because it contains spaces, and as you will see, spaces (and certain other special characters) can cause confusions. For now, just note that the message that gets printed, is whatever was written between the quotes, but not the quotes themselves.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"Hello world!"</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello</span> world!</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
+<section id="index-the-reference-genome-for-bwa" class="level3" data-number="15.1.2">
+<h3 data-number="15.1.2" class="anchored" data-anchor-id="index-the-reference-genome-for-bwa"><span class="header-section-number">15.1.2</span> index the reference genome for BWA</h3>
+<p>Before you start the read mapping step, you will need to index the reference genome to which you will map reads. You are already in the reference folder, so you can just run the command:</p>
+<p><code>bwa index plasmodium_falciparum_3D7.fasta</code></p>
 </section>
-<section id="tips-and-hints" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="tips-and-hints"><span class="header-section-number">3.3</span> Tips and hints</h2>
-<p>We have compiled a number of helpful tips in the appendix of this course (<a href="appendix-unix.html#sec-unix-tips" class="quarto-xref"><span>Section A.1</span></a>), some of which will hopefully be helpful on your journey towards mastering the unix shell. For now, we recommend at the very least checking out the section on tab-completion and your command history. In fact, you can give it a try already. Just press the up arrow and see if you can recall your previous command! Next, try to type out <code>ec</code>, and press <code>&lt;tab&gt;</code>, to see auto-complete in action.</p>
+<section id="map-the-reads-using-bwa" class="level3" data-number="15.1.3">
+<h3 data-number="15.1.3" class="anchored" data-anchor-id="map-the-reads-using-bwa"><span class="header-section-number">15.1.3</span> map the reads using BWA</h3>
+<p>Now we can move to our results directory for this mapping analysis by running <code>cd ~/Desktop/Fa/FA5-bioinformatics/training/results</code>, and make a new directory for the output of the analysis by running the command <code>mkdir bwa</code>. Enter the directory by running <code>cd bwa</code></p>
+<p>Now, you just need to adapt the <code>bwa mem</code> command from the course notes so that you refer to the correct files using relative paths. The final command could be as follows:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> mem <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ../../data/reference/plasmodium_falciparum_3D7.fasta <span class="dt">\</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    ../../data/fastq/PF0080_S44_L001_R1_001.fastq.gz <span class="dt">\</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    ../../data/fastq/PF0080_S44_L001_R2_001.fastq.gz <span class="dt">\</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">-t</span> 4 <span class="dt">\</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">-Y</span> <span class="at">-K</span> 100000000 <span class="dt">\</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">-R</span> <span class="st">"@RG\tID:L001\tPL:ILLUMINA\tSM:PF0080_S44"</span> <span class="dt">\</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">-o</span> PF0080_S44.sam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="do-sorting" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="do-sorting"><span class="header-section-number">15.2</span> do sorting</h2>
+<p>cd ../../results/bwa/ samtools sort -o PF0080_S44.sorted.bam PF0080_S44.sam</p>
+</section>
+<section id="gatk-create-dictionary" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="gatk-create-dictionary"><span class="header-section-number">15.3</span> GATK create dictionary</h2>
+<p>cd ../data/reference/</p>
+<p>samtools faidx plasmodium_falciparum_3D7.fasta</p>
+<p>gatk CreateSequenceDictionary -R plasmodium_falciparum_3D7.fasta</p>
+</section>
+<section id="index-bam-files" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="index-bam-files"><span class="header-section-number">15.4</span> index bam files</h2>
+<p>samtools index PF0080_S44.sorted.bam</p>
+</section>
+<section id="make-output-directory" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="make-output-directory"><span class="header-section-number">15.5</span> make output directory</h2>
+<p>mkdir ../vcf/</p>
+</section>
+<section id="run-haplotypecaller" class="level2" data-number="15.6">
+<h2 data-number="15.6" class="anchored" data-anchor-id="run-haplotypecaller"><span class="header-section-number">15.6</span> run HaplotypeCaller</h2>
+<p>gatk HaplotypeCaller<br>
+-R ../../data/reference/plasmodium_falciparum_3D7.fasta<br>
+-I PF0080_S44.sorted.bam<br>
+-O ../vcf/PF0080_S44.g.vcf.gz<br>
+-ERC GVCF</p>
+</section>
+<section id="combine-the-gvcf-files" class="level2" data-number="15.7">
+<h2 data-number="15.7" class="anchored" data-anchor-id="combine-the-gvcf-files"><span class="header-section-number">15.7</span> combine the GVCF files</h2>
+<p>cd ../vcf/ gatk CombineGVCFs<br>
+-R ../../data/reference/plasmodium_falciparum_3D7.fasta<br>
+–variant PF0080_S44.g.vcf.gz<br>
+–variant PF0097_S43.g.vcf.gz<br>
+–variant PF0157_S55.g.vcf.gz<br>
+–variant PF0275_S68.g.vcf.gz<br>
+–variant PF0302_S20.g.vcf.gz<br>
+-O samples_combined.g.vcf.gz</p>
+</section>
+<section id="genotype-the-gvcf-files" class="level2" data-number="15.8">
+<h2 data-number="15.8" class="anchored" data-anchor-id="genotype-the-gvcf-files"><span class="header-section-number">15.8</span> genotype the GVCF files</h2>
+<p>gatk GenotypeGVCFs<br>
+-R ../../data/reference/plasmodium_falciparum_3D7.fasta<br>
+-V samples_combined.g.vcf.gz<br>
+-O samples_combined.vcf.gz</p>
+</section>
+<section id="example-results-with-for-loops" class="level2" data-number="15.9">
+<h2 data-number="15.9" class="anchored" data-anchor-id="example-results-with-for-loops"><span class="header-section-number">15.9</span> Example results with for loops</h2>
+<p>Note that you can also find example scripts for each of the excercises under <code>./training/scripts</code></p>
 
 
 </section>
@@ -826,13 +849,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/unix/2-unix-setup.html" class="pagination-link" aria-label="Setting up your own Unix shell">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting up your own Unix shell</span></span>
+      <a href="../../content/genomics/phylogenetics.html" class="pagination-link" aria-label="Phylogenetics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/unix/4-unix-navigation.html" class="pagination-link" aria-label="Navigating the Unix file system">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Navigating the Unix file system</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -850,38 +873,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false,"closeEffect":"zoom"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 
