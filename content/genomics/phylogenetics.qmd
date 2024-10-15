@@ -2,7 +2,7 @@
 
 
 ::: {.callout-tip}
-## Storyline: Malaria in Ethiopia
+## Storyline: Malaria in Ethiopia [excercise not performed during course, will be updated]
 
 Now, it's time to apply your phylogenetics skills to determine where the patient in our storyline contracted their malaria infection.
 

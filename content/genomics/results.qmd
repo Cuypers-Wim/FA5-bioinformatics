@@ -1,0 +1,85 @@
+# Results {#sec-results}
+
+
+## Example results on one sample (without for loops)
+
+### Settings on the AHRI computers
+To get started, you'll first run 
+
+`conda activate Fa5`
+
+`cd ~/Desktop/Fa/FA5-bioinformatics/training/data/reference`
+
+### index the reference genome for BWA
+Before you start the read mapping step, you will need to index the reference genome to which you will map reads. You are already in the reference folder, so you can just run the command:
+
+`bwa index plasmodium_falciparum_3D7.fasta`
+
+### map the reads using BWA
+
+Now we can move to our results directory for this mapping analysis by running `cd ~/Desktop/Fa/FA5-bioinformatics/training/results`, and make a new directory for the output of the analysis by running the command `mkdir bwa`. Enter the directory by running `cd bwa`
+
+Now, you just need to adapt the `bwa mem` command from the course notes so that you refer to the correct files using relative paths. The final command could be as follows:
+
+
+```bash
+
+bwa mem \
+    ../../data/reference/plasmodium_falciparum_3D7.fasta \
+    ../../data/fastq/PF0080_S44_L001_R1_001.fastq.gz \
+    ../../data/fastq/PF0080_S44_L001_R2_001.fastq.gz \
+    -t 4 \
+    -Y -K 100000000 \
+    -R "@RG\tID:L001\tPL:ILLUMINA\tSM:PF0080_S44" \
+    -o PF0080_S44.sam
+```
+
+## do sorting
+cd ../../results/bwa/
+samtools sort -o PF0080_S44.sorted.bam PF0080_S44.sam
+
+
+## GATK create dictionary ##
+cd ../data/reference/
+
+samtools faidx plasmodium_falciparum_3D7.fasta
+
+gatk CreateSequenceDictionary -R plasmodium_falciparum_3D7.fasta
+
+## index bam files
+samtools index PF0080_S44.sorted.bam
+
+## make output directory
+mkdir ../vcf/
+
+## run HaplotypeCaller
+gatk HaplotypeCaller \
+    -R ../../data/reference/plasmodium_falciparum_3D7.fasta \
+    -I PF0080_S44.sorted.bam \
+    -O ../vcf/PF0080_S44.g.vcf.gz \
+    -ERC GVCF
+ 
+  
+## combine the GVCF files
+ cd ../vcf/
+ gatk CombineGVCFs \
+   -R ../../data/reference/plasmodium_falciparum_3D7.fasta \
+   --variant PF0080_S44.g.vcf.gz \
+   --variant PF0097_S43.g.vcf.gz \
+   --variant PF0157_S55.g.vcf.gz \
+   --variant PF0275_S68.g.vcf.gz \
+   --variant PF0302_S20.g.vcf.gz \
+   -O samples_combined.g.vcf.gz
+ 
+## genotype the GVCF files
+gatk GenotypeGVCFs \
+    -R ../../data/reference/plasmodium_falciparum_3D7.fasta \
+    -V samples_combined.g.vcf.gz \
+    -O samples_combined.vcf.gz  
+ 
+
+
+
+## Example results with for loops
+
+Note that you can also find example scripts for each of the excercises under `./training/scripts`
