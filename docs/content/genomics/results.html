@@ -311,17 +311,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#example-results-on-one-sample-without-for-loops" id="toc-example-results-on-one-sample-without-for-loops" class="nav-link active" data-scroll-target="#example-results-on-one-sample-without-for-loops"><span class="header-section-number">15.1</span> Example results on one sample (without for loops)</a>
   <ul>
   <li><a href="#settings-on-the-ahri-computers" id="toc-settings-on-the-ahri-computers" class="nav-link" data-scroll-target="#settings-on-the-ahri-computers"><span class="header-section-number">15.1.1</span> Settings on the AHRI computers</a></li>
-  <li><a href="#index-the-reference-genome-for-bwa" id="toc-index-the-reference-genome-for-bwa" class="nav-link" data-scroll-target="#index-the-reference-genome-for-bwa"><span class="header-section-number">15.1.2</span> index the reference genome for BWA</a></li>
-  <li><a href="#map-the-reads-using-bwa" id="toc-map-the-reads-using-bwa" class="nav-link" data-scroll-target="#map-the-reads-using-bwa"><span class="header-section-number">15.1.3</span> map the reads using BWA</a></li>
+  <li><a href="#indexing-the-reference-genome-for-bwa" id="toc-indexing-the-reference-genome-for-bwa" class="nav-link" data-scroll-target="#indexing-the-reference-genome-for-bwa"><span class="header-section-number">15.1.2</span> Indexing the Reference Genome for BWA</a></li>
+  <li><a href="#mapping-reads-sorting-and-bam-conversion" id="toc-mapping-reads-sorting-and-bam-conversion" class="nav-link" data-scroll-target="#mapping-reads-sorting-and-bam-conversion"><span class="header-section-number">15.1.3</span> Mapping Reads, Sorting, and BAM Conversion</a></li>
+  <li><a href="#variant-calling-using-gatk" id="toc-variant-calling-using-gatk" class="nav-link" data-scroll-target="#variant-calling-using-gatk"><span class="header-section-number">15.1.4</span> Variant Calling using GATK</a></li>
+  <li><a href="#combining-multiple-gvcf-files" id="toc-combining-multiple-gvcf-files" class="nav-link" data-scroll-target="#combining-multiple-gvcf-files"><span class="header-section-number">15.1.5</span> Combining Multiple GVCF Files</a></li>
+  <li><a href="#genotyping-the-gvcf-files" id="toc-genotyping-the-gvcf-files" class="nav-link" data-scroll-target="#genotyping-the-gvcf-files"><span class="header-section-number">15.1.6</span> Genotyping the GVCF Files</a></li>
   </ul></li>
-  <li><a href="#do-sorting" id="toc-do-sorting" class="nav-link" data-scroll-target="#do-sorting"><span class="header-section-number">15.2</span> do sorting</a></li>
-  <li><a href="#gatk-create-dictionary" id="toc-gatk-create-dictionary" class="nav-link" data-scroll-target="#gatk-create-dictionary"><span class="header-section-number">15.3</span> GATK create dictionary</a></li>
-  <li><a href="#index-bam-files" id="toc-index-bam-files" class="nav-link" data-scroll-target="#index-bam-files"><span class="header-section-number">15.4</span> index bam files</a></li>
-  <li><a href="#make-output-directory" id="toc-make-output-directory" class="nav-link" data-scroll-target="#make-output-directory"><span class="header-section-number">15.5</span> make output directory</a></li>
-  <li><a href="#run-haplotypecaller" id="toc-run-haplotypecaller" class="nav-link" data-scroll-target="#run-haplotypecaller"><span class="header-section-number">15.6</span> run HaplotypeCaller</a></li>
-  <li><a href="#combine-the-gvcf-files" id="toc-combine-the-gvcf-files" class="nav-link" data-scroll-target="#combine-the-gvcf-files"><span class="header-section-number">15.7</span> combine the GVCF files</a></li>
-  <li><a href="#genotype-the-gvcf-files" id="toc-genotype-the-gvcf-files" class="nav-link" data-scroll-target="#genotype-the-gvcf-files"><span class="header-section-number">15.8</span> genotype the GVCF files</a></li>
-  <li><a href="#example-results-with-for-loops" id="toc-example-results-with-for-loops" class="nav-link" data-scroll-target="#example-results-with-for-loops"><span class="header-section-number">15.9</span> Example results with for loops</a></li>
+  <li><a href="#example-results-using-for-loops" id="toc-example-results-using-for-loops" class="nav-link" data-scroll-target="#example-results-using-for-loops"><span class="header-section-number">15.2</span> Example results using for loops</a>
+  <ul>
+  <li><a href="#initial-setup-and-environment" id="toc-initial-setup-and-environment" class="nav-link" data-scroll-target="#initial-setup-and-environment"><span class="header-section-number">15.2.1</span> Initial Setup and Environment</a></li>
+  <li><a href="#variant-calling-with-gatk" id="toc-variant-calling-with-gatk" class="nav-link" data-scroll-target="#variant-calling-with-gatk"><span class="header-section-number">15.2.2</span> variant calling with GATK</a></li>
+  <li><a href="#running-gatk-haplotypecaller-for-multiple-samples" id="toc-running-gatk-haplotypecaller-for-multiple-samples" class="nav-link" data-scroll-target="#running-gatk-haplotypecaller-for-multiple-samples"><span class="header-section-number">15.2.3</span> Running GATK HaplotypeCaller for Multiple Samples</a></li>
+  <li><a href="#genotyping-the-combined-gvcf-files" id="toc-genotyping-the-combined-gvcf-files" class="nav-link" data-scroll-target="#genotyping-the-combined-gvcf-files"><span class="header-section-number">15.2.4</span> Genotyping the Combined GVCF Files</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -351,79 +353,161 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="15.1" class="anchored" data-anchor-id="example-results-on-one-sample-without-for-loops"><span class="header-section-number">15.1</span> Example results on one sample (without for loops)</h2>
 <section id="settings-on-the-ahri-computers" class="level3" data-number="15.1.1">
 <h3 data-number="15.1.1" class="anchored" data-anchor-id="settings-on-the-ahri-computers"><span class="header-section-number">15.1.1</span> Settings on the AHRI computers</h3>
-<p>To get started, you’ll first run</p>
-<p><code>conda activate Fa5</code></p>
-<p><code>cd ~/Desktop/Fa/FA5-bioinformatics/training/data/reference</code></p>
+<p>To get started, activate your conda environment and navigate to the directory where the reference genome is located:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate Fa5</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/Fa/FA5-bioinformatics/training/data/reference</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="index-the-reference-genome-for-bwa" class="level3" data-number="15.1.2">
-<h3 data-number="15.1.2" class="anchored" data-anchor-id="index-the-reference-genome-for-bwa"><span class="header-section-number">15.1.2</span> index the reference genome for BWA</h3>
-<p>Before you start the read mapping step, you will need to index the reference genome to which you will map reads. You are already in the reference folder, so you can just run the command:</p>
-<p><code>bwa index plasmodium_falciparum_3D7.fasta</code></p>
+<section id="indexing-the-reference-genome-for-bwa" class="level3" data-number="15.1.2">
+<h3 data-number="15.1.2" class="anchored" data-anchor-id="indexing-the-reference-genome-for-bwa"><span class="header-section-number">15.1.2</span> Indexing the Reference Genome for BWA</h3>
+<p>Before performing the read mapping, you need to index the reference genome. Run the following command to index it:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> index plasmodium_falciparum_3D7.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="map-the-reads-using-bwa" class="level3" data-number="15.1.3">
-<h3 data-number="15.1.3" class="anchored" data-anchor-id="map-the-reads-using-bwa"><span class="header-section-number">15.1.3</span> map the reads using BWA</h3>
-<p>Now we can move to our results directory for this mapping analysis by running <code>cd ~/Desktop/Fa/FA5-bioinformatics/training/results</code>, and make a new directory for the output of the analysis by running the command <code>mkdir bwa</code>. Enter the directory by running <code>cd bwa</code></p>
-<p>Now, you just need to adapt the <code>bwa mem</code> command from the course notes so that you refer to the correct files using relative paths. The final command could be as follows:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> mem <span class="dt">\</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ../../data/reference/plasmodium_falciparum_3D7.fasta <span class="dt">\</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    ../../data/fastq/PF0080_S44_L001_R1_001.fastq.gz <span class="dt">\</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    ../../data/fastq/PF0080_S44_L001_R2_001.fastq.gz <span class="dt">\</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">-t</span> 4 <span class="dt">\</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">-Y</span> <span class="at">-K</span> 100000000 <span class="dt">\</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">-R</span> <span class="st">"@RG\tID:L001\tPL:ILLUMINA\tSM:PF0080_S44"</span> <span class="dt">\</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">-o</span> PF0080_S44.sam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="mapping-reads-sorting-and-bam-conversion" class="level3" data-number="15.1.3">
+<h3 data-number="15.1.3" class="anchored" data-anchor-id="mapping-reads-sorting-and-bam-conversion"><span class="header-section-number">15.1.3</span> Mapping Reads, Sorting, and BAM Conversion</h3>
+<p>Now, navigate to your results directory and create a new folder for storing the BWA output:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/Fa/FA5-bioinformatics/training/results</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> bwa</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> bwa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can adapt the following <code>bwa mem</code> command to map the reads to the indexed reference genome. This example uses paired-end FASTQ files:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> mem <span class="dt">\</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ../../data/reference/plasmodium_falciparum_3D7.fasta <span class="dt">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    ../../data/fastq/PF0080_S44_L001_R1_001.fastq.gz <span class="dt">\</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    ../../data/fastq/PF0080_S44_L001_R2_001.fastq.gz <span class="dt">\</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">-t</span> 4 <span class="dt">\</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">-Y</span> <span class="at">-K</span> 100000000 <span class="dt">\</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">-R</span> <span class="st">"@RG\tID:L001\tPL:ILLUMINA\tSM:PF0080_S44"</span> <span class="dt">\</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">-o</span> PF0080_S44.sam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that the data was not in the working directory (<code>/training/results/bwa</code>), so we used relative paths to refere to the FASTQ files (<code>../../data/fastq/</code>).</p>
+<p>The resulting <code>.sam</code> file is now in your current working directory. Next, sort the <code>.sam</code> file and convert it to a <code>.bam</code> file using the following command:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> sort <span class="at">-o</span> PF0080_S44.sorted.bam PF0080_S44.sam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You now have a sorted BAM file ready for variant calling!</p>
+</section>
+<section id="variant-calling-using-gatk" class="level3" data-number="15.1.4">
+<h3 data-number="15.1.4" class="anchored" data-anchor-id="variant-calling-using-gatk"><span class="header-section-number">15.1.4</span> Variant Calling using GATK</h3>
+<p>Before running GATK, you need to ensure the reference genome is properly indexed. Navigate to the reference directory and run the following commands to index the reference and create the necessary files:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/Fa/FA5-bioinformatics/training/data/reference/</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> faidx plasmodium_falciparum_3D7.fasta</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> CreateSequenceDictionary <span class="at">-R</span> plasmodium_falciparum_3D7.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Make sure your BAM file is indexed before proceeding with variant calling:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/Fa/FA5-bioinformatics/training/results/bwa/</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index PF0080_S44.sorted.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, create an output directory for storing VCF files:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/Fa/FA5-bioinformatics/training/results/</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> vcf</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> vcf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>From this directory, run the GATK HaplotypeCaller to perform variant calling:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> HaplotypeCaller <span class="dt">\</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-R</span> ../../data/reference/plasmodium_falciparum_3D7.fasta <span class="dt">\</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-I</span> ../bwa/PF0080_S44.sorted.bam <span class="dt">\</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-O</span> PF0080_S44.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">-ERC</span> GVCF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="combining-multiple-gvcf-files" class="level3" data-number="15.1.5">
+<h3 data-number="15.1.5" class="anchored" data-anchor-id="combining-multiple-gvcf-files"><span class="header-section-number">15.1.5</span> Combining Multiple GVCF Files</h3>
+<p>If you have multiple GVCF files, you can combine them using the <code>CombineGVCFs</code> command:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> CombineGVCFs <span class="dt">\</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-R</span> ../../data/reference/plasmodium_falciparum_3D7.fasta <span class="dt">\</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--variant</span> PF0080_S44.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--variant</span> PF0097_S43.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--variant</span> PF0157_S55.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">--variant</span> PF0275_S68.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--variant</span> PF0302_S20.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">-O</span> samples_combined.g.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="genotyping-the-gvcf-files" class="level3" data-number="15.1.6">
+<h3 data-number="15.1.6" class="anchored" data-anchor-id="genotyping-the-gvcf-files"><span class="header-section-number">15.1.6</span> Genotyping the GVCF Files</h3>
+<p>Finally, use <code>GenotypeGVCFs</code> to genotype the combined GVCF files:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> GenotypeGVCFs <span class="dt">\</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-R</span> ../../data/reference/plasmodium_falciparum_3D7.fasta <span class="dt">\</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-V</span> samples_combined.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-O</span> samples_combined.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="do-sorting" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="do-sorting"><span class="header-section-number">15.2</span> do sorting</h2>
-<p>cd ../../results/bwa/ samtools sort -o PF0080_S44.sorted.bam PF0080_S44.sam</p>
+<section id="example-results-using-for-loops" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="example-results-using-for-loops"><span class="header-section-number">15.2</span> Example results using for loops</h2>
+<section id="initial-setup-and-environment" class="level3" data-number="15.2.1">
+<h3 data-number="15.2.1" class="anchored" data-anchor-id="initial-setup-and-environment"><span class="header-section-number">15.2.1</span> Initial Setup and Environment</h3>
+<p>Activate your <code>Fa5</code> conda environment:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate Fa5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can automate the mapping of multiple paired-end FASTQ files using a <code>for</code> loop. Start by navigating to the directory containing the reference genome:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/Fa/FA5-bioinformatics/training/results/bwa</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we first put the absolute path to the reference genome in a variable</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="va">ref</span><span class="op">=</span>/home/bioinfo1/Desktop/Fa/FA5-bioinformatics/training/data/reference/plasmodium_falciparum_3D7.fasta</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> fastq_file_R1 <span class="kw">in</span> ../../data/fastq/<span class="pp">*</span>_L001_R1.trim.fastq.gz</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="va">sample</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${fastq_file_R1}</span> _L001_R1.trim.fastq.gz<span class="va">)</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="va">fastq_file_R2</span><span class="op">=</span><span class="va">${fastq_file_R1</span><span class="op">/</span><span class="ss">_R1.trim.fastq.gz</span><span class="op">/</span>_R2.trim.fastq.gz<span class="va">}</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">"Processing: </span><span class="va">${sample}</span><span class="st">"</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">bwa</span> mem <span class="dt">\</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"</span><span class="va">${ref}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"</span><span class="va">${fastq_file_R1}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"</span><span class="va">${fastq_file_R2}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">-t</span> 4 <span class="dt">\</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">-Y</span> <span class="at">-K</span> 100000000 <span class="dt">\</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">-R</span> <span class="st">"@RG\tID:L001\tPL:ILLUMINA\tSM:</span><span class="va">${sample}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">-o</span> <span class="st">"</span><span class="va">${sample}</span><span class="st">.sam"</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After mapping, sort the resulting SAM files and convert them into BAM files:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sam_file <span class="kw">in</span> <span class="pp">*</span>.sam</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">bam_file</span><span class="op">=</span><span class="va">${sam_file</span><span class="op">/</span><span class="ss">.sam</span><span class="op">/</span>.sorted.bam<span class="va">}</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">samtools</span> sort <span class="at">-o</span> <span class="va">${bam_file}</span> <span class="va">${sam_file}</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="gatk-create-dictionary" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="gatk-create-dictionary"><span class="header-section-number">15.3</span> GATK create dictionary</h2>
-<p>cd ../data/reference/</p>
-<p>samtools faidx plasmodium_falciparum_3D7.fasta</p>
-<p>gatk CreateSequenceDictionary -R plasmodium_falciparum_3D7.fasta</p>
+<section id="variant-calling-with-gatk" class="level3" data-number="15.2.2">
+<h3 data-number="15.2.2" class="anchored" data-anchor-id="variant-calling-with-gatk"><span class="header-section-number">15.2.2</span> variant calling with GATK</h3>
+<p>Ensure the reference genome is indexed properly, and index the sorted BAM files for variant calling:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~Desktop/Fa/FA5-bioinformatics/training/data/reference/</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> faidx plasmodium_falciparum_3D7.fasta</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> CreateSequenceDictionary <span class="at">-R</span> plasmodium_falciparum_3D7.fasta</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> cd ~/Desktop/Fa/FA5-bioinformatics/training/results/bwa</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bam_file <span class="kw">in</span> <span class="pp">*</span>.sorted.bam<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">samtools</span> index <span class="va">${bam_file}</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="index-bam-files" class="level2" data-number="15.4">
-<h2 data-number="15.4" class="anchored" data-anchor-id="index-bam-files"><span class="header-section-number">15.4</span> index bam files</h2>
-<p>samtools index PF0080_S44.sorted.bam</p>
+<section id="running-gatk-haplotypecaller-for-multiple-samples" class="level3" data-number="15.2.3">
+<h3 data-number="15.2.3" class="anchored" data-anchor-id="running-gatk-haplotypecaller-for-multiple-samples"><span class="header-section-number">15.2.3</span> Running GATK HaplotypeCaller for Multiple Samples</h3>
+<p>Now, create a directory for VCF files and run <code>HaplotypeCaller</code> for each BAM file:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/Fa/FA5-bioinformatics/training/results/</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> vcf</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bam_file <span class="kw">in</span> <span class="pp">*</span>.sorted.bam<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="va">sample</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${bam_file}</span> .sorted.bam<span class="va">)</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">gatk</span> HaplotypeCaller <span class="dt">\</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">-R</span> ../../data/reference/plasmodium_falciparum_3D7.fasta <span class="dt">\</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">-I</span> <span class="va">${bam_file}</span> <span class="dt">\</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">-O</span> ../vcf/<span class="va">${sample}</span>.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">-ERC</span> GVCF</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After calling variants, you can combine the resulting GVCF files into a cohort file:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> CombineGVCFs <span class="dt">\</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">-R</span> ../../data/reference/plasmodium_falciparum_3D7.fasta <span class="dt">\</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">--variant</span> PF0080_S44.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">--variant</span> PF0097_S43.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">--variant</span> PF0157_S55.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>   <span class="at">--variant</span> PF0275_S68.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">--variant</span> PF0302_S20.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>   <span class="at">-O</span> samples_combined.g.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="make-output-directory" class="level2" data-number="15.5">
-<h2 data-number="15.5" class="anchored" data-anchor-id="make-output-directory"><span class="header-section-number">15.5</span> make output directory</h2>
-<p>mkdir ../vcf/</p>
-</section>
-<section id="run-haplotypecaller" class="level2" data-number="15.6">
-<h2 data-number="15.6" class="anchored" data-anchor-id="run-haplotypecaller"><span class="header-section-number">15.6</span> run HaplotypeCaller</h2>
-<p>gatk HaplotypeCaller<br>
--R ../../data/reference/plasmodium_falciparum_3D7.fasta<br>
--I PF0080_S44.sorted.bam<br>
--O ../vcf/PF0080_S44.g.vcf.gz<br>
--ERC GVCF</p>
-</section>
-<section id="combine-the-gvcf-files" class="level2" data-number="15.7">
-<h2 data-number="15.7" class="anchored" data-anchor-id="combine-the-gvcf-files"><span class="header-section-number">15.7</span> combine the GVCF files</h2>
-<p>cd ../vcf/ gatk CombineGVCFs<br>
--R ../../data/reference/plasmodium_falciparum_3D7.fasta<br>
-–variant PF0080_S44.g.vcf.gz<br>
-–variant PF0097_S43.g.vcf.gz<br>
-–variant PF0157_S55.g.vcf.gz<br>
-–variant PF0275_S68.g.vcf.gz<br>
-–variant PF0302_S20.g.vcf.gz<br>
--O samples_combined.g.vcf.gz</p>
-</section>
-<section id="genotype-the-gvcf-files" class="level2" data-number="15.8">
-<h2 data-number="15.8" class="anchored" data-anchor-id="genotype-the-gvcf-files"><span class="header-section-number">15.8</span> genotype the GVCF files</h2>
-<p>gatk GenotypeGVCFs<br>
--R ../../data/reference/plasmodium_falciparum_3D7.fasta<br>
--V samples_combined.g.vcf.gz<br>
--O samples_combined.vcf.gz</p>
-</section>
-<section id="example-results-with-for-loops" class="level2" data-number="15.9">
-<h2 data-number="15.9" class="anchored" data-anchor-id="example-results-with-for-loops"><span class="header-section-number">15.9</span> Example results with for loops</h2>
-<p>Note that you can also find example scripts for each of the excercises under <code>./training/scripts</code></p>
+<section id="genotyping-the-combined-gvcf-files" class="level3" data-number="15.2.4">
+<h3 data-number="15.2.4" class="anchored" data-anchor-id="genotyping-the-combined-gvcf-files"><span class="header-section-number">15.2.4</span> Genotyping the Combined GVCF Files</h3>
+<p>Finally, run <code>GenotypeGVCFs</code> to generate a VCF file with the genotyped variants:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> GenotypeGVCFs <span class="dt">\</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-R</span> ../../data/reference/plasmodium_falciparum_3D7.fasta <span class="dt">\</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-V</span> samples_combined.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-O</span> samples_combined.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This approach uses loops to automate the process, which is especially useful when working with multiple samples. Example scripts for automation can also be found in the <code>./training/scripts/</code> directory.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

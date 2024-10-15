@@ -1,29 +1,34 @@
 # Results {#sec-results}
 
-
 ## Example results on one sample (without for loops)
 
 ### Settings on the AHRI computers
-To get started, you'll first run 
-
-`conda activate Fa5`
-
-`cd ~/Desktop/Fa/FA5-bioinformatics/training/data/reference`
-
-### index the reference genome for BWA
-Before you start the read mapping step, you will need to index the reference genome to which you will map reads. You are already in the reference folder, so you can just run the command:
-
-`bwa index plasmodium_falciparum_3D7.fasta`
-
-### map the reads using BWA
-
-Now we can move to our results directory for this mapping analysis by running `cd ~/Desktop/Fa/FA5-bioinformatics/training/results`, and make a new directory for the output of the analysis by running the command `mkdir bwa`. Enter the directory by running `cd bwa`
-
-Now, you just need to adapt the `bwa mem` command from the course notes so that you refer to the correct files using relative paths. The final command could be as follows:
-
+To get started, activate your conda environment and navigate to the directory where the reference genome is located:
 
 ```bash
+conda activate Fa5
+cd ~/Desktop/Fa/FA5-bioinformatics/training/data/reference
+```
 
+### Indexing the Reference Genome for BWA
+Before performing the read mapping, you need to index the reference genome. Run the following command to index it:
+
+```bash
+bwa index plasmodium_falciparum_3D7.fasta
+```
+
+### Mapping Reads, Sorting, and BAM Conversion
+Now, navigate to your results directory and create a new folder for storing the BWA output:
+
+```bash
+cd ~/Desktop/Fa/FA5-bioinformatics/training/results
+mkdir bwa
+cd bwa
+```
+
+You can adapt the following `bwa mem` command to map the reads to the indexed reference genome. This example uses paired-end FASTQ files:
+
+```bash
 bwa mem \
     ../../data/reference/plasmodium_falciparum_3D7.fasta \
     ../../data/fastq/PF0080_S44_L001_R1_001.fastq.gz \
@@ -33,36 +38,160 @@ bwa mem \
     -R "@RG\tID:L001\tPL:ILLUMINA\tSM:PF0080_S44" \
     -o PF0080_S44.sam
 ```
+Note that the data was not in the working directory (`/training/results/bwa`), so we used relative paths to refere to the FASTQ files (`../../data/fastq/`).
 
-## do sorting
-cd ../../results/bwa/
+The resulting `.sam` file is now in your current working directory. Next, sort the `.sam` file and convert it to a `.bam` file using the following command:
+
+```bash
 samtools sort -o PF0080_S44.sorted.bam PF0080_S44.sam
+```
 
+You now have a sorted BAM file ready for variant calling!
 
-## GATK create dictionary ##
-cd ../data/reference/
+### Variant Calling using GATK
 
+Before running GATK, you need to ensure the reference genome is properly indexed. Navigate to the reference directory and run the following commands to index the reference and create the necessary files:
+
+```bash
+cd ~/Desktop/Fa/FA5-bioinformatics/training/data/reference/
 samtools faidx plasmodium_falciparum_3D7.fasta
-
 gatk CreateSequenceDictionary -R plasmodium_falciparum_3D7.fasta
+```
 
-## index bam files
+Make sure your BAM file is indexed before proceeding with variant calling:
+
+```bash
+cd ~/Desktop/Fa/FA5-bioinformatics/training/results/bwa/
 samtools index PF0080_S44.sorted.bam
+```
 
-## make output directory
-mkdir ../vcf/
+Now, create an output directory for storing VCF files:
 
-## run HaplotypeCaller
+```bash
+cd ~/Desktop/Fa/FA5-bioinformatics/training/results/
+mkdir vcf
+cd vcf
+```
+
+From this directory, run the GATK HaplotypeCaller to perform variant calling:
+
+```bash
 gatk HaplotypeCaller \
     -R ../../data/reference/plasmodium_falciparum_3D7.fasta \
-    -I PF0080_S44.sorted.bam \
-    -O ../vcf/PF0080_S44.g.vcf.gz \
+    -I ../bwa/PF0080_S44.sorted.bam \
+    -O PF0080_S44.g.vcf.gz \
     -ERC GVCF
- 
+```
+
+### Combining Multiple GVCF Files
+If you have multiple GVCF files, you can combine them using the `CombineGVCFs` command:
+
+```bash
+
+gatk CombineGVCFs \
+    -R ../../data/reference/plasmodium_falciparum_3D7.fasta \
+    --variant PF0080_S44.g.vcf.gz \
+    --variant PF0097_S43.g.vcf.gz \
+    --variant PF0157_S55.g.vcf.gz \
+    --variant PF0275_S68.g.vcf.gz \
+    --variant PF0302_S20.g.vcf.gz \
+    -O samples_combined.g.vcf.gz
+```
+
+### Genotyping the GVCF Files
+Finally, use `GenotypeGVCFs` to genotype the combined GVCF files:
+
+```bash
+gatk GenotypeGVCFs \
+    -R ../../data/reference/plasmodium_falciparum_3D7.fasta \
+    -V samples_combined.g.vcf.gz \
+    -O samples_combined.vcf.gz
+```
+
+
+
+## Example results using for loops
+
+### Initial Setup and Environment
+Activate your `Fa5` conda environment:
+
+```bash
+conda activate Fa5
+```
+
+You can automate the mapping of multiple paired-end FASTQ files using a `for` loop. Start by navigating to the directory containing the reference genome:
+
+```bash
+
+cd ~/Desktop/Fa/FA5-bioinformatics/training/results/bwa
+# we first put the absolute path to the reference genome in a variable
+ref=/home/bioinfo1/Desktop/Fa/FA5-bioinformatics/training/data/reference/plasmodium_falciparum_3D7.fasta
+
+
+for fastq_file_R1 in ../../data/fastq/*_L001_R1.trim.fastq.gz
+do
   
-## combine the GVCF files
- cd ../vcf/
- gatk CombineGVCFs \
+  sample=$(basename ${fastq_file_R1} _L001_R1.trim.fastq.gz)
+  fastq_file_R2=${fastq_file_R1/_R1.trim.fastq.gz/_R2.trim.fastq.gz}
+  echo "Processing: ${sample}"
+  
+  bwa mem \
+    "${ref}" \
+    "${fastq_file_R1}" \
+    "${fastq_file_R2}" \
+    -t 4 \
+    -Y -K 100000000 \
+    -R "@RG\tID:L001\tPL:ILLUMINA\tSM:${sample}" \
+    -o "${sample}.sam"
+done
+```
+
+After mapping, sort the resulting SAM files and convert them into BAM files:
+
+```bash
+for sam_file in *.sam
+do
+  bam_file=${sam_file/.sam/.sorted.bam}
+  samtools sort -o ${bam_file} ${sam_file}
+done
+```
+
+### variant calling with GATK
+Ensure the reference genome is indexed properly, and index the sorted BAM files for variant calling:
+
+```bash
+cd ~Desktop/Fa/FA5-bioinformatics/training/data/reference/
+samtools faidx plasmodium_falciparum_3D7.fasta
+gatk CreateSequenceDictionary -R plasmodium_falciparum_3D7.fasta
+
+cd cd ~/Desktop/Fa/FA5-bioinformatics/training/results/bwa
+for bam_file in *.sorted.bam; do
+  samtools index ${bam_file}
+done
+```
+
+### Running GATK HaplotypeCaller for Multiple Samples
+Now, create a directory for VCF files and run `HaplotypeCaller` for each BAM file:
+
+```bash
+cd ~/Desktop/Fa/FA5-bioinformatics/training/results/
+mkdir vcf
+
+for bam_file in *.sorted.bam; do
+  sample=$(basename ${bam_file} .sorted.bam)
+  gatk HaplotypeCaller \
+    -R ../../data/reference/plasmodium_falciparum_3D7.fasta \
+    -I ${bam_file} \
+    -O ../vcf/${sample}.g.vcf.gz \
+    -ERC GVCF
+done
+```
+
+After calling variants, you can combine the resulting GVCF files into a cohort file:
+
+```bash
+
+gatk CombineGVCFs \
    -R ../../data/reference/plasmodium_falciparum_3D7.fasta \
    --variant PF0080_S44.g.vcf.gz \
    --variant PF0097_S43.g.vcf.gz \
@@ -70,16 +199,16 @@ gatk HaplotypeCaller \
    --variant PF0275_S68.g.vcf.gz \
    --variant PF0302_S20.g.vcf.gz \
    -O samples_combined.g.vcf.gz
- 
-## genotype the GVCF files
+```
+
+### Genotyping the Combined GVCF Files
+Finally, run `GenotypeGVCFs` to generate a VCF file with the genotyped variants:
+
+```bash
 gatk GenotypeGVCFs \
     -R ../../data/reference/plasmodium_falciparum_3D7.fasta \
     -V samples_combined.g.vcf.gz \
-    -O samples_combined.vcf.gz  
- 
+    -O samples_combined.vcf.gz
+```
 
-
-
-## Example results with for loops
-
-Note that you can also find example scripts for each of the excercises under `./training/scripts`
+This approach uses loops to automate the process, which is especially useful when working with multiple samples. Example scripts for automation can also be found in the `./training/scripts/` directory.
