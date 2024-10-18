@@ -392,48 +392,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="option-1-combine-vcfs-from-gatk" class="level3" data-number="14.2.1">
 <h3 data-number="14.2.1" class="anchored" data-anchor-id="option-1-combine-vcfs-from-gatk"><span class="header-section-number">14.2.1</span> Option 1: Combine VCFs from GATK</h3>
 <p>If you have been working with <em>Plasmodium</em> or other parasites and used <code>BWA</code> and <code>GATK</code>, there are multiple ways to combine your data into a format suitable for phylogenetic tree-building programs.</p>
-<p>One option is to use the python script that we provided during the course, which you can use on your combined VCF files.</p>
+<p>One option is to use the python script that we used during the course. You can find it here: https://github.com/FreBio/mytools/blob/master/vcf2fasta.py . You can use on your combined VCF files produced with GATK.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-v</span> snps filtered_output.vcf.gz <span class="at">-o</span> filtered_output.snps.vcf.gz</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vcf2fasta.py</span> filtered_output.snps.vcf.gz</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">FastTree</span> <span class="at">-gtr</span> <span class="at">-nt</span> filtered_output.snps.vcf.gz.fa <span class="op">&gt;</span> mytree.nw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>TO BE CONTINUED!!</p>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vcf2fasta.py</span> filtered_output.snps.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After running BCFtools, the script will generate you a fasta file that you can use as input for a phylogenetic tree building program as such:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FastTree</span> <span class="at">-gtr</span> <span class="at">-nt</span> filtered_output.snps.vcf.gz.fa <span class="op">&gt;</span> mytree.nw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="option-2-run-snippy-core" class="level3" data-number="14.2.2">
 <h3 data-number="14.2.2" class="anchored" data-anchor-id="option-2-run-snippy-core"><span class="header-section-number">14.2.2</span> Option 2: Run <code>snippy Core</code></h3>
 <p>If your project involves bacteria or viruses, you may have used <code>snippy</code> to perform mapping and variant calling on your trimed FASTQ files. The command might have looked something like this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">cpus</span><span class="op">=</span>8</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">REFERENCE</span><span class="op">=</span><span class="st">""</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> read_1 <span class="kw">in</span> <span class="pp">*</span>_R1_001.fastq.gz</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="va">sample_name</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${read_1}</span> _R1_001.fastq.gz<span class="va">)</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">snippy</span> <span class="dt">\</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--cpus</span> <span class="st">"</span><span class="va">$cpus</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">--ref</span> <span class="st">"</span><span class="va">$REFERENCE</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">--R1</span> <span class="st">"</span><span class="va">$read_1</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">--R2</span> <span class="va">${sample_name}</span>_R2_001.fastq.gz <span class="dt">\</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">--outdir</span> snippy/snippy_<span class="st">"</span><span class="va">$sample_name</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">--prefix</span> <span class="st">"</span><span class="va">$sample_name</span><span class="st">"</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">cpus</span><span class="op">=</span>8</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">REFERENCE</span><span class="op">=</span><span class="st">""</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> read_1 <span class="kw">in</span> <span class="pp">*</span>_R1_001.fastq.gz</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="va">sample_name</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${read_1}</span> _R1_001.fastq.gz<span class="va">)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">snippy</span> <span class="dt">\</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--cpus</span> <span class="st">"</span><span class="va">$cpus</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">--ref</span> <span class="st">"</span><span class="va">$REFERENCE</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">--R1</span> <span class="st">"</span><span class="va">$read_1</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">--R2</span> <span class="va">${sample_name}</span>_R2_001.fastq.gz <span class="dt">\</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">--outdir</span> snippy/snippy_<span class="st">"</span><span class="va">$sample_name</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">--prefix</span> <span class="st">"</span><span class="va">$sample_name</span><span class="st">"</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This command will generate a series of folders inside the <code>snippy</code> directory, with each folder named <code>snippy_$sample_name</code>. These folders contain multiple output files, including consensus VCF files.</p>
 <p><code>snippy</code> simplifies the process of creating a core SNP alignment. You can run the following command:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">REF</span><span class="op">=</span><span class="st">""</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">prefix</span><span class="op">=</span><span class="st">""</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">snippy</span> core <span class="at">--reference</span> <span class="va">$REF</span> <span class="at">--prefix</span> <span class="va">$prefix</span> snippy_<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">REF</span><span class="op">=</span><span class="st">""</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="va">prefix</span><span class="op">=</span><span class="st">""</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">snippy</span> core <span class="at">--reference</span> <span class="va">$REF</span> <span class="at">--prefix</span> <span class="va">$prefix</span> snippy_<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If the command runs successfully, you will find two files: <code>core.aln</code> and <code>core.full.aln</code>. These files contain the SNPs for each sample, with or without invariant sites, respectively.</p>
 <p>At this point, it’s useful to check whether all your samples are included, as well as the number of variant and invariant sites. You can use the following bash commands along with <code>seqtk</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of isolates with aligned sites</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"&gt;"</span> core.full.aln</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"&gt;"</span> core.aln</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of aligned sites, including invariant sites</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">seqtk</span> comp core.full.aln <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f1,2</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of core SNP sites</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">seqtk</span> comp core.aln <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f1,2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of isolates with aligned sites</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"&gt;"</span> core.full.aln</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"&gt;"</span> core.aln</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of aligned sites, including invariant sites</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">seqtk</span> comp core.full.aln <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f1,2</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of core SNP sites</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">seqtk</span> comp core.aln <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f1,2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Sometimes, you might need to perform an additional cleanup step to remove ‘N’ characters. For this, the <code>snp-sites</code> program is very handy. After cleaning, you can perform phylogenetic tree inference on the alignment:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FastTree</span> <span class="at">-gtr</span> <span class="at">-nt</span> clean.core.aln <span class="op">&gt;</span> clean.core.tree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FastTree</span> <span class="at">-gtr</span> <span class="at">-nt</span> clean.core.aln <span class="op">&gt;</span> clean.core.tree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This process will yield a phylogenetic tree based on the cleaned core SNP alignment.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">

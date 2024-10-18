@@ -43,16 +43,20 @@ By the time you reach this point in the course (week 2), you will have downloade
 
 If you have been working with _Plasmodium_ or other parasites and used `BWA` and `GATK`, there are multiple ways to combine your data into a format suitable for phylogenetic tree-building programs.
 
-One option is to use the python script that we provided during the course, which you can use on your combined VCF files.
+One option is to use the python script that we used during the course. You can find it here: https://github.com/FreBio/mytools/blob/master/vcf2fasta.py . You can use on your combined VCF files produced with GATK.
 
 
 ```bash
 bcftools view -v snps filtered_output.vcf.gz -o filtered_output.snps.vcf.gz
 vcf2fasta.py filtered_output.snps.vcf.gz
-FastTree -gtr -nt filtered_output.snps.vcf.gz.fa > mytree.nw
+
 ```
 
-TO BE CONTINUED!!
+After running BCFtools, the script will generate you a fasta file that you can use as input for a phylogenetic tree building program as such:
+
+```bash
+FastTree -gtr -nt filtered_output.snps.vcf.gz.fa > mytree.nw
+```
 
 
 ### Option 2: Run `snippy Core`
