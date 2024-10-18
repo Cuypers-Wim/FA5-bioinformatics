@@ -38,12 +38,67 @@ During the lecture, we discussed several important caveats to keep in mind when 
 ## Making a phylogenetic tree from WGS data
 When you have arrived azt this point in the course (week 2), you will have downloaded or generated your own WGS data. Whether you worked on parasite genomes (bwa - gatk), or on prokaryote genome (snippy), you will end up with VCF files of called variants. The good news is that you  are almost there! Most phylogenetic tree building programs take a fasta file of aligned SNPs as input, so you just need to do some further processing.
 
-### Option 1. combine VCFs
+### Option 1. combine VCFs from GATK
+When you made a pipeline for Plamsodium or other parasites, you will likely have run BWA and GATK. There are multiple methods to combine your data into a format that can be used by phylogenetic tree building programs.
 
-### Option 2. run snippy core
+Here’s your course section rewritten in Quarto markdown:
 
 
+### Option 2: Run `snippy Core`
 
+If your project involves bacteria or viruses, you may have used `snippy` to analyze your FASTQ files. The command might have looked something like this:
+
+```bash
+cpus=8
+REFERENCE=""
+
+for read_1 in *_R1_001.fastq.gz
+do
+  sample_name=$(basename ${read_1} _R1_001.fastq.gz)
+
+  snippy \
+    --cpus "$cpus" \
+    --ref "$REFERENCE" \
+    --R1 "$read_1" \
+    --R2 ${sample_name}_R2_001.fastq.gz \
+    --outdir snippy/snippy_"$sample_name" \
+    --prefix "$sample_name"
+done
+```
+
+This command will generate a series of folders inside the `snippy` directory, with each folder named `snippy_$sample_name`. These folders contain multiple output files, including consensus VCF files.
+
+`snippy` simplifies the process of creating a core SNP alignment. You can run the following command:
+
+```bash
+REF=""
+prefix=""
+snippy core --reference $REF --prefix $prefix snippy_*
+```
+
+If the command runs successfully, you will find two files: `core.aln` and `core.full.aln`. These files contain the SNPs for each sample, with or without invariant sites, respectively.
+
+At this point, it’s useful to check whether all your samples are included, as well as the number of variant and invariant sites. You can use the following bash commands along with `seqtk`:
+
+```bash
+# Number of isolates with aligned sites
+grep -c ">" core.full.aln
+grep -c ">" core.aln
+
+# Number of aligned sites, including invariant sites
+seqtk comp core.full.aln | cut -f1,2
+
+# Number of core SNP sites
+seqtk comp core.aln | cut -f1,2
+```
+
+Sometimes, you might need to perform an additional cleanup step to remove 'N' characters. For this, the `snp-sites` program is very handy. After cleaning, you can perform phylogenetic tree inference on the alignment:
+
+```bash
+FastTree -gtr -nt clean.core.aln > clean.core.tree
+```
+
+This process will yield a phylogenetic tree based on the cleaned core SNP alignment.
 
 
 ::: {.callout-tip}

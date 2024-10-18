@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -285,8 +319,8 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#making-a-phylogenetic-tree-from-wgs-data" id="toc-making-a-phylogenetic-tree-from-wgs-data" class="nav-link" data-scroll-target="#making-a-phylogenetic-tree-from-wgs-data"><span class="header-section-number">14.2</span> Making a phylogenetic tree from WGS data</a>
   <ul>
-  <li><a href="#option-1.-combine-vcfs" id="toc-option-1.-combine-vcfs" class="nav-link" data-scroll-target="#option-1.-combine-vcfs"><span class="header-section-number">14.2.1</span> Option 1. combine VCFs</a></li>
-  <li><a href="#option-2.-run-snippy-core" id="toc-option-2.-run-snippy-core" class="nav-link" data-scroll-target="#option-2.-run-snippy-core"><span class="header-section-number">14.2.2</span> Option 2. run snippy core</a></li>
+  <li><a href="#option-1.-combine-vcfs-from-gatk" id="toc-option-1.-combine-vcfs-from-gatk" class="nav-link" data-scroll-target="#option-1.-combine-vcfs-from-gatk"><span class="header-section-number">14.2.1</span> Option 1. combine VCFs from GATK</a></li>
+  <li><a href="#option-2-run-snippy-core" id="toc-option-2-run-snippy-core" class="nav-link" data-scroll-target="#option-2-run-snippy-core"><span class="header-section-number">14.2.2</span> Option 2: Run <code>snippy Core</code></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -355,11 +389,48 @@ ul.task-list li input[type="checkbox"] {
 <section id="making-a-phylogenetic-tree-from-wgs-data" class="level2" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="making-a-phylogenetic-tree-from-wgs-data"><span class="header-section-number">14.2</span> Making a phylogenetic tree from WGS data</h2>
 <p>When you have arrived azt this point in the course (week 2), you will have downloaded or generated your own WGS data. Whether you worked on parasite genomes (bwa - gatk), or on prokaryote genome (snippy), you will end up with VCF files of called variants. The good news is that you are almost there! Most phylogenetic tree building programs take a fasta file of aligned SNPs as input, so you just need to do some further processing.</p>
-<section id="option-1.-combine-vcfs" class="level3" data-number="14.2.1">
-<h3 data-number="14.2.1" class="anchored" data-anchor-id="option-1.-combine-vcfs"><span class="header-section-number">14.2.1</span> Option 1. combine VCFs</h3>
+<section id="option-1.-combine-vcfs-from-gatk" class="level3" data-number="14.2.1">
+<h3 data-number="14.2.1" class="anchored" data-anchor-id="option-1.-combine-vcfs-from-gatk"><span class="header-section-number">14.2.1</span> Option 1. combine VCFs from GATK</h3>
+<p>When you made a pipeline for Plamsodium or other parasites, you will likely have run BWA and GATK. There are multiple methods to combine your data into a format that can be used by phylogenetic tree building programs.</p>
+<p>Here’s your course section rewritten in Quarto markdown:</p>
 </section>
-<section id="option-2.-run-snippy-core" class="level3" data-number="14.2.2">
-<h3 data-number="14.2.2" class="anchored" data-anchor-id="option-2.-run-snippy-core"><span class="header-section-number">14.2.2</span> Option 2. run snippy core</h3>
+<section id="option-2-run-snippy-core" class="level3" data-number="14.2.2">
+<h3 data-number="14.2.2" class="anchored" data-anchor-id="option-2-run-snippy-core"><span class="header-section-number">14.2.2</span> Option 2: Run <code>snippy Core</code></h3>
+<p>If your project involves bacteria or viruses, you may have used <code>snippy</code> to analyze your FASTQ files. The command might have looked something like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">cpus</span><span class="op">=</span>8</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">REFERENCE</span><span class="op">=</span><span class="st">""</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> read_1 <span class="kw">in</span> <span class="pp">*</span>_R1_001.fastq.gz</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="va">sample_name</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${read_1}</span> _R1_001.fastq.gz<span class="va">)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">snippy</span> <span class="dt">\</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--cpus</span> <span class="st">"</span><span class="va">$cpus</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">--ref</span> <span class="st">"</span><span class="va">$REFERENCE</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">--R1</span> <span class="st">"</span><span class="va">$read_1</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">--R2</span> <span class="va">${sample_name}</span>_R2_001.fastq.gz <span class="dt">\</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">--outdir</span> snippy/snippy_<span class="st">"</span><span class="va">$sample_name</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">--prefix</span> <span class="st">"</span><span class="va">$sample_name</span><span class="st">"</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command will generate a series of folders inside the <code>snippy</code> directory, with each folder named <code>snippy_$sample_name</code>. These folders contain multiple output files, including consensus VCF files.</p>
+<p><code>snippy</code> simplifies the process of creating a core SNP alignment. You can run the following command:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">REF</span><span class="op">=</span><span class="st">""</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">prefix</span><span class="op">=</span><span class="st">""</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">snippy</span> core <span class="at">--reference</span> <span class="va">$REF</span> <span class="at">--prefix</span> <span class="va">$prefix</span> snippy_<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If the command runs successfully, you will find two files: <code>core.aln</code> and <code>core.full.aln</code>. These files contain the SNPs for each sample, with or without invariant sites, respectively.</p>
+<p>At this point, it’s useful to check whether all your samples are included, as well as the number of variant and invariant sites. You can use the following bash commands along with <code>seqtk</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of isolates with aligned sites</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"&gt;"</span> core.full.aln</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"&gt;"</span> core.aln</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of aligned sites, including invariant sites</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">seqtk</span> comp core.full.aln <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f1,2</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of core SNP sites</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">seqtk</span> comp core.aln <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f1,2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Sometimes, you might need to perform an additional cleanup step to remove ‘N’ characters. For this, the <code>snp-sites</code> program is very handy. After cleaning, you can perform phylogenetic tree inference on the alignment:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FastTree</span> <span class="at">-gtr</span> <span class="at">-nt</span> clean.core.aln <span class="op">&gt;</span> clean.core.tree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This process will yield a phylogenetic tree based on the cleaned core SNP alignment.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
