@@ -264,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/genomics/downloading_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dowloading genomic data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Downloading Genomic Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -322,9 +322,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#molecular-evolution-models" id="toc-molecular-evolution-models" class="nav-link" data-scroll-target="#molecular-evolution-models"><span class="header-section-number">15.1.4</span> Molecular Evolution Models</a></li>
   <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications"><span class="header-section-number">15.1.5</span> Applications</a></li>
   <li><a href="#caveats" id="toc-caveats" class="nav-link" data-scroll-target="#caveats"><span class="header-section-number">15.1.6</span> Caveats</a></li>
-  <li><a href="#option-1-combine-vcfs-from-gatk" id="toc-option-1-combine-vcfs-from-gatk" class="nav-link" data-scroll-target="#option-1-combine-vcfs-from-gatk"><span class="header-section-number">15.1.7</span> Option 1: Combine VCFs from GATK</a></li>
-  <li><a href="#option-2-run-snippy-core" id="toc-option-2-run-snippy-core" class="nav-link" data-scroll-target="#option-2-run-snippy-core"><span class="header-section-number">15.1.8</span> Option 2: Run <code>snippy Core</code></a></li>
   </ul></li>
+  <li><a href="#making-a-phylogenetic-tree-from-wgs-data" id="toc-making-a-phylogenetic-tree-from-wgs-data" class="nav-link" data-scroll-target="#making-a-phylogenetic-tree-from-wgs-data"><span class="header-section-number">15.2</span> Making a Phylogenetic Tree from WGS Data</a>
+  <ul>
+  <li><a href="#option-1-combine-vcfs-from-gatk" id="toc-option-1-combine-vcfs-from-gatk" class="nav-link" data-scroll-target="#option-1-combine-vcfs-from-gatk"><span class="header-section-number">15.2.1</span> Option 1: Combine VCFs from GATK</a></li>
+  <li><a href="#option-2-run-snippy-core" id="toc-option-2-run-snippy-core" class="nav-link" data-scroll-target="#option-2-run-snippy-core"><span class="header-section-number">15.2.2</span> Option 2: Run <code>snippy Core</code></a></li>
+  </ul></li>
+  <li><a href="#tree-visualisation" id="toc-tree-visualisation" class="nav-link" data-scroll-target="#tree-visualisation"><span class="header-section-number">15.3</span> Tree visualisation</a></li>
+  <li><a href="#more-complex-tree-building-programs" id="toc-more-complex-tree-building-programs" class="nav-link" data-scroll-target="#more-complex-tree-building-programs"><span class="header-section-number">15.4</span> More complex tree building programs</a></li>
   </ul>
 </nav>
     </div>
@@ -387,21 +392,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="15.1.6" class="anchored" data-anchor-id="caveats"><span class="header-section-number">15.1.6</span> Caveats</h3>
 <p>During the lecture, we discussed several important caveats to keep in mind when interpreting phylogenetic trees:<br>
 - Phylogenetic trees illustrate evolutionary relatedness, but do not represent evolutionary progress or advancement. - Branch lengths may reflect evolutionary distances, indicating the degree of genetic divergence from the nearest internal node. - To compare the “relatedness” of taxa, focus on shared common ancestors rather than just the proximity of branches. - Phylogenetic analyses often rely on incomplete data. Your evolutionary hypothesis may change as more samples are included, so be cautious about drawing definitive conclusions.</p>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD ## Making a phylogenetic tree from WGS Data ======= ## Making a Phylogenetic Tree from WGS Data &gt;&gt;&gt;&gt;&gt;&gt;&gt; f78673bb5d3a5cedb0b1fb61fa33e18eff10cecd</p>
-<p>By the time you reach this point in the course (week 2), you will have downloaded or generated your own whole-genome sequencing (WGS) data. Whether you’ve worked with parasite genomes using <code>BWA</code> and <code>GATK</code>, or prokaryotic genomes using <code>snippy</code>, you will have VCF files containing your called variants. The good news is that you’re almost ready to build a phylogenetic tree! Most tree-building programs require a FASTA file of aligned SNPs as input, so you just need to carry out some additional processing.</p>
 </section>
-<section id="option-1-combine-vcfs-from-gatk" class="level3" data-number="15.1.7">
-<h3 data-number="15.1.7" class="anchored" data-anchor-id="option-1-combine-vcfs-from-gatk"><span class="header-section-number">15.1.7</span> Option 1: Combine VCFs from GATK</h3>
+</section>
+<section id="making-a-phylogenetic-tree-from-wgs-data" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="making-a-phylogenetic-tree-from-wgs-data"><span class="header-section-number">15.2</span> Making a Phylogenetic Tree from WGS Data</h2>
+<p>By the time you reach this point in the course (week 2), you will have downloaded or generated your own whole-genome sequencing (WGS) data. Whether you’ve worked with parasite genomes using <code>BWA</code> and <code>GATK</code>, or prokaryotic genomes using <code>snippy</code>, you will have VCF files containing your called variants. The good news is that you’re almost ready to build a phylogenetic tree! Most tree-building programs require a FASTA file of aligned SNPs as input, so you just need to carry out some additional processing.</p>
+<section id="option-1-combine-vcfs-from-gatk" class="level3" data-number="15.2.1">
+<h3 data-number="15.2.1" class="anchored" data-anchor-id="option-1-combine-vcfs-from-gatk"><span class="header-section-number">15.2.1</span> Option 1: Combine VCFs from GATK</h3>
 <p>If you have been working with <em>Plasmodium</em> or other parasites and used <code>BWA</code> and <code>GATK</code>, there are multiple ways to combine your data into a format suitable for phylogenetic tree-building programs.</p>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD One option is to use the python script that we used during the course. You can find it here: <a href="https://github.com/FreBio/mytools/blob/master/vcf2fasta.py">https://github.com/FreBio/mytools/blob/master/vcf2fasta.py</a> . You can use on your combined VCF files produced with GATK.</p>
+<p>One option is to use the python script that we used during the course. You can find it here: <a href="https://github.com/FreBio/mytools/blob/master/vcf2fasta.py">https://github.com/FreBio/mytools/blob/master/vcf2fasta.py</a> . You can use on your combined VCF files produced with GATK.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-v</span> snps filtered_output.vcf.gz <span class="at">-o</span> filtered_output.snps.vcf.gz</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vcf2fasta.py</span> filtered_output.snps.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>After running BCFtools, the script will generate you a fasta file that you can use as input for a phylogenetic tree building program as such:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FastTree</span> <span class="at">-gtr</span> <span class="at">-nt</span> filtered_output.snps.vcf.gz.fa <span class="op">&gt;</span> mytree.nw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>======= TO BE CONTINUED!! &gt;&gt;&gt;&gt;&gt;&gt;&gt; f78673bb5d3a5cedb0b1fb61fa33e18eff10cecd</p>
 </section>
-<section id="option-2-run-snippy-core" class="level3" data-number="15.1.8">
-<h3 data-number="15.1.8" class="anchored" data-anchor-id="option-2-run-snippy-core"><span class="header-section-number">15.1.8</span> Option 2: Run <code>snippy Core</code></h3>
+<section id="option-2-run-snippy-core" class="level3" data-number="15.2.2">
+<h3 data-number="15.2.2" class="anchored" data-anchor-id="option-2-run-snippy-core"><span class="header-section-number">15.2.2</span> Option 2: Run <code>snippy Core</code></h3>
 <p>If your project involves bacteria or viruses, you may have used <code>snippy</code> to perform mapping and variant calling on your trimed FASTQ files. The command might have looked something like this:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">cpus</span><span class="op">=</span>8</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">REFERENCE</span><span class="op">=</span><span class="st">""</span></span>
@@ -437,6 +443,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Sometimes, you might need to perform an additional cleanup step to remove ‘N’ characters. For this, the <code>snp-sites</code> program is very handy. After cleaning, you can perform phylogenetic tree inference on the alignment:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FastTree</span> <span class="at">-gtr</span> <span class="at">-nt</span> clean.core.aln <span class="op">&gt;</span> clean.core.tree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This process will yield a phylogenetic tree based on the cleaned core SNP alignment.</p>
+</section>
+</section>
+<section id="tree-visualisation" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="tree-visualisation"><span class="header-section-number">15.3</span> Tree visualisation</h2>
+<p>TBC</p>
+</section>
+<section id="more-complex-tree-building-programs" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="more-complex-tree-building-programs"><span class="header-section-number">15.4</span> More complex tree building programs</h2>
+<p>TBC</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -454,7 +469,6 @@ Storyline: Malaria in Ethiopia [excercise not performed during course, will be u
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -880,8 +894,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/genomics/downloading_data.html" class="pagination-link" aria-label="Dowloading genomic data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dowloading genomic data</span></span>
+      <a href="../../content/genomics/downloading_data.html" class="pagination-link" aria-label="Downloading Genomic Data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Downloading Genomic Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

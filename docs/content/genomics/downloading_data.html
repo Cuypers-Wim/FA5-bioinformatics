@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>14&nbsp; Dowloading genomic data – Pathogen Genomics Course</title>
+<title>14&nbsp; Downloading Genomic Data – Pathogen Genomics Course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/downloading_data.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dowloading genomic data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/downloading_data.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Downloading Genomic Data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -267,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/genomics/downloading_data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dowloading genomic data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Downloading Genomic Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -317,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#downloading-reference-genomes" id="toc-downloading-reference-genomes" class="nav-link active" data-scroll-target="#downloading-reference-genomes"><span class="header-section-number">14.1</span> Downloading reference genomes</a></li>
+  <li><a href="#downloading-reference-genomes" id="toc-downloading-reference-genomes" class="nav-link active" data-scroll-target="#downloading-reference-genomes"><span class="header-section-number">14.1</span> Downloading Reference Genomes</a></li>
   <li><a href="#downloading-sequencing-reads" id="toc-downloading-sequencing-reads" class="nav-link" data-scroll-target="#downloading-sequencing-reads"><span class="header-section-number">14.2</span> Downloading Sequencing Reads</a></li>
   </ul>
 </nav>
@@ -325,9 +325,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/downloading_data.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dowloading genomic data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/downloading_data.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Downloading Genomic Data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-downloading" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dowloading genomic data</span></span></h1>
+<h1 class="title"><span id="sec-downloading-data" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Downloading Genomic Data</span></span></h1>
 </div>
 
 
@@ -345,24 +345,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <section id="downloading-reference-genomes" class="level2" data-number="14.1">
-<h2 data-number="14.1" class="anchored" data-anchor-id="downloading-reference-genomes"><span class="header-section-number">14.1</span> Downloading reference genomes</h2>
-<p>An easy way to find a high-quality reference genome for mappijng your reads against, is to go the the genomes website section of NCBI: https://www.ncbi.nlm.nih.gov/datasets/genome/</p>
-<p>Here you can search for a suitable reference genome. Note that the genomes for which there is a RefSeq accession available, will likely be of higher quality than one for which there is only a GenBank accession available.</p>
-<p>On the download page, you will have the option to make a ZIP file with your genome.fasta and/or related files such as annotation files.</p>
+<h2 data-number="14.1" class="anchored" data-anchor-id="downloading-reference-genomes"><span class="header-section-number">14.1</span> Downloading Reference Genomes</h2>
+<p>To find a high-quality reference genome for mapping your reads, a reliable resource is the <a href="https://www.ncbi.nlm.nih.gov/datasets/genome/">NCBI Genomes section</a>.</p>
+<p>You can search for the reference genome of interest on this site. It’s important to note that genomes with a RefSeq accession tend to be of higher quality compared to those with only a GenBank accession. On the download page, you will have the option to create a ZIP file containing your genome in FASTA format, along with related files such as annotation files.</p>
 </section>
 <section id="downloading-sequencing-reads" class="level2" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="downloading-sequencing-reads"><span class="header-section-number">14.2</span> Downloading Sequencing Reads</h2>
-<p>Once you have Identified which reads you want* for your analysis, there are multiple ways to download your reads. One option from the command line would be the fasterq-dump program from NCBI.</p>
-<p>Either via and existing publication or via the sequence read archive (SRA) (https://www.ncbi.nlm.nih.gov/sra)[https://www.ncbi.nlm.nih.gov/sra]</p>
-<p>Another option, the one that we use in this course, is that you go to the website (https://sra-explorer.info/)[https://sra-explorer.info/] where you can enter your accessions and obtain links (to be used with wget) or a download script.</p>
-<p>For the example below, we have searched for ‘Salmonella Concord’, selected 6 random samples, and downloaded them by placing ‘whet’ in fromt of each download linke:</p>
+<p>After identifying the sequencing reads you need for your analysis, there are several methods to download them. One command-line option is the <code>fasterq-dump</code> program from NCBI, which allows you to retrieve sequencing reads directly by specifying their SRA accession number. These accessions can be found either from an existing publication or directly from the <a href="https://www.ncbi.nlm.nih.gov/sra">Sequence Read Archive (SRA)</a>.</p>
+<p>For this course, we will use the <a href="https://sra-explorer.info/">SRA Explorer tool</a>. Here, you can search for the accessions of interest to generate download links or a script to download the reads using <code>wget</code>.</p>
+<p>In the example below, we searched for ‘<em>Salmonella</em> Concord’, selected six random samples, and downloaded them by prepending ‘wget’ to each download link.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="../assets/sra_explorer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="SRA explorer get links"><img src="../assets/sra_explorer.png" class="no-lightbox img-fluid figure-img" alt="SRA explorer get links"></a></p>
 <figcaption>SRA explorer get links</figcaption>
 </figure>
 </div>
-<p>The downoad script will contain the following lines:</p>
+<p>The download script for the selected samples looks as follows:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/006/ERR9516346/ERR9516346_1.fastq.gz</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/006/ERR9516346/ERR9516346_2.fastq.gz</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/004/ERR9516344/ERR9516344_1.fastq.gz</span>
@@ -826,7 +824,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom","closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
