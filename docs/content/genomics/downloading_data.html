@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Bioinformatics tools and file formats – Pathogen Genomics Course</title>
+<title>14&nbsp; Dowloading genomic data – Pathogen Genomics Course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/genomics/qc.html" rel="next">
-<link href="../../content/genomics/pipeline-overview.html" rel="prev">
+<link href="../../content/genomics/phylogenetics.html" rel="next">
+<link href="../../content/genomics/variant-calling.html" rel="prev">
 <link href="../../content/assets/ITM-symbol_col_rgb.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -42,6 +76,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -81,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/tools-and-formats.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Bioinformatics tools and file formats</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/downloading_data.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dowloading genomic data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -205,7 +242,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/genomics/tools-and-formats.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../content/genomics/tools-and-formats.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Bioinformatics tools and file formats</span></span></a>
   </div>
 </li>
@@ -229,7 +266,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/genomics/downloading_data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/genomics/downloading_data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dowloading genomic data</span></span></a>
   </div>
 </li>
@@ -280,20 +317,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#fasta-biological-sequences" id="toc-fasta-biological-sequences" class="nav-link active" data-scroll-target="#fasta-biological-sequences"><span class="header-section-number">10.0.1</span> FASTA: Biological sequences</a></li>
-  <li><a href="#fastq-sequence-reads-and-qualities" id="toc-fastq-sequence-reads-and-qualities" class="nav-link" data-scroll-target="#fastq-sequence-reads-and-qualities"><span class="header-section-number">10.0.2</span> FASTQ: Sequence reads and qualities</a></li>
-  <li><a href="#sam-bam-sequence-alignments" id="toc-sam-bam-sequence-alignments" class="nav-link" data-scroll-target="#sam-bam-sequence-alignments"><span class="header-section-number">10.0.3</span> SAM / BAM: Sequence alignments</a></li>
-  <li><a href="#vcf-variant-calls" id="toc-vcf-variant-calls" class="nav-link" data-scroll-target="#vcf-variant-calls"><span class="header-section-number">10.0.4</span> VCF: Variant calls</a></li>
-  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools"><span class="header-section-number">10.1</span> Tools</a></li>
+  <li><a href="#downloading-reference-genomes" id="toc-downloading-reference-genomes" class="nav-link active" data-scroll-target="#downloading-reference-genomes"><span class="header-section-number">14.1</span> Downloading reference genomes</a></li>
+  <li><a href="#downloading-sequencing-reads" id="toc-downloading-sequencing-reads" class="nav-link" data-scroll-target="#downloading-sequencing-reads"><span class="header-section-number">14.2</span> Downloading Sequencing Reads</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/tools-and-formats.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Bioinformatics tools and file formats</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/downloading_data.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dowloading genomic data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Bioinformatics tools and file formats</span></h1>
+<h1 class="title"><span id="sec-downloading" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dowloading genomic data</span></span></h1>
 </div>
 
 
@@ -310,88 +344,37 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Below we have created a list of the various tools that are used for the steps in this pipeline. As a disclaimer: a common occurrence in bioinformatics is that several different approaches have been developed for a particular task or analysis, leading to a large (and sometimes confusing) ecosystem of different software tools, each with their own advantages, disadvantages and learning curve. In the course we will try to focus on one representative tool for each task, but be aware that these are not the only ones and there might exist more suitable options depending on your data and use cases.</p>
-<div class="callout callout-style-simple callout-none no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>We have also compiled a few other resources that give an overview of the the various bioinformatics file formats used in genomics:</p>
-<ul>
-<li><a href="https://rnnh.github.io/bioinfo-notebook/docs/file_formats.html">https://rnnh.github.io/bioinfo-notebook/docs/file_formats.html</a></li>
-<li><a href="https://eriqande.github.io/eca-bioinf-handbook/bioinformatic-file-formats.html">https://eriqande.github.io/eca-bioinf-handbook/bioinformatic-file-formats.html</a></li>
-<li><a href="https://linsalrob.github.io/ComputationalGenomicsManual/SequenceFileFormats/">https://linsalrob.github.io/ComputationalGenomicsManual/SequenceFileFormats/</a></li>
-<li><a href="https://www.hadriengourle.com/tutorials/file_formats">https://www.hadriengourle.com/tutorials/file_formats</a></li>
-</ul>
-</div>
-</div>
-</div>
-<section id="fasta-biological-sequences" class="level3" data-number="10.0.1">
-<h3 data-number="10.0.1" class="anchored" data-anchor-id="fasta-biological-sequences"><span class="header-section-number">10.0.1</span> FASTA: Biological sequences</h3>
-<blockquote class="blockquote">
-<p>File extension: generally <code>.fasta</code>, <code>.fas</code> or <code>.fa</code>, but <code>.fna</code> (<strong>F</strong>ASTA <strong>n</strong>ucleic <strong>a</strong>cids), <code>.faa</code> (<strong>F</strong>ASTA <strong>a</strong>mino <strong>a</strong>cids) and <code>.frn</code> ((<strong>F</strong>ASTA non-coding <strong>RN</strong>A)) are also used. After indexing with <code>bwa</code>, there are additional <code>.{amb,ann,bwt,pac,sa}</code> files.</p>
-</blockquote>
-<ul>
-<li><a href="qc.html#sec-fastq-in-depth" class="quarto-xref"><span>Section 11.1</span></a></li>
-<li>(<a href="../unix/5-unix-files-and-dirs.html#sec-fasta" class="quarto-xref"><span>Section 5.1.2.1</span></a>)</li>
-</ul>
+<section id="downloading-reference-genomes" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="downloading-reference-genomes"><span class="header-section-number">14.1</span> Downloading reference genomes</h2>
+<p>An easy way to find a high-quality reference genome for mappijng your reads against, is to go the the genomes website section of NCBI: https://www.ncbi.nlm.nih.gov/datasets/genome/</p>
+<p>Here you can search for a suitable reference genome. Note that the genomes for which there is a RefSeq accession available, will likely be of higher quality than one for which there is only a GenBank accession available.</p>
+<p>On the download page, you will have the option to make a ZIP file with your genome.fasta and/or related files such as annotation files.</p>
 </section>
-<section id="fastq-sequence-reads-and-qualities" class="level3" data-number="10.0.2">
-<h3 data-number="10.0.2" class="anchored" data-anchor-id="fastq-sequence-reads-and-qualities"><span class="header-section-number">10.0.2</span> FASTQ: Sequence reads and qualities</h3>
-<blockquote class="blockquote">
-<p>File extension: <code>.fq</code> or <code>.fastq</code>. (generally compressed with <code>.gzip</code>)</p>
-</blockquote>
-<ul>
-<li><a href="qc.html#sec-fastq-in-depth" class="quarto-xref"><span>Section 11.1</span></a></li>
-<li>(<a href="../unix/5-unix-files-and-dirs.html#sec-fastq" class="quarto-xref"><span>Section 5.1.3.1</span></a>)</li>
-</ul>
-</section>
-<section id="sam-bam-sequence-alignments" class="level3" data-number="10.0.3">
-<h3 data-number="10.0.3" class="anchored" data-anchor-id="sam-bam-sequence-alignments"><span class="header-section-number">10.0.3</span> SAM / BAM: Sequence alignments</h3>
-<blockquote class="blockquote">
-<p>File extensions:</p>
-<ul>
-<li><code>.sam</code>: alignment in plain text format</li>
-<li><code>.bam</code>: binary version of SAM file</li>
-<li><code>.bai</code>: index file for BAM file</li>
-</ul>
-</blockquote>
-<ul>
-<li><a href="../unix/6-unix-more-commands.html#sec-sam-format" class="quarto-xref"><span>Section 6.2.1</span></a></li>
-<li><a href="../unix/6-unix-more-commands.html#sec-bam-format" class="quarto-xref"><span>Section 6.4.1</span></a></li>
-<li><a href="mapping.html#sec-alignment" class="quarto-xref"><span>Section 12.2</span></a></li>
-<li><a href="https://davetang.github.io/learning_bam_file/">Learning the BAM format page by Dave Tang</a></li>
-</ul>
-</section>
-<section id="vcf-variant-calls" class="level3" data-number="10.0.4">
-<h3 data-number="10.0.4" class="anchored" data-anchor-id="vcf-variant-calls"><span class="header-section-number">10.0.4</span> VCF: Variant calls</h3>
-<blockquote class="blockquote">
-<p>File extensions:</p>
-<ul>
-<li><code>.vcf</code>: variant calls in plain text format (generally compressed with <code>.gzip</code>)</li>
-<li><code>g.vcf</code>: variant calls in plain text format for a single sample</li>
-</ul>
-</blockquote>
-<ul>
-<li><a href="../unix/7-unix-redirection.html#sec-vcf" class="quarto-xref"><span>Section 7.1.1.1</span></a></li>
-<li><a href="variant-calling.html" class="quarto-xref"><span>Chapter 13</span></a></li>
-<li><a href="https://davetang.github.io/learning_vcf_file/">Learning the VCF page by Dave Tang</a></li>
-</ul>
-</section>
-<section id="tools" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="tools"><span class="header-section-number">10.1</span> Tools</h2>
-<ul>
-<li>FastQC: <a href="qc.html#sec-fastqc" class="quarto-xref"><span>Section 11.3</span></a></li>
-<li>FastQ Screen: <a href="qc.html#sec-fastqscreen" class="quarto-xref"><span>Section 11.4</span></a></li>
-<li>MultiQC: <a href="qc.html#tip-multiqc" class="quarto-xref">Tip&nbsp;<span>11.3</span></a></li>
-<li>Trimmomatic: <a href="qc.html#sec-trimming" class="quarto-xref"><span>Section 11.5</span></a></li>
-<li>BWA: <a href="mapping.html#sec-alignment" class="quarto-xref"><span>Section 12.2</span></a></li>
-<li>samtools: <a href="mapping.html#sec-samtools" class="quarto-xref"><span>Section 12.3</span></a>, <a href="mapping.html#sec-samtools-index" class="quarto-xref"><span>Section 12.5.1</span></a> and <a href="mapping.html#sec-samtools-flagstat" class="quarto-xref"><span>Section 12.5</span></a></li>
-<li>picard: <a href="mapping.html#sec-picard-duplicates" class="quarto-xref"><span>Section 12.6</span></a> and <a href="mapping.html#sec-picard-metrics" class="quarto-xref"><span>Section 12.7</span></a></li>
-<li>GATK: <a href="variant-calling.html" class="quarto-xref"><span>Chapter 13</span></a></li>
-<li>IGV: <a href="mapping.html#sec-alignment-visualisation" class="quarto-xref"><span>Section 12.8</span></a> and <a href="variant-calling.html#sec-vcf-visualisation" class="quarto-xref"><span>Section 13.4</span></a></li>
-</ul>
+<section id="downloading-sequencing-reads" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="downloading-sequencing-reads"><span class="header-section-number">14.2</span> Downloading Sequencing Reads</h2>
+<p>Once you have Identified which reads you want* for your analysis, there are multiple ways to download your reads. One option from the command line would be the fasterq-dump program from NCBI.</p>
+<p>Either via and existing publication or via the sequence read archive (SRA) (https://www.ncbi.nlm.nih.gov/sra)[https://www.ncbi.nlm.nih.gov/sra]</p>
+<p>Another option, the one that we use in this course, is that you go to the website (https://sra-explorer.info/)[https://sra-explorer.info/] where you can enter your accessions and obtain links (to be used with wget) or a download script.</p>
+<p>For the example below, we have searched for ‘Salmonella Concord’, selected 6 random samples, and downloaded them by placing ‘whet’ in fromt of each download linke:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/sra_explorer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="SRA explorer get links"><img src="../assets/sra_explorer.png" class="no-lightbox img-fluid figure-img" alt="SRA explorer get links"></a></p>
+<figcaption>SRA explorer get links</figcaption>
+</figure>
+</div>
+<p>The downoad script will contain the following lines:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/006/ERR9516346/ERR9516346_1.fastq.gz</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/006/ERR9516346/ERR9516346_2.fastq.gz</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/004/ERR9516344/ERR9516344_1.fastq.gz</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/004/ERR9516344/ERR9516344_2.fastq.gz</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/003/ERR9516343/ERR9516343_1.fastq.gz</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/003/ERR9516343/ERR9516343_2.fastq.gz</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/005/ERR9516345/ERR9516345_1.fastq.gz</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/005/ERR9516345/ERR9516345_2.fastq.gz</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/007/ERR9516347/ERR9516347_1.fastq.gz</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/007/ERR9516347/ERR9516347_2.fastq.gz</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/008/ERR9516348/ERR9516348_1.fastq.gz</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/008/ERR9516348/ERR9516348_2.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -819,13 +802,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/genomics/pipeline-overview.html" class="pagination-link" aria-label="Pipeline overview">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pipeline overview</span></span>
+      <a href="../../content/genomics/variant-calling.html" class="pagination-link" aria-label="Variant calling">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Variant calling</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/genomics/qc.html" class="pagination-link" aria-label="Quality control and trimming">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Quality control and trimming</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/genomics/phylogenetics.html" class="pagination-link" aria-label="Phylogenetics">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Phylogenetics</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -843,6 +826,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

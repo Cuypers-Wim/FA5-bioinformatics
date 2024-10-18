@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>14&nbsp; Phylogenetics – Pathogen Genomics Course</title>
+<title>15&nbsp; Phylogenetics – Pathogen Genomics Course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../content/genomics/results.html" rel="next">
-<link href="../../content/genomics/variant-calling.html" rel="prev">
+<link href="../../content/genomics/downloading_data.html" rel="prev">
 <link href="../../content/assets/ITM-symbol_col_rgb.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/phylogenetics.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetics</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/phylogenetics.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Phylogenetics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -263,14 +263,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../content/genomics/downloading_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dowloading genomic data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../content/genomics/phylogenetics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Phylogenetics</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/genomics/results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Results</span></span></a>
   </div>
 </li>
       </ul>
@@ -308,23 +314,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#a-quick-primer-on-phylogenetic-analysis-in-bioinformatics" id="toc-a-quick-primer-on-phylogenetic-analysis-in-bioinformatics" class="nav-link active" data-scroll-target="#a-quick-primer-on-phylogenetic-analysis-in-bioinformatics"><span class="header-section-number">14.1</span> A quick primer on Phylogenetic Analysis in Bioinformatics</a>
+  <li><a href="#a-quick-primer-on-phylogenetic-analysis-in-bioinformatics" id="toc-a-quick-primer-on-phylogenetic-analysis-in-bioinformatics" class="nav-link active" data-scroll-target="#a-quick-primer-on-phylogenetic-analysis-in-bioinformatics"><span class="header-section-number">15.1</span> A quick primer on Phylogenetic Analysis in Bioinformatics</a>
   <ul>
-  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts"><span class="header-section-number">14.1.1</span> Key Concepts</a></li>
-  <li><a href="#tree-types" id="toc-tree-types" class="nav-link" data-scroll-target="#tree-types"><span class="header-section-number">14.1.2</span> Tree Types</a></li>
-  <li><a href="#methods-for-constructing-trees" id="toc-methods-for-constructing-trees" class="nav-link" data-scroll-target="#methods-for-constructing-trees"><span class="header-section-number">14.1.3</span> Methods for Constructing Trees</a></li>
-  <li><a href="#molecular-evolution-models" id="toc-molecular-evolution-models" class="nav-link" data-scroll-target="#molecular-evolution-models"><span class="header-section-number">14.1.4</span> Molecular Evolution Models</a></li>
-  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications"><span class="header-section-number">14.1.5</span> Applications</a></li>
-  <li><a href="#caveats" id="toc-caveats" class="nav-link" data-scroll-target="#caveats"><span class="header-section-number">14.1.6</span> Caveats</a></li>
-  </ul></li>
-<<<<<<< HEAD
-  <li><a href="#making-a-phylogenetic-tree-from-wgs-data" id="toc-making-a-phylogenetic-tree-from-wgs-data" class="nav-link" data-scroll-target="#making-a-phylogenetic-tree-from-wgs-data"><span class="header-section-number">14.2</span> Making a phylogenetic tree from WGS Data</a>
-=======
-  <li><a href="#making-a-phylogenetic-tree-from-wgs-data" id="toc-making-a-phylogenetic-tree-from-wgs-data" class="nav-link" data-scroll-target="#making-a-phylogenetic-tree-from-wgs-data"><span class="header-section-number">14.2</span> Making a Phylogenetic Tree from WGS Data</a>
->>>>>>> f78673bb5d3a5cedb0b1fb61fa33e18eff10cecd
-  <ul>
-  <li><a href="#option-1-combine-vcfs-from-gatk" id="toc-option-1-combine-vcfs-from-gatk" class="nav-link" data-scroll-target="#option-1-combine-vcfs-from-gatk"><span class="header-section-number">14.2.1</span> Option 1: Combine VCFs from GATK</a></li>
-  <li><a href="#option-2-run-snippy-core" id="toc-option-2-run-snippy-core" class="nav-link" data-scroll-target="#option-2-run-snippy-core"><span class="header-section-number">14.2.2</span> Option 2: Run <code>snippy Core</code></a></li>
+  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts"><span class="header-section-number">15.1.1</span> Key Concepts</a></li>
+  <li><a href="#tree-types" id="toc-tree-types" class="nav-link" data-scroll-target="#tree-types"><span class="header-section-number">15.1.2</span> Tree Types</a></li>
+  <li><a href="#methods-for-constructing-trees" id="toc-methods-for-constructing-trees" class="nav-link" data-scroll-target="#methods-for-constructing-trees"><span class="header-section-number">15.1.3</span> Methods for Constructing Trees</a></li>
+  <li><a href="#molecular-evolution-models" id="toc-molecular-evolution-models" class="nav-link" data-scroll-target="#molecular-evolution-models"><span class="header-section-number">15.1.4</span> Molecular Evolution Models</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications"><span class="header-section-number">15.1.5</span> Applications</a></li>
+  <li><a href="#caveats" id="toc-caveats" class="nav-link" data-scroll-target="#caveats"><span class="header-section-number">15.1.6</span> Caveats</a></li>
+  <li><a href="#option-1-combine-vcfs-from-gatk" id="toc-option-1-combine-vcfs-from-gatk" class="nav-link" data-scroll-target="#option-1-combine-vcfs-from-gatk"><span class="header-section-number">15.1.7</span> Option 1: Combine VCFs from GATK</a></li>
+  <li><a href="#option-2-run-snippy-core" id="toc-option-2-run-snippy-core" class="nav-link" data-scroll-target="#option-2-run-snippy-core"><span class="header-section-number">15.1.8</span> Option 2: Run <code>snippy Core</code></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -332,9 +331,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/phylogenetics.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetics</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/genomics/setup.html">Processing genomic data</a></li><li class="breadcrumb-item"><a href="../../content/genomics/phylogenetics.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Phylogenetics</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-phylogenetics" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Phylogenetics</span></span></h1>
+<h1 class="title"><span id="sec-phylogenetics" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Phylogenetics</span></span></h1>
 </div>
 
 
@@ -351,67 +350,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="a-quick-primer-on-phylogenetic-analysis-in-bioinformatics" class="level2" data-number="14.1">
-<h2 data-number="14.1" class="anchored" data-anchor-id="a-quick-primer-on-phylogenetic-analysis-in-bioinformatics"><span class="header-section-number">14.1</span> A quick primer on Phylogenetic Analysis in Bioinformatics</h2>
+<section id="a-quick-primer-on-phylogenetic-analysis-in-bioinformatics" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="a-quick-primer-on-phylogenetic-analysis-in-bioinformatics"><span class="header-section-number">15.1</span> A quick primer on Phylogenetic Analysis in Bioinformatics</h2>
 <p>Phylogenetic analysis is a key step in understanding evolutionary relationships among biological entities, such as species, genes, or populations. These relationships are represented using phylogenetic trees, which are graphical hypotheses about evolutionary history. Trees are built using molecular sequence data (DNA, RNA, or proteins), providing insight into lineage divergence and ancestral relationships.</p>
-<section id="key-concepts" class="level3" data-number="14.1.1">
-<h3 data-number="14.1.1" class="anchored" data-anchor-id="key-concepts"><span class="header-section-number">14.1.1</span> Key Concepts</h3>
+<section id="key-concepts" class="level3" data-number="15.1.1">
+<h3 data-number="15.1.1" class="anchored" data-anchor-id="key-concepts"><span class="header-section-number">15.1.1</span> Key Concepts</h3>
 <ul>
 <li><strong>Nodes</strong>: Represent taxa (species, genes, etc.). Leaves are current taxa, while internal nodes represent hypothetical ancestors.</li>
 <li><strong>Branches</strong>: Connect nodes and can represent genetic change or time.</li>
 <li><strong>Rooted vs.&nbsp;Unrooted Trees</strong>: Rooted trees suggest a common ancestor, while unrooted trees don’t infer directionality in evolution.</li>
 </ul>
 </section>
-<section id="tree-types" class="level3" data-number="14.1.2">
-<h3 data-number="14.1.2" class="anchored" data-anchor-id="tree-types"><span class="header-section-number">14.1.2</span> Tree Types</h3>
+<section id="tree-types" class="level3" data-number="15.1.2">
+<h3 data-number="15.1.2" class="anchored" data-anchor-id="tree-types"><span class="header-section-number">15.1.2</span> Tree Types</h3>
 <ol type="1">
 <li><strong>Cladogram</strong>: Depicts relationships; branch lengths have no meaning.</li>
 <li><strong>Phylogram</strong>: Branch lengths reflect genetic change or evolutionary time.</li>
 </ol>
 </section>
-<section id="methods-for-constructing-trees" class="level3" data-number="14.1.3">
-<h3 data-number="14.1.3" class="anchored" data-anchor-id="methods-for-constructing-trees"><span class="header-section-number">14.1.3</span> Methods for Constructing Trees</h3>
+<section id="methods-for-constructing-trees" class="level3" data-number="15.1.3">
+<h3 data-number="15.1.3" class="anchored" data-anchor-id="methods-for-constructing-trees"><span class="header-section-number">15.1.3</span> Methods for Constructing Trees</h3>
 <ul>
 <li><strong>Distance-Based Methods</strong>: Use sequence data to calculate genetic distances and cluster taxa (e.g., UPGMA, Neighbor-Joining).</li>
 <li><strong>Character-Based Methods</strong>: Use models of sequence evolution (e.g., Maximum Likelihood, Bayesian Inference).</li>
 </ul>
 </section>
-<section id="molecular-evolution-models" class="level3" data-number="14.1.4">
-<h3 data-number="14.1.4" class="anchored" data-anchor-id="molecular-evolution-models"><span class="header-section-number">14.1.4</span> Molecular Evolution Models</h3>
+<section id="molecular-evolution-models" class="level3" data-number="15.1.4">
+<h3 data-number="15.1.4" class="anchored" data-anchor-id="molecular-evolution-models"><span class="header-section-number">15.1.4</span> Molecular Evolution Models</h3>
 <p>Because the observed distance in our sequences at this point in time do not neessecarily reflect the true evolutionary distance, models like Jukes-Cantor have been devised to correct observed sequence differences. This results in a more accurate estimate of the true evolutionary distances, accounting for mutation rates and substitution patterns.</p>
 </section>
-<section id="applications" class="level3" data-number="14.1.5">
-<h3 data-number="14.1.5" class="anchored" data-anchor-id="applications"><span class="header-section-number">14.1.5</span> Applications</h3>
+<section id="applications" class="level3" data-number="15.1.5">
+<h3 data-number="15.1.5" class="anchored" data-anchor-id="applications"><span class="header-section-number">15.1.5</span> Applications</h3>
 <p>Phylogenetic trees are widely used to trace the evolution of pathogens, understand species divergence, and even in forensic cases involving pathogen transmission. Nowadays, they are the preferred method for outbreak tracking. Also some bioinformatics algorithms use a clustering or phylogenetic tree construction step to speed up analyses.</p>
 </section>
-<section id="caveats" class="level3" data-number="14.1.6">
-<h3 data-number="14.1.6" class="anchored" data-anchor-id="caveats"><span class="header-section-number">14.1.6</span> Caveats</h3>
+<section id="caveats" class="level3" data-number="15.1.6">
+<h3 data-number="15.1.6" class="anchored" data-anchor-id="caveats"><span class="header-section-number">15.1.6</span> Caveats</h3>
 <p>During the lecture, we discussed several important caveats to keep in mind when interpreting phylogenetic trees:<br>
 - Phylogenetic trees illustrate evolutionary relatedness, but do not represent evolutionary progress or advancement. - Branch lengths may reflect evolutionary distances, indicating the degree of genetic divergence from the nearest internal node. - To compare the “relatedness” of taxa, focus on shared common ancestors rather than just the proximity of branches. - Phylogenetic analyses often rely on incomplete data. Your evolutionary hypothesis may change as more samples are included, so be cautious about drawing definitive conclusions.</p>
-</section>
-</section>
-<section id="making-a-phylogenetic-tree-from-wgs-data" class="level2" data-number="14.2">
-<<<<<<< HEAD
-<h2 data-number="14.2" class="anchored" data-anchor-id="making-a-phylogenetic-tree-from-wgs-data"><span class="header-section-number">14.2</span> Making a phylogenetic tree from WGS Data</h2>
-=======
-<h2 data-number="14.2" class="anchored" data-anchor-id="making-a-phylogenetic-tree-from-wgs-data"><span class="header-section-number">14.2</span> Making a Phylogenetic Tree from WGS Data</h2>
->>>>>>> f78673bb5d3a5cedb0b1fb61fa33e18eff10cecd
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD ## Making a phylogenetic tree from WGS Data ======= ## Making a Phylogenetic Tree from WGS Data &gt;&gt;&gt;&gt;&gt;&gt;&gt; f78673bb5d3a5cedb0b1fb61fa33e18eff10cecd</p>
 <p>By the time you reach this point in the course (week 2), you will have downloaded or generated your own whole-genome sequencing (WGS) data. Whether you’ve worked with parasite genomes using <code>BWA</code> and <code>GATK</code>, or prokaryotic genomes using <code>snippy</code>, you will have VCF files containing your called variants. The good news is that you’re almost ready to build a phylogenetic tree! Most tree-building programs require a FASTA file of aligned SNPs as input, so you just need to carry out some additional processing.</p>
-<section id="option-1-combine-vcfs-from-gatk" class="level3" data-number="14.2.1">
-<h3 data-number="14.2.1" class="anchored" data-anchor-id="option-1-combine-vcfs-from-gatk"><span class="header-section-number">14.2.1</span> Option 1: Combine VCFs from GATK</h3>
+</section>
+<section id="option-1-combine-vcfs-from-gatk" class="level3" data-number="15.1.7">
+<h3 data-number="15.1.7" class="anchored" data-anchor-id="option-1-combine-vcfs-from-gatk"><span class="header-section-number">15.1.7</span> Option 1: Combine VCFs from GATK</h3>
 <p>If you have been working with <em>Plasmodium</em> or other parasites and used <code>BWA</code> and <code>GATK</code>, there are multiple ways to combine your data into a format suitable for phylogenetic tree-building programs.</p>
-<<<<<<< HEAD
-<p>One option is to use the python script that we used during the course. You can find it here: https://github.com/FreBio/mytools/blob/master/vcf2fasta.py . You can use on your combined VCF files produced with GATK.</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD One option is to use the python script that we used during the course. You can find it here: <a href="https://github.com/FreBio/mytools/blob/master/vcf2fasta.py">https://github.com/FreBio/mytools/blob/master/vcf2fasta.py</a> . You can use on your combined VCF files produced with GATK.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-v</span> snps filtered_output.vcf.gz <span class="at">-o</span> filtered_output.snps.vcf.gz</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vcf2fasta.py</span> filtered_output.snps.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>After running BCFtools, the script will generate you a fasta file that you can use as input for a phylogenetic tree building program as such:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FastTree</span> <span class="at">-gtr</span> <span class="at">-nt</span> filtered_output.snps.vcf.gz.fa <span class="op">&gt;</span> mytree.nw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-=======
-<p>TO BE CONTINUED!!</p>
->>>>>>> f78673bb5d3a5cedb0b1fb61fa33e18eff10cecd
+<p>======= TO BE CONTINUED!! &gt;&gt;&gt;&gt;&gt;&gt;&gt; f78673bb5d3a5cedb0b1fb61fa33e18eff10cecd</p>
 </section>
-<section id="option-2-run-snippy-core" class="level3" data-number="14.2.2">
-<h3 data-number="14.2.2" class="anchored" data-anchor-id="option-2-run-snippy-core"><span class="header-section-number">14.2.2</span> Option 2: Run <code>snippy Core</code></h3>
+<section id="option-2-run-snippy-core" class="level3" data-number="15.1.8">
+<h3 data-number="15.1.8" class="anchored" data-anchor-id="option-2-run-snippy-core"><span class="header-section-number">15.1.8</span> Option 2: Run <code>snippy Core</code></h3>
 <p>If your project involves bacteria or viruses, you may have used <code>snippy</code> to perform mapping and variant calling on your trimed FASTQ files. The command might have looked something like this:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">cpus</span><span class="op">=</span>8</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">REFERENCE</span><span class="op">=</span><span class="st">""</span></span>
@@ -890,13 +880,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/genomics/variant-calling.html" class="pagination-link" aria-label="Variant calling">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Variant calling</span></span>
+      <a href="../../content/genomics/downloading_data.html" class="pagination-link" aria-label="Dowloading genomic data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dowloading genomic data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../content/genomics/results.html" class="pagination-link" aria-label="Results">
-        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Results</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Results</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

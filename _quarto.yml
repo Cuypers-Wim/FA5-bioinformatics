@@ -73,6 +73,7 @@ book:
         - content/genomics/qc.qmd
         - content/genomics/mapping.qmd
         - content/genomics/variant-calling.qmd
+        - content/genomics/downloading_data.qmd
         - content/genomics/phylogenetics.qmd
         - content/genomics/results.qmd
     # # - part: "Bioinformatics file formats and tools"

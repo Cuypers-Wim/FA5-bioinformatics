@@ -1,0 +1,34 @@
+# Downloading Genomic Data {#sec-downloading-data}
+
+## Downloading Reference Genomes
+
+To find a high-quality reference genome for mapping your reads, a reliable resource is the [NCBI Genomes section](https://www.ncbi.nlm.nih.gov/datasets/genome/). 
+
+You can search for the reference genome of interest on this site. It's important to note that genomes with a RefSeq accession tend to be of higher quality compared to those with only a GenBank accession. On the download page, you will have the option to create a ZIP file containing your genome in FASTA format, along with related files such as annotation files.
+
+## Downloading Sequencing Reads
+
+After identifying the sequencing reads you need for your analysis, there are several methods to download them. One command-line option is the `fasterq-dump` program from NCBI, which allows you to retrieve sequencing reads directly by specifying their SRA accession number. These accessions can be found either from an existing publication or directly from the [Sequence Read Archive (SRA)](https://www.ncbi.nlm.nih.gov/sra).
+
+For this course, we will use the [SRA Explorer tool](https://sra-explorer.info/). Here, you can search for the accessions of interest to generate download links or a script to download the reads using `wget`.
+
+In the example below, we searched for '_Salmonella_ Concord', selected six random samples, and downloaded them by prepending 'wget' to each download link.
+
+![SRA explorer get links](../assets/sra_explorer.png){.no-lightbox}
+
+The download script for the selected samples looks as follows:
+
+```bash
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/006/ERR9516346/ERR9516346_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/006/ERR9516346/ERR9516346_2.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/004/ERR9516344/ERR9516344_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/004/ERR9516344/ERR9516344_2.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/003/ERR9516343/ERR9516343_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/003/ERR9516343/ERR9516343_2.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/005/ERR9516345/ERR9516345_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/005/ERR9516345/ERR9516345_2.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/007/ERR9516347/ERR9516347_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/007/ERR9516347/ERR9516347_2.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/008/ERR9516348/ERR9516348_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR951/008/ERR9516348/ERR9516348_2.fastq.gz
+```
