@@ -22,7 +22,7 @@ Phylogenetic analysis is a key step in understanding evolutionary relationships 
 
 ### Molecular Evolution Models
 
-Models like Jukes-Cantor correct observed sequence differences to estimate true evolutionary distances, accounting for mutation rates and substitution patterns.
+Because the observed distance in our sequences at this point in time do not neessecarily reflect the true evolutionary distance, models like Jukes-Cantor have been devised to correct observed sequence differences. This results in a more accurate estimate of the true evolutionary distances, accounting for mutation rates and substitution patterns.
 
 ### Applications
 
@@ -35,18 +35,29 @@ During the lecture, we discussed several important caveats to keep in mind when 
 - To compare the "relatedness" of taxa, focus on shared common ancestors rather than just the proximity of branches.
 - Phylogenetic analyses often rely on incomplete data. Your evolutionary hypothesis may change as more samples are included, so be cautious about drawing definitive conclusions.
 
-## Making a phylogenetic tree from WGS data
-When you have arrived azt this point in the course (week 2), you will have downloaded or generated your own WGS data. Whether you worked on parasite genomes (bwa - gatk), or on prokaryote genome (snippy), you will end up with VCF files of called variants. The good news is that you  are almost there! Most phylogenetic tree building programs take a fasta file of aligned SNPs as input, so you just need to do some further processing.
+## Making a phylogenetic tree from WGS Data
 
-### Option 1. combine VCFs from GATK
-When you made a pipeline for Plamsodium or other parasites, you will likely have run BWA and GATK. There are multiple methods to combine your data into a format that can be used by phylogenetic tree building programs.
+By the time you reach this point in the course (week 2), you will have downloaded or generated your own whole-genome sequencing (WGS) data. Whether you’ve worked with parasite genomes using `BWA` and `GATK`, or prokaryotic genomes using `snippy`, you will have VCF files containing your called variants. The good news is that you're almost ready to build a phylogenetic tree! Most tree-building programs require a FASTA file of aligned SNPs as input, so you just need to carry out some additional processing.
 
-Here’s your course section rewritten in Quarto markdown:
+### Option 1: Combine VCFs from GATK
+
+If you have been working with _Plasmodium_ or other parasites and used `BWA` and `GATK`, there are multiple ways to combine your data into a format suitable for phylogenetic tree-building programs.
+
+One option is to use the python script that we provided during the course, which you can use on your combined VCF files.
+
+
+```bash
+bcftools view -v snps filtered_output.vcf.gz -o filtered_output.snps.vcf.gz
+vcf2fasta.py filtered_output.snps.vcf.gz
+FastTree -gtr -nt filtered_output.snps.vcf.gz.fa > mytree.nw
+```
+
+TO BE CONTINUED!!
 
 
 ### Option 2: Run `snippy Core`
 
-If your project involves bacteria or viruses, you may have used `snippy` to analyze your FASTQ files. The command might have looked something like this:
+If your project involves bacteria or viruses, you may have used `snippy` to perform mapping and variant calling on your trimed FASTQ files. The command might have looked something like this:
 
 ```bash
 cpus=8
