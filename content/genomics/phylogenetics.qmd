@@ -43,7 +43,7 @@ By the time you reach this point in the course (week 2), you will have downloade
 
 If you have been working with _Plasmodium_ or other parasites and used `BWA` and `GATK`, there are multiple ways to combine your data into a format suitable for phylogenetic tree-building programs.
 
-One option is to use the python script that we used during the course. You can find it here: https://github.com/FreBio/mytools/blob/master/vcf2fasta.py . You can use on your combined VCF files produced with GATK.
+One option is to use the python script that we used during the course. You can find it here: [https://github.com/FreBio/mytools/blob/master/vcf2fasta.py](https://github.com/FreBio/mytools/blob/master/vcf2fasta.py) . You can use on your combined VCF files produced with GATK.
 
 
 ```bash
