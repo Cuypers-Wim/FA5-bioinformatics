@@ -1,5 +1,50 @@
 # Phylogenetics {#sec-phylogenetics}
 
+## A quick primer on Phylogenetic Analysis in Bioinformatics
+
+Phylogenetic analysis is a key step in understanding evolutionary relationships among biological entities, such as species, genes, or populations. These relationships are represented using phylogenetic trees, which are graphical hypotheses about evolutionary history. Trees are built using molecular sequence data (DNA, RNA, or proteins), providing insight into lineage divergence and ancestral relationships.
+
+### Key Concepts
+
+- **Nodes**: Represent taxa (species, genes, etc.). Leaves are current taxa, while internal nodes represent hypothetical ancestors.
+- **Branches**: Connect nodes and can represent genetic change or time.
+- **Rooted vs. Unrooted Trees**: Rooted trees suggest a common ancestor, while unrooted trees don’t infer directionality in evolution.
+
+### Tree Types
+
+1. **Cladogram**: Depicts relationships; branch lengths have no meaning.
+2. **Phylogram**: Branch lengths reflect genetic change or evolutionary time.
+
+### Methods for Constructing Trees
+
+- **Distance-Based Methods**: Use sequence data to calculate genetic distances and cluster taxa (e.g., UPGMA, Neighbor-Joining).
+- **Character-Based Methods**: Use models of sequence evolution (e.g., Maximum Likelihood, Bayesian Inference).
+
+### Molecular Evolution Models
+
+Models like Jukes-Cantor correct observed sequence differences to estimate true evolutionary distances, accounting for mutation rates and substitution patterns.
+
+### Applications
+
+Phylogenetic trees are widely used to trace the evolution of pathogens, understand species divergence, and even in forensic cases involving pathogen transmission. Nowadays, they are the preferred method for outbreak tracking. Also some bioinformatics algorithms use a clustering or phylogenetic tree construction step to speed up analyses. 
+
+### Caveats  
+During the lecture, we discussed several important caveats to keep in mind when interpreting phylogenetic trees:  
+- Phylogenetic trees illustrate evolutionary relatedness, but do not represent evolutionary progress or advancement.
+- Branch lengths may reflect evolutionary distances, indicating the degree of genetic divergence from the nearest internal node.
+- To compare the "relatedness" of taxa, focus on shared common ancestors rather than just the proximity of branches.
+- Phylogenetic analyses often rely on incomplete data. Your evolutionary hypothesis may change as more samples are included, so be cautious about drawing definitive conclusions.
+
+## Making a phylogenetic tree from WGS data
+When you have arrived azt this point in the course (week 2), you will have downloaded or generated your own WGS data. Whether you worked on parasite genomes (bwa - gatk), or on prokaryote genome (snippy), you will end up with VCF files of called variants. The good news is that you  are almost there! Most phylogenetic tree building programs take a fasta file of aligned SNPs as input, so you just need to do some further processing.
+
+### Option 1. combine VCFs
+
+### Option 2. run snippy core
+
+
+
+
 
 ::: {.callout-tip}
 ## Storyline: Malaria in Ethiopia [excercise not performed during course, will be updated]

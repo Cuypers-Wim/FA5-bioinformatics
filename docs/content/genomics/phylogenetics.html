@@ -269,8 +269,27 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#a-quick-primer-on-phylogenetic-analysis-in-bioinformatics" id="toc-a-quick-primer-on-phylogenetic-analysis-in-bioinformatics" class="nav-link active" data-scroll-target="#a-quick-primer-on-phylogenetic-analysis-in-bioinformatics"><span class="header-section-number">14.1</span> A quick primer on Phylogenetic Analysis in Bioinformatics</a>
+  <ul>
+  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts"><span class="header-section-number">14.1.1</span> Key Concepts</a></li>
+  <li><a href="#tree-types" id="toc-tree-types" class="nav-link" data-scroll-target="#tree-types"><span class="header-section-number">14.1.2</span> Tree Types</a></li>
+  <li><a href="#methods-for-constructing-trees" id="toc-methods-for-constructing-trees" class="nav-link" data-scroll-target="#methods-for-constructing-trees"><span class="header-section-number">14.1.3</span> Methods for Constructing Trees</a></li>
+  <li><a href="#molecular-evolution-models" id="toc-molecular-evolution-models" class="nav-link" data-scroll-target="#molecular-evolution-models"><span class="header-section-number">14.1.4</span> Molecular Evolution Models</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications"><span class="header-section-number">14.1.5</span> Applications</a></li>
+  <li><a href="#caveats" id="toc-caveats" class="nav-link" data-scroll-target="#caveats"><span class="header-section-number">14.1.6</span> Caveats</a></li>
+  </ul></li>
+  <li><a href="#making-a-phylogenetic-tree-from-wgs-data" id="toc-making-a-phylogenetic-tree-from-wgs-data" class="nav-link" data-scroll-target="#making-a-phylogenetic-tree-from-wgs-data"><span class="header-section-number">14.2</span> Making a phylogenetic tree from WGS data</a>
+  <ul>
+  <li><a href="#option-1.-combine-vcfs" id="toc-option-1.-combine-vcfs" class="nav-link" data-scroll-target="#option-1.-combine-vcfs"><span class="header-section-number">14.2.1</span> Option 1. combine VCFs</a></li>
+  <li><a href="#option-2.-run-snippy-core" id="toc-option-2.-run-snippy-core" class="nav-link" data-scroll-target="#option-2.-run-snippy-core"><span class="header-section-number">14.2.2</span> Option 2. run snippy core</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -294,6 +313,53 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="a-quick-primer-on-phylogenetic-analysis-in-bioinformatics" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="a-quick-primer-on-phylogenetic-analysis-in-bioinformatics"><span class="header-section-number">14.1</span> A quick primer on Phylogenetic Analysis in Bioinformatics</h2>
+<p>Phylogenetic analysis is a key step in understanding evolutionary relationships among biological entities, such as species, genes, or populations. These relationships are represented using phylogenetic trees, which are graphical hypotheses about evolutionary history. Trees are built using molecular sequence data (DNA, RNA, or proteins), providing insight into lineage divergence and ancestral relationships.</p>
+<section id="key-concepts" class="level3" data-number="14.1.1">
+<h3 data-number="14.1.1" class="anchored" data-anchor-id="key-concepts"><span class="header-section-number">14.1.1</span> Key Concepts</h3>
+<ul>
+<li><strong>Nodes</strong>: Represent taxa (species, genes, etc.). Leaves are current taxa, while internal nodes represent hypothetical ancestors.</li>
+<li><strong>Branches</strong>: Connect nodes and can represent genetic change or time.</li>
+<li><strong>Rooted vs.&nbsp;Unrooted Trees</strong>: Rooted trees suggest a common ancestor, while unrooted trees don’t infer directionality in evolution.</li>
+</ul>
+</section>
+<section id="tree-types" class="level3" data-number="14.1.2">
+<h3 data-number="14.1.2" class="anchored" data-anchor-id="tree-types"><span class="header-section-number">14.1.2</span> Tree Types</h3>
+<ol type="1">
+<li><strong>Cladogram</strong>: Depicts relationships; branch lengths have no meaning.</li>
+<li><strong>Phylogram</strong>: Branch lengths reflect genetic change or evolutionary time.</li>
+</ol>
+</section>
+<section id="methods-for-constructing-trees" class="level3" data-number="14.1.3">
+<h3 data-number="14.1.3" class="anchored" data-anchor-id="methods-for-constructing-trees"><span class="header-section-number">14.1.3</span> Methods for Constructing Trees</h3>
+<ul>
+<li><strong>Distance-Based Methods</strong>: Use sequence data to calculate genetic distances and cluster taxa (e.g., UPGMA, Neighbor-Joining).</li>
+<li><strong>Character-Based Methods</strong>: Use models of sequence evolution (e.g., Maximum Likelihood, Bayesian Inference).</li>
+</ul>
+</section>
+<section id="molecular-evolution-models" class="level3" data-number="14.1.4">
+<h3 data-number="14.1.4" class="anchored" data-anchor-id="molecular-evolution-models"><span class="header-section-number">14.1.4</span> Molecular Evolution Models</h3>
+<p>Models like Jukes-Cantor correct observed sequence differences to estimate true evolutionary distances, accounting for mutation rates and substitution patterns.</p>
+</section>
+<section id="applications" class="level3" data-number="14.1.5">
+<h3 data-number="14.1.5" class="anchored" data-anchor-id="applications"><span class="header-section-number">14.1.5</span> Applications</h3>
+<p>Phylogenetic trees are widely used to trace the evolution of pathogens, understand species divergence, and even in forensic cases involving pathogen transmission. Nowadays, they are the preferred method for outbreak tracking. Also some bioinformatics algorithms use a clustering or phylogenetic tree construction step to speed up analyses.</p>
+</section>
+<section id="caveats" class="level3" data-number="14.1.6">
+<h3 data-number="14.1.6" class="anchored" data-anchor-id="caveats"><span class="header-section-number">14.1.6</span> Caveats</h3>
+<p>During the lecture, we discussed several important caveats to keep in mind when interpreting phylogenetic trees:<br>
+- Phylogenetic trees illustrate evolutionary relatedness, but do not represent evolutionary progress or advancement. - Branch lengths may reflect evolutionary distances, indicating the degree of genetic divergence from the nearest internal node. - To compare the “relatedness” of taxa, focus on shared common ancestors rather than just the proximity of branches. - Phylogenetic analyses often rely on incomplete data. Your evolutionary hypothesis may change as more samples are included, so be cautious about drawing definitive conclusions.</p>
+</section>
+</section>
+<section id="making-a-phylogenetic-tree-from-wgs-data" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="making-a-phylogenetic-tree-from-wgs-data"><span class="header-section-number">14.2</span> Making a phylogenetic tree from WGS data</h2>
+<p>When you have arrived azt this point in the course (week 2), you will have downloaded or generated your own WGS data. Whether you worked on parasite genomes (bwa - gatk), or on prokaryote genome (snippy), you will end up with VCF files of called variants. The good news is that you are almost there! Most phylogenetic tree building programs take a fasta file of aligned SNPs as input, so you just need to do some further processing.</p>
+<section id="option-1.-combine-vcfs" class="level3" data-number="14.2.1">
+<h3 data-number="14.2.1" class="anchored" data-anchor-id="option-1.-combine-vcfs"><span class="header-section-number">14.2.1</span> Option 1. combine VCFs</h3>
+</section>
+<section id="option-2.-run-snippy-core" class="level3" data-number="14.2.2">
+<h3 data-number="14.2.2" class="anchored" data-anchor-id="option-2.-run-snippy-core"><span class="header-section-number">14.2.2</span> Option 2. run snippy core</h3>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -311,6 +377,8 @@ Storyline: Malaria in Ethiopia [excercise not performed during course, will be u
 </div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
